@@ -261,6 +261,87 @@
 
 
   
+    <article id="post-Babel-预编译教程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/01/Babel-%E9%A2%84%E7%BC%96%E8%AF%91%E6%95%99%E7%A8%8B/">Babel_预编译教程</a>
+    </h1>
+  
+
+        
+        <a href="/2020/05/01/Babel-%E9%A2%84%E7%BC%96%E8%AF%91%E6%95%99%E7%A8%8B/" class="archive-article-date">
+  	<time datetime="2020-05-01T11:40:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Babel-简介"><a href="#Babel-简介" class="headerlink" title="Babel 简介"></a>Babel 简介</h1><h1 id="Babel-安装"><a href="#Babel-安装" class="headerlink" title="Babel 安装"></a>Babel 安装</h1><p>1.运行以下命令以安装软件包 :</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\lenovo\Desktop\bable-demo&gt;npm i --save-dev @babel/core @babel/cli @babel/preset-env</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">+ @babel/cli@7.8.4</span><br><span class="line">+ @babel/preset-env@7.9.6</span><br><span class="line">+ @babel/core@7.9.6</span><br><span class="line">added 290 packages from 138 contributors in 44.033s</span><br><span class="line"></span><br><span class="line">6 packages are looking for funding</span><br><span class="line">  run `npm fund` for details</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">npm install --save @babel/polyfill</span><br></pre></td></tr></table></figure>
+<p>2.项目根目录下创建一个 babel.config.js 配置文件</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"presets"</span>: [</span><br><span class="line">    [</span><br><span class="line">      <span class="string">"@babel/env"</span>,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="string">"targets"</span>: &#123;</span><br><span class="line">          <span class="string">"edge"</span>: <span class="string">"17"</span>,</span><br><span class="line">          <span class="string">"firefox"</span>: <span class="string">"60"</span>,</span><br><span class="line">          <span class="string">"chrome"</span>: <span class="string">"67"</span>,</span><br><span class="line">          <span class="string">"safari"</span>: <span class="string">"11.1"</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="string">"useBuiltIns"</span>: <span class="string">"usage"</span>,</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="../images/babel-%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84-1.png" alt="项目结构"></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Babel</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/01/Babel-%E9%A2%84%E7%BC%96%E8%AF%91%E6%95%99%E7%A8%8B/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-ES6-Promise-异步编程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -485,6 +566,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Babel</a>
+              </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">随笔</a>
