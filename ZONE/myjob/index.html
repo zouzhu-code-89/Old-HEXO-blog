@@ -6,56 +6,32 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | zouzhu@blog</title>
+  <title>vs-code | zouzhu@blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="彼岸世界，希望未来的每一天都是充满阳光的，用一行行代码成就梦想">
-<meta property="og:type" content="website">
-<meta property="og:title" content="zouzhu@blog">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+  <meta name="description" content="vs-code 常用插件">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vs-code">
+<meta property="og:url" content="http://yoursite.com/2020/05/01/vs-code/index.html">
 <meta property="og:site_name" content="zouzhu@blog">
-<meta property="og:description" content="彼岸世界，希望未来的每一天都是充满阳光的，用一行行代码成就梦想">
+<meta property="og:description" content="vs-code 常用插件">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-05-01T13:32:42.000Z">
+<meta property="article:modified_time" content="2020-05-01T13:47:35.849Z">
 <meta property="article:author" content="彼岸世界">
+<meta property="article:tag" content="vs-code">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="zouzhu@blog" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
-    <!-- 这里是我们自定义的 CSS 样式 -->
-    <!-- <link rel="stylesheet" href="./css/index.css"> -->
-    <!-- 这里是我们的 JS 代码 -->
-    <!-- <link rel="stylesheet" href="./js/index.js"> -->
-
+  
   <link rel="stylesheet" type="text/css" href="/./main.0cf68a.css">
   <style type="text/css">
   
     #container.show {
       background: linear-gradient(200deg,#a0cfe4,#e8c37e);
     }
-
-
-    /* ============ 我的简历代码区域 ===========*/
-    #chebian-menu{
-        /* position: relative; */
-        width: 19.5%;
-    }
-    #myjob-contain{
-        width: 80.5%;
-        height: 100%;
-        background-color: #c2d0d6;
-        float: right;
-    }
-    .myjob-center-box{
-        width: 95%;
-        height: 100%;
-        background-color: white;
-        margin: 0 auto;
-    }
-    .myjob-h1-title{
-        align-content: center!important;
-    }
-    /* ======================================= */
   </style>
   
 
@@ -66,11 +42,10 @@
 <body>
   <div id="container" q-class="show:isCtnShow">
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
-    <div class="left-col" q-class="show:isShow" id="chebian-menu">
+    <div class="left-col" q-class="show:isShow">
       
-    <!-- 左侧导航栏 -->
-    <div class="overlay" style="background: #4d4d4d;"></div>
-        <div class="intrude-less">
+<div class="overlay" style="background: #4d4d4d"></div>
+<div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
 			<img src="/assets/touxiang-1.jpg" class="js-avatar">
@@ -124,24 +99,173 @@
 			</div>
 		</nav>
 	</header>		
-        </div>
+</div>
+
+    </div>
+    <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
+      
+<nav id="mobile-nav">
+  	<div class="overlay js-overlay" style="background: #4d4d4d"></div>
+	<div class="btnctn js-mobile-btnctn">
+  		<div class="slider-trigger list" q-on="click: openSlider(e)"><i class="icon icon-sort"></i></div>
+	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img src="/assets/touxiang-1.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author js-header-author">彼岸世界</h1>
+			</hgroup>
+			
+			
+			
+				
+			
+				
+			
+				
+			
+				
+			
+			
+			
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/zouzhu-code-89" title="github"><i class="icon-github"></i></a>
+			        
+						<a class="qq" target="_blank" href="/assets/QQ.jpg" title="qq"><i class="icon-qq"></i></a>
+			        
+						<a class="weixin" target="_blank" href="/assets/weixing.jpg" title="weixin"><i class="icon-weixin"></i></a>
+			        
+						<a class="jianshu" target="_blank" href="https://www.jianshu.com/u/92e2e8301861" title="jianshu"><i class="icon-jianshu"></i></a>
+			        
+						<a class="mail" target="_blank" href="mailto:zouzhuQcom@163.com" title="mail"><i class="icon-mail"></i></a>
+			        
+				</div>
+			</nav>
+
+			<nav class="header-menu js-header-menu">
+				<ul style="width: 70%">
+				
+				
+					<li style="width: 25%"><a href="/">主页</a></li>
+		        
+					<li style="width: 25%"><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
+		        
+					<li style="width: 25%"><a href="/archives/index.html">归档</a></li>
+		        
+					<li style="width: 25%"><a href="/ZONE/myjob/index.html">简历</a></li>
+		        
+				</ul>
+			</nav>
+		</header>				
+	</div>
+	<div class="mobile-mask" style="display:none" q-show="isShow"></div>
+</nav>
+
+      <div id="wrapper" class="body-wrap">
+        <div class="menu-l">
+          <div class="canvas-wrap">
+            <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
+          </div>
+          <div id="js-content" class="content-ll">
+            
+
+
+
+
+
+
+
+<!-- 个人简历的正文区域 -->
+<article id="post-vs-code" class="article article-type-post " itemscope itemprop="blogPost" style="margin: 0 30px;">
+  <div class="article-inner">
+    
+    <header style="align-content: center;"><h1 style="padding-left: 30px;
+                                                      line-height: 100px;">个人简历</h1></header>
+
+    <!-- 消除浮动 -->
+    <div class="article-info article-info-index" style="border: 0;height: 1000px;">  
+        <div class="mask js-mask"></div>
+        <div class="clearfix"></div>
     </div>
 
+  </div>
+</article>
 
-    <div id="myjob-contain">
-        <div class="myjob-center-box">
-            <h1 class="myjob-h1-title" style="align-content: center;">个人简历</h1>
+  
+
+
+
+
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#vs-code-常用插件"><span class="toc-number">1.</span> <span class="toc-text">vs-code 常用插件</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
     </div>
+</aside>
 
 
+
+  
+  
+  
+
+  
+
+  
+
+  
+
+
+          </div>
+        </div>
+      </div>
+      <!-- <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2020 彼岸世界
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer> -->
     </div>
     <script>
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
@@ -210,11 +334,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ES6</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Babel</a>
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -222,7 +342,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color1">Babel</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ES6</a>
               </li>
              
               <li class="article-tag-list-item">
