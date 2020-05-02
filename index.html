@@ -431,56 +431,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Babel-简介"><a href="#Babel-简介" class="headerlink" title="Babel 简介"></a>Babel 简介</h1><p>1.Babel 可以将 ES6 语法编译成 ES5 的语法，使你的应用不用担心在不支持 ES6 的浏览器上无法运行的问题 。<br>2.Babel 能够转换 JSX 语法! 我们在使用 create-react-app 插件生成项目时, 默认是配置了 Babel 。</p>
-<h1 id="Babel-安装"><a href="#Babel-安装" class="headerlink" title="Babel 安装"></a>Babel 安装</h1><p>1.运行以下命令以安装软件包 :</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\lenovo\Desktop\bable-demo&gt;npm i --save-dev @babel/core @babel/cli @babel/preset-env</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">+ @babel/cli@7.8.4</span><br><span class="line">+ @babel/preset-env@7.9.6</span><br><span class="line">+ @babel/core@7.9.6</span><br><span class="line">added 290 packages from 138 contributors in 44.033s</span><br><span class="line"></span><br><span class="line">6 packages are looking for funding</span><br><span class="line">  run `npm fund` for details</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">npm install --save @babel/polyfill</span><br></pre></td></tr></table></figure>
-<p>2.项目根目录下创建一个 babel.config.js 配置文件<br>targets 表示浏览器支持的不同版本，你可以根据项目的需要进行调整，Babel 就能编译出对应版本能够识别的 JavaScript 代码 。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"presets"</span>: [</span><br><span class="line">    [</span><br><span class="line">      <span class="string">"@babel/env"</span>,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="string">"targets"</span>: &#123;</span><br><span class="line">          <span class="string">"edge"</span>: <span class="string">"17"</span>,</span><br><span class="line">          <span class="string">"firefox"</span>: <span class="string">"60"</span>,</span><br><span class="line">          <span class="string">"chrome"</span>: <span class="string">"67"</span>,</span><br><span class="line">          <span class="string">"safari"</span>: <span class="string">"11.1"</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="string">"useBuiltIns"</span>: <span class="string">"usage"</span>,</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>3.然后运行此命令，将 src 目录中的所有代码编译为 dist:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;node_modules&#x2F;.bin&#x2F;babel src --out-dir dist</span><br></pre></td></tr></table></figure>
-<p>这就是我们测试项目下，根目录的结构，src 目录下的 index.js 是 ES6 编写的 JavaScript 语句, 我们将通过 Babel 将它编译成通用的 JavaScript 代码<br><img src="/images/babel-项目结构-1.png" width="40%"></p>
-<p><br><br><br></p>
-<h1 id="Babel-CLI-基本用法"><a href="#Babel-CLI-基本用法" class="headerlink" title="Babel-CLI 基本用法"></a>Babel-CLI 基本用法</h1><h2 id="1-babel-core-核心模块"><a href="#1-babel-core-核心模块" class="headerlink" title="1.babel-core 核心模块"></a>1.babel-core 核心模块</h2><p>Babel 的核心功能位于 @babel/core 模块中</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save-dev @babel&#x2F;core</span><br></pre></td></tr></table></figure>
-<p>你可以 require 直接在 JavaScript 程序中使用它，<a href="">babel.transform</a> 方法的第一个参数是一个字符串，表示需要转换的ES6代码，第二个参数是转换的配置对象</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> babel = <span class="built_in">require</span>(<span class="string">"@babel/core"</span>);</span><br><span class="line"></span><br><span class="line">babel.transform(<span class="string">"code"</span>, optionsObject);</span><br></pre></td></tr></table></figure>
-
-<br>
-
-<h2 id="2-babel-cli-终端工具"><a href="#2-babel-cli-终端工具" class="headerlink" title="2.babel-cli 终端工具"></a>2.babel-cli 终端工具</h2><p>CLI 工具 @babel/cli 是允许您从终端使用 babel 的工具, 这是安装命令以及基本的使用方法</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> npm install --save-dev @babel/core @babel/cli</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> ./node_modules/.bin/babel src --out-dir lib</span></span><br></pre></td></tr></table></figure>
-<p><a href="">这行命令的意思是 :</a><br>解析 src 目录下所有的 JavaScript 文件, 并将每个文件输出到 lib 目录, 由于我们尚未告诉它应用任何转换, 因此输出代码将与原始 src 下输入代码相同（不保留确切的代码样式）, 我们可以通过将其作为选项传递来指定所需的转换 。<br>我们使用了–out-dir上面的选项, 你可以通过运行来查看 cli 工具接受的其余选项–help 。但是现在对我们最重要的是–plugins和–presets。<br><img src="/images/babel-项目结构-1.png" width="40%"><br><br><br><br></p>
-<h1 id="插件和预设"><a href="#插件和预设" class="headerlink" title="插件和预设"></a>插件和预设</h1><h2 id="1-插件-代码转换"><a href="#1-插件-代码转换" class="headerlink" title="1.插件(代码转换)"></a>1.插件(代码转换)</h2><p>代码都是以插件的形式转换的，既小型JavaScript程序，插件指导 Babel 如何进行代码转换，你甚至可以编写自己的插件，要将ES2015 + 语法转换为ES5，我们可以依赖以下官方插件@babel/plugin-transform-arrow-functions</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save-dev @babel&#x2F;plugin-transform-arrow-functions</span><br></pre></td></tr></table></figure>
-<p>我们现在可以使用这个插件的代码转换规范，对我们编写的代码进行ES5转换</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;node_modules&#x2F;.bin&#x2F;babel src --out-dir lib --plugins&#x3D;@babel&#x2F;plugin-transform-arrow-functions</span><br></pre></td></tr></table></figure>
-<p>现在我们代码中的所有箭头函数都将转换为与ES5兼容的函数表达式</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 转换前代码</span><br><span class="line"><span class="keyword">const</span> sayHi = <span class="function"><span class="params">()</span> =&gt;</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 转换后</span><br><span class="line"><span class="keyword">var</span> sayHi = <span class="function"><span class="keyword">function</span> <span class="title">sayHi</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h2 id="2-预设-插件组合"><a href="#2-预设-插件组合" class="headerlink" title="2.预设(插件组合)"></a>2.预设(插件组合)</h2><p>这是一个好的开始，但是我们的代码中还有其他ES2015 + 功能需要转换，与其一一添加我们想要的所有插件，我们还可以使用<a href="">预设</a>,它只是一组预定的插件.<br>就像插件一样，你也可以创建自己的预设来将所需的插件任意进行组合，对于我们这里的用例，有一个出色的预设插件 env</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">npm install --save-dev @babel/preset-env</span><br><span class="line"></span><br><span class="line">然后我们使用这个预设插件对代码进行转换，注意我们这里是 --presets 表示预设</span><br><span class="line">./node_modules/.bin/babel src --out-dir lib --presets=@babel/env</span><br></pre></td></tr></table></figure>
-<p>没有任何配置，此预设将包含所有的插件(同样包含我们上面下载过的插件)，但是预设也可以选择使用何种插件，而不需要我们从终端的@babel-cli手动传递预设选项，让我们看一下传递选项参数的另一种方式 ：<a href="">配置文件</a><br>1.我们首先创建一个 babel.config.json 具有以下内容的文件：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> presets = [</span><br><span class="line">  [</span><br><span class="line">    <span class="string">"@babel/env"</span>,</span><br><span class="line">    &#123;</span><br><span class="line">      targets: &#123;</span><br><span class="line">        edge: <span class="string">"17"</span>,</span><br><span class="line">        firefox: <span class="string">"60"</span>,</span><br><span class="line">        chrome: <span class="string">"67"</span>,</span><br><span class="line">        safari: <span class="string">"11.1"</span>,</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">  ],</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123; presets &#125;;</span><br></pre></td></tr></table></figure>
-<p>现在 env 预设将仅加载目标浏览器中(目标浏览器版本能够识别的代码)我们已经准备好语法。接下来让我们看一下polyfills。</p>
-<p>Polyfill<br>Babel 从 Babel 7.4.0 开始，不推荐使用此软件包, 而直接包括core-js/stable（包括regenerator-runtime/runtimepolyfill ECMAScript功能）和（需要使用转译的生成器函数）：<br>import “core-js/stable”;<br>import “regenerator-runtime/runtime”;</p>
-<p>复制<br>该@通天塔/填充工具模块，包括核心的JS和一个自定义的再生运行模拟一个完整的ES2015 +环境。</p>
-<p>这意味着您可以使用新的内置函数，例如Promise或WeakMap，静态方法Array.from或Object.assign，实例方法Array.prototype.includes以及和生成器函数（与regenerator插件一起使用）。String为了实现此目的，polyfill以及本机原型添加到了全局范围。</p>
-<p>对于库/工具作者来说，这可能太多了。如果您不需要这样的实例方法Array.prototype.includes，则可以使用transform runtime插件而不是完全不污染全局范围@babel/polyfill。</p>
-<p>要更进一步，如果您确切地知道需要哪些功能，可以直接从core-js要求它们。</p>
-<p>由于我们正在构建应用程序，因此我们可以安装@babel/polyfill：</p>
-<p>npm install –save @babel/polyfill</p>
-<p>复制<br>请注意该–save选项，而不是–save-dev因为它是需要在源代码之前运行的polyfill。</p>
-<p>现在对我们来说幸运的是，我们正在使用env预设，该预设具有一个”useBuiltIns”选项，当设置”usage”为时，它将实际上应用上述的最后一个优化，其中您仅包含所需的polyfill。使用此新选项，配置将如下更改：</p>
-<p>{<br>  “presets”: [<br>    [<br>      “@babel/env”,<br>      {<br>        “targets”: {<br>          “edge”: “17”,<br>          “firefox”: “60”,<br>          “chrome”: “67”,<br>          “safari”: “11.1”,<br>        },<br>        “useBuiltIns”: “usage”,<br>      }<br>    ]<br>  ]<br>}</p>
-<p>复制<br>Babel现在将检查您所有的代码，以查找目标环境中缺少的功能，并且仅包括所需的polyfill。例如此代码：</p>
-<p>Promise.resolve().finally();</p>
-<p>复制<br>会变成这样（因为Edge 17没有Promise.prototype.finally）：</p>
-<p>require(“core-js/modules/es.promise.finally”);</p>
-<p>Promise.resolve().finally();</p>
-<p>复制<br>如果我们不使用env带有设置”useBuiltIns”选项的预设，则在所有其他代码之前，我们在入口点只”usage”需要一次完整的polyfill 。</p>
-<p>摘要<br>过去@babel/cli，我们从终端运行Babel，@babel/polyfill以填充所有新的JavaScript功能，而env预设则仅包含对我们使用的功能以及目标浏览器中所缺少的功能的转换和polyfill。</p>
-<p>有关使用构建系统，IDE等设置Babel的更多信息，请查看我们的交互式设置指南。</p>
-
+        <h1 id="Babel-简介"><a href="#Babel-简介" class="headerlink" title="Babel 简介"></a>Babel 简介</h1><p>1.Babel 可以将 ES6 语法编译成 ES5 的语法，使你的应用不用担心在不支持 ES6 的浏览器上无法运行的问题 。<br>2.Babel 能够转换 JSX 语法! 我们在使用 create-react-app 插件生成项目时, 默认是配置了 Babel 。<br><img src="/images/babel-image.png"/></p>
+        
+          <a class="article-more-a" href="/2020/05/01/Babel-%E9%A2%84%E7%BC%96%E8%AF%91%E6%95%99%E7%A8%8B/#more">more >></a>
+        
       
 
       
@@ -770,7 +724,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">vs-code</a>
+                <a href="javascript:void(0)" class="js-tag color1">Babel</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -778,15 +732,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Babel</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">vs-code</a>
               </li>
             
             <div class="clearfix"></div>
