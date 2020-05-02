@@ -19,7 +19,7 @@
 <meta property="og:image" content="http://yoursite.com/images/babel-%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84-1.png">
 <meta property="og:image" content="http://yoursite.com/images/babel-%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84-1.png">
 <meta property="article:published_time" content="2020-05-01T11:40:45.000Z">
-<meta property="article:modified_time" content="2020-05-02T05:25:54.117Z">
+<meta property="article:modified_time" content="2020-05-02T05:29:33.808Z">
 <meta property="article:author" content="彼岸世界">
 <meta property="article:tag" content="Babel">
 <meta name="twitter:card" content="summary">
@@ -218,6 +218,7 @@
 <h2 id="2-babel-cli-终端工具"><a href="#2-babel-cli-终端工具" class="headerlink" title="2.babel-cli 终端工具"></a>2.babel-cli 终端工具</h2><p>CLI 工具 @babel/cli 是允许您从终端使用 babel 的工具, 这是安装命令以及基本的使用方法</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> npm install --save-dev @babel/core @babel/cli</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> ./node_modules/.bin/babel src --out-dir lib</span></span><br></pre></td></tr></table></figure>
 <p><a href="">这行命令的意思是 :</a><br>解析 src 目录下所有的 JavaScript 文件, 并将每个文件输出到 lib 目录, 由于我们尚未告诉它应用任何转换, 因此输出代码将与原始 src 下输入代码相同（不保留确切的代码样式）, 我们可以通过将其作为选项传递来指定所需的转换 。<br>我们使用了–out-dir上面的选项, 你可以通过运行来查看 cli 工具接受的其余选项–help 。但是现在对我们最重要的是–plugins和–presets。<br><img src="/images/babel-项目结构-1.png" width="40%"><br><br><br><br></p>
+<p><br><br><br><br><br></p>
 <h1 id="第-3-章-插件和预设"><a href="#第-3-章-插件和预设" class="headerlink" title="第 3 章 插件和预设"></a>第 3 章 插件和预设</h1><p>所有的转换都是在插件和预设的基础上面进行的，简单解释下这两个名词<br><a href="">插件</a>：指定Babel 如何进行代码转换 。<br><a href="">预设</a>：我们同时也可以依赖多个插件进行转换，预设就是可以将多个插件进行组合 。</p>
 <h2 id="3-1-插件-代码转换"><a href="#3-1-插件-代码转换" class="headerlink" title="3.1 插件(代码转换)"></a>3.1 插件(代码转换)</h2><p>代码都是以插件的形式转换的，既小型JavaScript程序，插件指导 Babel 如何进行代码转换，你甚至可以编写自己的插件，要将ES6 + 语法转换为 ES5，我们可以依赖官方的插件@babel/plugin-transform-arrow-functions</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save-dev @babel&#x2F;plugin-transform-arrow-functions</span><br></pre></td></tr></table></figure>
@@ -226,7 +227,6 @@
 <p>现在我们代码中的所有箭头函数都将转换为与ES5兼容的函数表达式</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> sayHi = <span class="function"><span class="params">()</span> =&gt;</span> <span class="number">1</span>;                              <span class="comment">// 转换前代码</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> sayHi = <span class="function"><span class="keyword">function</span> <span class="title">sayHi</span>(<span class="params"></span>) </span>&#123;                      <span class="comment">// 转换后代码</span></span><br><span class="line">  <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <br>
-<br><br><br><br><br>
 ## 3.2 预设(插件组合)
 有时候我们的代码中还有其他ES6 + 功能需要进行转换，与其一个个添加我们需要的所有插件，我们可以使用预设配置一组预定的插件。就像插件一样，你可以创建自己的预设方案，Babel 给我们提供了一个很出色的预设插件 env.
 1.我们首先局部下载这个预设插件
@@ -519,11 +519,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Babel</a>
+                <a href="javascript:void(0)" class="js-tag color4">ES6</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ES6</a>
+                <a href="javascript:void(0)" class="js-tag color1">Babel</a>
               </li>
              
               <li class="article-tag-list-item">
