@@ -8,17 +8,20 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>腾讯地图API | zouzhu@blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="腾讯地图各大终端适配方案1、WebServiceAPI Key配置中的域名白名单如何使用？域名白名单适用于浏览器端JSONP方式调用WebserviceAPI服务：    1. 仅白名单中的域名才可使用此key调用WebService服务    2. 留空侧不限制调用来源    3. 每行填写一个域名，填写的域名及其子域名都会同时得到授权，如：qq.com，则qq.com下的子域名map.qq.c">
+  <meta name="description" content="腾讯地图服务腾讯地图服务现在非常火爆，尤其是在外卖行业、滴滴打车行业处处皆可见，我们在开发我们的应用程序的时候，难免会遇到获取定位的需求，这一篇文档是对腾讯地图的使用做一个基本的讲解。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="腾讯地图API">
 <meta property="og:url" content="http://yoursite.com/2020/05/04/%E8%85%BE%E8%AE%AF%E5%9C%B0%E5%9B%BEAPI/index.html">
 <meta property="og:site_name" content="zouzhu@blog">
-<meta property="og:description" content="腾讯地图各大终端适配方案1、WebServiceAPI Key配置中的域名白名单如何使用？域名白名单适用于浏览器端JSONP方式调用WebserviceAPI服务：    1. 仅白名单中的域名才可使用此key调用WebService服务    2. 留空侧不限制调用来源    3. 每行填写一个域名，填写的域名及其子域名都会同时得到授权，如：qq.com，则qq.com下的子域名map.qq.c">
+<meta property="og:description" content="腾讯地图服务腾讯地图服务现在非常火爆，尤其是在外卖行业、滴滴打车行业处处皆可见，我们在开发我们的应用程序的时候，难免会遇到获取定位的需求，这一篇文档是对腾讯地图的使用做一个基本的讲解。">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://yoursite.com/images/%E8%85%BE%E8%AE%AF%E5%9C%B0%E5%9B%BE/%E8%85%BE%E8%AE%AF%E5%9C%B0%E5%9B%BE.png">
 <meta property="article:published_time" content="2020-05-04T01:36:50.000Z">
-<meta property="article:modified_time" content="2020-05-04T01:50:01.419Z">
+<meta property="article:modified_time" content="2020-05-04T08:24:15.750Z">
 <meta property="article:author" content="彼岸世界">
+<meta property="article:tag" content="腾讯地图 api">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/images/%E8%85%BE%E8%AE%AF%E5%9C%B0%E5%9B%BE/%E8%85%BE%E8%AE%AF%E5%9C%B0%E5%9B%BE.png">
   
     <link rel="alternative" href="/atom.xml" title="zouzhu@blog" type="application/atom+xml">
   
@@ -192,7 +195,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="腾讯地图各大终端适配方案"><a href="#腾讯地图各大终端适配方案" class="headerlink" title="腾讯地图各大终端适配方案"></a>腾讯地图各大终端适配方案</h1><p>1、WebServiceAPI Key配置中的域名白名单如何使用？<br>域名白名单适用于浏览器端JSONP方式调用WebserviceAPI服务：<br>    1. 仅白名单中的域名才可使用此key调用WebService服务<br>    2. 留空侧不限制调用来源<br>    3. 每行填写一个域名，填写的域名及其子域名都会同时得到授权，如：qq.com，则qq.com下的子域名map.qq.com也可以使用此key</p>
+        <h1 id="腾讯地图服务"><a href="#腾讯地图服务" class="headerlink" title="腾讯地图服务"></a>腾讯地图服务</h1><p>腾讯地图服务现在非常火爆，尤其是在外卖行业、滴滴打车行业处处皆可见，我们在开发我们的应用程序的时候，难免会遇到获取定位的需求，这一篇文档是对腾讯地图的使用做一个基本的讲解。<br><img src="/images/腾讯地图/腾讯地图.png"/></p>
+<a id="more"></a>
+
+
+
+
+
+<h1 id="腾讯地图各大终端适配方案"><a href="#腾讯地图各大终端适配方案" class="headerlink" title="腾讯地图各大终端适配方案"></a>腾讯地图各大终端适配方案</h1><p>1、WebServiceAPI Key配置中的域名白名单如何使用？<br>域名白名单适用于浏览器端JSONP方式调用WebserviceAPI服务：<br>    1. 仅白名单中的域名才可使用此key调用WebService服务<br>    2. 留空侧不限制调用来源<br>    3. 每行填写一个域名，填写的域名及其子域名都会同时得到授权，如：qq.com，则qq.com下的子域名map.qq.com也可以使用此key</p>
 <pre><code>非授权域名使用您的key调用WebServiceAPI时会被拒绝，同时会返回本次请求来源域名，以便您更正配置：</code></pre><p>1<br>2<br>3<br>4<br>{<br>    “status”: 110,<br>    “message”: “请求来源未被授权（本次请求来源为：lbs.qq.com），请检查key配置。”<br>}<br>2、WebServiceAPI Key配置中的授权IP如何使用？<br>用于限制此key的调用来源IP，以防key被盗用，优点：配置简单，无需开发，但IP地址有变化时，必须同时修改配置。<br>配置填写方法：<br>        进入Key管理界面，找到要设置的Key进入设置界面，启用产品勾选WebServiceAPI后，会出现相应安全设置，点击“授权IP”进行设置<br>        a. 每行填写一条，留空则不限制。<br>        b. 支持填写单一授权IP，例：202.106.0.99<br>        c. 支持授权IP段，起始IP-结束IP。例(IPv4)：202.106.0.20-202.106.0.26<br>配置示例<br>如何准确得知我的IP地址：<br>        首先您可询问您的网络供应商获悉，另外您可以通过IP定位接口，在接口返回结果中会包含您的服务器IP </p>
 <p>非授权IP使用您的key调用WebServiceAPI时会被拒绝，同时会返回本次请求来源IP，以便更正配置：<br>1<br>2<br>3<br>4<br>{<br>    “status”: 112,<br>    “message”: “IP未被授权（本次请求来源IP为：202.106.0.20），请检查key配置。”<br>}<br>3、WebServiceAPI Key配置中签名校验如何使用？<br>与授权IP方式比较，使用SN校验稍有开发量，但不必担心服务器换IP的问题。</p>
 <p>选中SN校验后，会生成SecretKey (SK)，用于请求地图WebServiceAPI时计算签名，将签名做为参数（sig）附带到请求中，腾讯服务器会在收到请求后，使用相同的方式生成签名，并与请求中附带的签名进行比对，当一致时即为校验通过，反之则拒绝。</p>
@@ -263,6 +273,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">腾讯地图 api</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -356,7 +377,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#腾讯地图各大终端适配方案"><span class="toc-number">1.</span> <span class="toc-text">腾讯地图各大终端适配方案</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#腾讯地图服务"><span class="toc-number">1.</span> <span class="toc-text">腾讯地图服务</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#腾讯地图各大终端适配方案"><span class="toc-number">2.</span> <span class="toc-text">腾讯地图各大终端适配方案</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -472,6 +493,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">vs-code</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
@@ -480,7 +505,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">vs-code</a>
+                <a href="javascript:void(0)" class="js-tag color4">腾讯地图 api</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -536,11 +561,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
         <ul class="search-ul">
           
             <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接1</a>
+              <a href="https://cn.vuejs.org/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>Vue 官网</a>
             </li>
           
             <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接2</a>
+              <a href="https://react.docschina.org/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>React 官网</a>
             </li>
           
         </ul>
