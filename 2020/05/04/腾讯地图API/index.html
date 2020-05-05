@@ -8,16 +8,27 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>腾讯地图API | zouzhu@blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="腾讯地图服务腾讯地图服务现在非常火爆，尤其是在外卖行业、滴滴打车行业处处皆可见，我们在开发我们的应用程序的时候，难免会遇到获取定位的需求，这一篇文档是对腾讯地图的使用做一个基本的讲解。">
+  <meta name="description" content="第 1 章 腾讯地图服务 (WebService API)腾讯地图服务现在非常火爆，尤其是在外卖行业、滴滴打车行业处处皆可见，我们在开发我们的应用程序的时候，难免会遇到获取定位的需求，这一篇文档是对腾讯地图的使用做一个基本的讲解。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="腾讯地图API">
 <meta property="og:url" content="http://yoursite.com/2020/05/04/%E8%85%BE%E8%AE%AF%E5%9C%B0%E5%9B%BEAPI/index.html">
 <meta property="og:site_name" content="zouzhu@blog">
-<meta property="og:description" content="腾讯地图服务腾讯地图服务现在非常火爆，尤其是在外卖行业、滴滴打车行业处处皆可见，我们在开发我们的应用程序的时候，难免会遇到获取定位的需求，这一篇文档是对腾讯地图的使用做一个基本的讲解。">
+<meta property="og:description" content="第 1 章 腾讯地图服务 (WebService API)腾讯地图服务现在非常火爆，尤其是在外卖行业、滴滴打车行业处处皆可见，我们在开发我们的应用程序的时候，难免会遇到获取定位的需求，这一篇文档是对腾讯地图的使用做一个基本的讲解。">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://yoursite.com/images/%E8%85%BE%E8%AE%AF%E5%9C%B0%E5%9B%BE/%E8%85%BE%E8%AE%AF%E5%9C%B0%E5%9B%BE.png">
+<meta property="og:image" content="http://yoursite.com/images/%E8%85%BE%E8%AE%AF%E5%9C%B0%E5%9B%BE/%E8%85%BE%E8%AE%AF%E5%9C%B0%E5%9B%BE-%E9%85%8D%E9%A2%9D%E9%97%AE%E9%A2%98.png">
+<meta property="og:image" content="http://yoursite.com/images/%E8%85%BE%E8%AE%AF%E5%9C%B0%E5%9B%BE/search-request-arg.png">
+<meta property="og:image" content="http://yoursite.com/images/%E8%85%BE%E8%AE%AF%E5%9C%B0%E5%9B%BE/search-response-arg.png">
+<meta property="og:image" content="http://yoursite.com/images/%E8%85%BE%E8%AE%AF%E5%9C%B0%E5%9B%BE/search-1.png">
+<meta property="og:image" content="http://yoursite.com/images/%E8%85%BE%E8%AE%AF%E5%9C%B0%E5%9B%BE/search-2.png">
+<meta property="og:image" content="http://yoursite.com/images/%E8%85%BE%E8%AE%AF%E5%9C%B0%E5%9B%BE/search-3.png">
+<meta property="og:image" content="http://yoursite.com/images/%E8%85%BE%E8%AE%AF%E5%9C%B0%E5%9B%BE/search-a.png">
+<meta property="og:image" content="http://yoursite.com/images/%E8%85%BE%E8%AE%AF%E5%9C%B0%E5%9B%BE/search-b.png">
+<meta property="og:image" content="http://yoursite.com/images/%E8%85%BE%E8%AE%AF%E5%9C%B0%E5%9B%BE/search-c.png">
+<meta property="og:image" content="http://yoursite.com/images/%E8%85%BE%E8%AE%AF%E5%9C%B0%E5%9B%BE/search-d.png">
+<meta property="og:image" content="http://yoursite.com/images/%E8%85%BE%E8%AE%AF%E5%9C%B0%E5%9B%BE/ip-%E5%AE%9A%E4%BD%8D-%E5%93%8D%E5%BA%94%E7%BB%93%E6%9E%9C.png">
 <meta property="article:published_time" content="2020-05-04T01:36:50.000Z">
-<meta property="article:modified_time" content="2020-05-04T08:24:15.750Z">
+<meta property="article:modified_time" content="2020-05-05T01:03:42.388Z">
 <meta property="article:author" content="彼岸世界">
 <meta property="article:tag" content="腾讯地图 api">
 <meta name="twitter:card" content="summary">
@@ -195,14 +206,86 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="腾讯地图服务"><a href="#腾讯地图服务" class="headerlink" title="腾讯地图服务"></a>腾讯地图服务</h1><p>腾讯地图服务现在非常火爆，尤其是在外卖行业、滴滴打车行业处处皆可见，我们在开发我们的应用程序的时候，难免会遇到获取定位的需求，这一篇文档是对腾讯地图的使用做一个基本的讲解。<br><img src="/images/腾讯地图/腾讯地图.png"/></p>
+        <h1 id="第-1-章-腾讯地图服务-WebService-API"><a href="#第-1-章-腾讯地图服务-WebService-API" class="headerlink" title="第 1 章 腾讯地图服务 (WebService API)"></a>第 1 章 腾讯地图服务 (WebService API)</h1><p>腾讯地图服务现在非常火爆，尤其是在外卖行业、滴滴打车行业处处皆可见，我们在开发我们的应用程序的时候，难免会遇到获取定位的需求，这一篇文档是对腾讯地图的使用做一个基本的讲解。<br><img src="/images/腾讯地图/腾讯地图.png"/></p>
 <a id="more"></a>
 
+<br>
 
+<h2 id="1-1-入门须知-开发者权限"><a href="#1-1-入门须知-开发者权限" class="headerlink" title="1.1 入门须知 (开发者权限)"></a>1.1 入门须知 (开发者权限)</h2><p>腾讯地图 WebService API 是基于 HTTPS/HTTP 协议的数据接口，开发者可以使用任何客户端、服务器和开发语言，只要按照腾讯地图 WebService API 规范，按需构建 HTTPS 请求，并获取结果数据 (目前支持JSON/JSONP方式返回).<br><span style="color:#4d96be"><strong>使用限制</strong> ：</span><br>针对个人开发者和企业开发者，提供的服务调用量有差别，这里的配额是指并发量，我们作为开发者测试使用，就不同提升配额，当真正的项目的时候，我们就需要提升配额，因为用户同一时刻的访问量将非常大.<br><img src="/images/腾讯地图/腾讯地图-配额问题.png"></p>
+<br>
 
+<h2 id="1-2-地点搜索（search）"><a href="#1-2-地点搜索（search）" class="headerlink" title="1.2 地点搜索（search）"></a>1.2 地点搜索（search）</h2><p style="margin:5px;">地点搜索(search接口)，提供三类范围条件的搜索功能 ：</p> 
+<ul style="margin:0px;">
+  <li>指定城市的地点搜索：如在北京搜索餐馆；</li>
+  <li>圆形区域的地点搜索：一般用于指定位置的周边（附近）地点搜索，如，搜索颐和园附近的酒店；</li>
+  <li>矩形区域的地点搜索：在地图应用中，往往用于视野内搜索，因为显示地图的区域是个矩形.</li>
+</ul>
+该请求为GET请求：https://apis.map.qq.com/ws/place/v1/search
 
+<p>URL编码：GET请求注意参数值要进行URL编码（推荐encodeURI），一般浏览器会自动进行url编码，小心二次编码，示例：keyword=%e9%85%92%e5%ba%97，boundary=region(%e5%8c%97%e4%ba%ac,0)<br><strong>请求参数</strong><br><img src="/images/腾讯地图/search-request-arg.png"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1.boundary 搜索地理范围，支持三个范围函数 ：</span><br><span class="line">* 指定地区名称：boundary&#x3D;region(city_name [,auto_extend][,lat,lng])</span><br><span class="line">  * city_name ：检索区域名称， 城市名字，如北京市。</span><br><span class="line">  * auto_extend：可选参数。 取值1：默认值，若当前城市搜索无结果，则自动扩大范围；取值0：仅在当前城市搜索。</span><br><span class="line">  * lat,lng：可选参数。 当用户使用泛关键词搜索时（如酒店、超市），这类搜索多为了查找附近，使用此参数，搜索结果以此坐标为中心，返回就近地点，体验更优。</span><br><span class="line">* 圆形区域范围 ：nearby(lat,lng&lt;中心坐标&gt;,radius&lt;半径&#x2F;米&gt;[, auto_extend])</span><br><span class="line">  * radius：半径，最大支持1000米</span><br><span class="line">  * auto_extend：可选参数,当前范围无结果时，是否自动扩大范围，取值：1 [默认]自动扩大范围；0 不扩大</span><br><span class="line">* 矩形范围 ：boundary&#x3D;rectangle(lat,lng&lt;左下&#x2F;西南&gt;, lat,lng&lt;右上&#x2F;东北&gt;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">2.filter 筛选条件：搜索指定分类，最多支持五个分类</span><br><span class="line">基本语法： columnName&lt;筛选列&gt;&#x3D;value&lt;列值&gt;；</span><br><span class="line">目前支持按POI分类筛选（例：category&#x3D;分类词），若指定多个分类用英文逗号分隔，支持的分类词可参考：</span><br><span class="line">筛选条件：排除指定分类</span><br><span class="line">* 基本语法： columnName&lt;筛选列&gt;&#x3D;value&lt;列值&gt;</span><br><span class="line">  * .筛选有电话的地点：tel&lt;&gt;null</span><br><span class="line">  * .按POI分类筛选：例 category&#x3D;分类词，若指定多个分类用英文逗号分隔，最多支持5个；</span><br><span class="line">  * .按排除指定POI分类筛选：例：category&lt;&gt;分类词，指获取除指定分类以外的地点，若指定多个分类用英文逗号分隔，最多支持5个；</span><br></pre></td></tr></table></figure>
+<p><strong>响应参数</strong><br><img src="/images/腾讯地图/search-response-arg.png"><br>-示例a：指定地区名称<br>//GET请求示例，注意参数值要进行URL编码<br>//指定地区名称，不自动扩大范围：boundary=region(北京,0)<br><a href="https://apis.map.qq.com/ws/place/v1/search?boundary=region(北京,0)&amp;keyword=KFC&amp;page_size=20&amp;page_index=1&amp;orderby=_distance&amp;key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77" target="_blank" rel="noopener">https://apis.map.qq.com/ws/place/v1/search?boundary=region(北京,0)&amp;keyword=KFC&amp;page_size=20&amp;page_index=1&amp;orderby=_distance&amp;key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77</a><br><img src="/images/腾讯地图/search-1.png"/><br>-示例b：周边搜索<br>//GET请求示例，注意参数值要进行URL编码<br>//周边搜索（圆形范围）：boundary=nearby(lat,lng&lt;中心坐标&gt;,radius&lt;半径/米&gt;)<br><a href="https://apis.map.qq.com/ws/place/v1/search?boundary=nearby(39.908491,116.374328,1000)&amp;keyword=KFC&amp;page_size=20&amp;page_index=1&amp;orderby=_distance&amp;key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77" target="_blank" rel="noopener">https://apis.map.qq.com/ws/place/v1/search?boundary=nearby(39.908491,116.374328,1000)&amp;keyword=KFC&amp;page_size=20&amp;page_index=1&amp;orderby=_distance&amp;key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77</a><br><img src="/images/腾讯地图/search-2.png"/><br>-示例c：矩形搜索<br>//GET请求示例，注意参数值要进行URL编码<br>//矩形区域范围：boundary=rectangle(lat,lng&lt;左下/西南&gt;, lat,lng&lt;右上/东北&gt;)<br><a href="https://apis.map.qq.com/ws/place/v1/search?boundary=rectangle(39.907293,116.368935,39.914996,116.379321)&amp;keyword=KFC&amp;page_size=20&amp;page_index=1&amp;orderby=_distance&amp;key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77" target="_blank" rel="noopener">https://apis.map.qq.com/ws/place/v1/search?boundary=rectangle(39.907293,116.368935,39.914996,116.379321)&amp;keyword=KFC&amp;page_size=20&amp;page_index=1&amp;orderby=_distance&amp;key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77</a><br><img src="/images/腾讯地图/search-3.png"/><br>2.估算搜索结果<br>      当搜索地点无结果时，本服务会返回地址解析的估算结果，如图：<br><img src="/images/腾讯地图/search-a.png"/><br>-示例a：估算结果<br>//get请求示例，注意参数值要进行URL编码<br><a href="https://apis.map.qq.com/ws/place/v1/search?boundary=region(北京,0)&amp;keyword=北京市海淀区北四环西路102号&amp;page_size=20&amp;page_index=1&amp;orderby=_distance&amp;key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77" target="_blank" rel="noopener">https://apis.map.qq.com/ws/place/v1/search?boundary=region(北京,0)&amp;keyword=北京市海淀区北四环西路102号&amp;page_size=20&amp;page_index=1&amp;orderby=_distance&amp;key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77</a><br>在线测试<br><img src="/images/腾讯地图/search-b.png"/><br>3.按城市统计<br>      当搜索范围过大，如 boundary=region(全国) 时，而且keyword的搜索结果在各城市无明显权重特别高的时，将返回各城市搜索结果数量的统计数，您可以将此统计结果展示给用户，供用户缩小城市范围，再次发起搜索使用。<br><img src="/images/腾讯地图/search-c.png"/><br>-示例a：按城市统计<br>//GET请求示例，注意参数值要进行URL编码<br><a href="https://apis.map.qq.com/ws/place/v1/search?boundary=region(全国)&amp;keyword=kfc&amp;key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77" target="_blank" rel="noopener">https://apis.map.qq.com/ws/place/v1/search?boundary=region(全国)&amp;keyword=kfc&amp;key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77</a><br>在线测试<br><img src="/images/腾讯地图/search-d.png"/> </p>
+<br>
 
-<h1 id="腾讯地图各大终端适配方案"><a href="#腾讯地图各大终端适配方案" class="headerlink" title="腾讯地图各大终端适配方案"></a>腾讯地图各大终端适配方案</h1><p>1、WebServiceAPI Key配置中的域名白名单如何使用？<br>域名白名单适用于浏览器端JSONP方式调用WebserviceAPI服务：<br>    1. 仅白名单中的域名才可使用此key调用WebService服务<br>    2. 留空侧不限制调用来源<br>    3. 每行填写一个域名，填写的域名及其子域名都会同时得到授权，如：qq.com，则qq.com下的子域名map.qq.com也可以使用此key</p>
+<h2 id="1-3-关键词输入提示"><a href="#1-3-关键词输入提示" class="headerlink" title="1.3 关键词输入提示"></a>1.3 关键词输入提示</h2><br>
+
+<h2 id="1-4-逆地址解析-坐标位置描述"><a href="#1-4-逆地址解析-坐标位置描述" class="headerlink" title="1.4 逆地址解析 (坐标位置描述)"></a>1.4 逆地址解析 (坐标位置描述)</h2><br>
+
+<h2 id="1-5-地址解析-地址转坐标"><a href="#1-5-地址解析-地址转坐标" class="headerlink" title="1.5 地址解析 (地址转坐标)"></a>1.5 地址解析 (地址转坐标)</h2><br>
+
+<h2 id="1-6-行政区划"><a href="#1-6-行政区划" class="headerlink" title="1.6 行政区划"></a>1.6 行政区划</h2><br>
+
+<h2 id="1-7-路线规划服务"><a href="#1-7-路线规划服务" class="headerlink" title="1.7 路线规划服务"></a>1.7 路线规划服务</h2><br>
+
+<h2 id="1-8-距离计算-一对多"><a href="#1-8-距离计算-一对多" class="headerlink" title="1.8 距离计算 (一对多)"></a>1.8 距离计算 (一对多)</h2><br>
+
+<h2 id="1-8-距离计算-多对多"><a href="#1-8-距离计算-多对多" class="headerlink" title="1.8 距离计算 (多对多)"></a>1.8 距离计算 (多对多)</h2><br>
+
+<h2 id="1-9-坐标转换"><a href="#1-9-坐标转换" class="headerlink" title="1.9 坐标转换"></a>1.9 坐标转换</h2><br>
+
+<h2 id="1-8-IP-定位"><a href="#1-8-IP-定位" class="headerlink" title="1.8 IP 定位"></a>1.8 IP 定位</h2><p>通过终端设备IP地址获取其当前所在地理位置，精确到市级，常用于显示当地城市天气预报，初始化用户城市等非精确定位场景.<br>该请求为GET请求： <a href="https://apis.map.qq.com/ws/location/v1/ip" target="_blank" rel="noopener">https://apis.map.qq.com/ws/location/v1/ip</a> </p>
+<table style="font-size:13px">
+    <tr>
+      <td>参数</td>
+      <td>必填</td>
+      <td>说明</td>
+      <td>示例</td>
+    </tr>
+    <tr>
+      <td>ip</td>
+      <td>否</td>
+      <td>IP地址，缺省时会使用请求端的IP</td>
+      <td>ip=202.106.0.20</td>
+    </tr>
+    <tr>
+      <td>key</td>
+      <td>是</td>
+      <td>开发密钥（Key）</td>
+      <td>key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77</td>
+    </tr>
+    <tr>
+      <td>output</td>
+      <td>否</td>
+      <td>返回格式：支持JSON/JSONP，默认JSON</td>
+      <td>output=json</td>
+    </tr>
+    <tr>
+      <td>callback</td>
+      <td>否</td>
+      <td>JSONP方式回调函数</td>
+      <td>callback=function1</td>
+    </tr>
+</table>
+**响应状态**
+<img src="/images/腾讯地图/ip-定位-响应结果.png"/>
+我们这里做一个简单的案例，获取我当前的位置信息，我目前在武汉
+
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// https://apis.map.qq.com/ws/location/v1/ip?key=5WTBZ-2CGWW-GYORE-OUKPL-US4JV-B2F2N</span></span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">  <span class="attr">"status"</span>: <span class="number">0</span>,</span><br><span class="line">  <span class="attr">"message"</span>: <span class="string">"query ok"</span>,</span><br><span class="line">  <span class="attr">"result"</span>:&#123;</span><br><span class="line">    <span class="attr">"ip"</span>: <span class="string">"27.17.164.206"</span>,</span><br><span class="line">    <span class="attr">"location"</span>:&#123;</span><br><span class="line">      <span class="attr">"lat"</span>: <span class="number">30.59276</span>,</span><br><span class="line">      <span class="attr">"lng"</span>: <span class="number">114.30525</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">"ad_info"</span>:&#123;</span><br><span class="line">      <span class="attr">"nation"</span>: <span class="string">"中国"</span>, </span><br><span class="line">      <span class="attr">"province"</span>: <span class="string">"湖北省"</span>, </span><br><span class="line">      <span class="attr">"city"</span>: <span class="string">"武汉市"</span>, </span><br><span class="line">      <span class="attr">"district"</span>: <span class="string">""</span>,</span><br><span class="line">      …</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h2 id="1-9-配额限制说明"><a href="#1-9-配额限制说明" class="headerlink" title="1.9 配额限制说明"></a>1.9 配额限制说明</h2><h1 id="腾讯地图各大终端适配方案"><a href="#腾讯地图各大终端适配方案" class="headerlink" title="腾讯地图各大终端适配方案"></a>腾讯地图各大终端适配方案</h1><p>1、WebServiceAPI Key配置中的域名白名单如何使用？<br>域名白名单适用于浏览器端JSONP方式调用WebserviceAPI服务：<br>    1. 仅白名单中的域名才可使用此key调用WebService服务<br>    2. 留空侧不限制调用来源<br>    3. 每行填写一个域名，填写的域名及其子域名都会同时得到授权，如：qq.com，则qq.com下的子域名map.qq.com也可以使用此key</p>
 <pre><code>非授权域名使用您的key调用WebServiceAPI时会被拒绝，同时会返回本次请求来源域名，以便您更正配置：</code></pre><p>1<br>2<br>3<br>4<br>{<br>    “status”: 110,<br>    “message”: “请求来源未被授权（本次请求来源为：lbs.qq.com），请检查key配置。”<br>}<br>2、WebServiceAPI Key配置中的授权IP如何使用？<br>用于限制此key的调用来源IP，以防key被盗用，优点：配置简单，无需开发，但IP地址有变化时，必须同时修改配置。<br>配置填写方法：<br>        进入Key管理界面，找到要设置的Key进入设置界面，启用产品勾选WebServiceAPI后，会出现相应安全设置，点击“授权IP”进行设置<br>        a. 每行填写一条，留空则不限制。<br>        b. 支持填写单一授权IP，例：202.106.0.99<br>        c. 支持授权IP段，起始IP-结束IP。例(IPv4)：202.106.0.20-202.106.0.26<br>配置示例<br>如何准确得知我的IP地址：<br>        首先您可询问您的网络供应商获悉，另外您可以通过IP定位接口，在接口返回结果中会包含您的服务器IP </p>
 <p>非授权IP使用您的key调用WebServiceAPI时会被拒绝，同时会返回本次请求来源IP，以便更正配置：<br>1<br>2<br>3<br>4<br>{<br>    “status”: 112,<br>    “message”: “IP未被授权（本次请求来源IP为：202.106.0.20），请检查key配置。”<br>}<br>3、WebServiceAPI Key配置中签名校验如何使用？<br>与授权IP方式比较，使用SN校验稍有开发量，但不必担心服务器换IP的问题。</p>
 <p>选中SN校验后，会生成SecretKey (SK)，用于请求地图WebServiceAPI时计算签名，将签名做为参数（sig）附带到请求中，腾讯服务器会在收到请求后，使用相同的方式生成签名，并与请求中附带的签名进行比对，当一致时即为校验通过，反之则拒绝。</p>
@@ -377,7 +460,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#腾讯地图服务"><span class="toc-number">1.</span> <span class="toc-text">腾讯地图服务</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#腾讯地图各大终端适配方案"><span class="toc-number">2.</span> <span class="toc-text">腾讯地图各大终端适配方案</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#第-1-章-腾讯地图服务-WebService-API"><span class="toc-number">1.</span> <span class="toc-text">第 1 章 腾讯地图服务 (WebService API)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-入门须知-开发者权限"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 入门须知 (开发者权限)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-地点搜索（search）"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 地点搜索（search）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-关键词输入提示"><span class="toc-number">1.3.</span> <span class="toc-text">1.3 关键词输入提示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-4-逆地址解析-坐标位置描述"><span class="toc-number">1.4.</span> <span class="toc-text">1.4 逆地址解析 (坐标位置描述)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-5-地址解析-地址转坐标"><span class="toc-number">1.5.</span> <span class="toc-text">1.5 地址解析 (地址转坐标)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-6-行政区划"><span class="toc-number">1.6.</span> <span class="toc-text">1.6 行政区划</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-7-路线规划服务"><span class="toc-number">1.7.</span> <span class="toc-text">1.7 路线规划服务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-8-距离计算-一对多"><span class="toc-number">1.8.</span> <span class="toc-text">1.8 距离计算 (一对多)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-8-距离计算-多对多"><span class="toc-number">1.9.</span> <span class="toc-text">1.8 距离计算 (多对多)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-9-坐标转换"><span class="toc-number">1.10.</span> <span class="toc-text">1.9 坐标转换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-8-IP-定位"><span class="toc-number">1.11.</span> <span class="toc-text">1.8 IP 定位</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-9-配额限制说明"><span class="toc-number">1.12.</span> <span class="toc-text">1.9 配额限制说明</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#腾讯地图各大终端适配方案"><span class="toc-number">2.</span> <span class="toc-text">腾讯地图各大终端适配方案</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -489,6 +572,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Babel</a>
               </li>
              
@@ -497,19 +584,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">vs-code</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">APP移动端测试</a>
+                <a href="javascript:void(0)" class="js-tag color4">腾讯地图 api</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">腾讯地图 api</a>
+                <a href="javascript:void(0)" class="js-tag color4">APP移动端测试</a>
               </li>
             
             <div class="clearfix"></div>
