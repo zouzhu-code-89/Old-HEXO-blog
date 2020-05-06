@@ -17,8 +17,9 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://yoursite.com/images/github/github%E6%9F%A5%E6%89%BE%E9%A1%B9%E7%9B%AE-1.png">
 <meta property="og:image" content="http://yoursite.com/images/github/github%E6%9F%A5%E6%89%BE%E9%A1%B9%E7%9B%AE-inname-2.png">
+<meta property="og:image" content="http://yoursite.com/images/github/github%E6%9F%A5%E6%89%BE%E9%A1%B9%E7%9B%AE-indescription-3.png">
 <meta property="article:published_time" content="2020-05-06T14:24:04.000Z">
-<meta property="article:modified_time" content="2020-05-06T15:56:35.309Z">
+<meta property="article:modified_time" content="2020-05-06T16:30:13.067Z">
 <meta property="article:author" content="彼岸世界">
 <meta property="article:tag" content="代码托管">
 <meta name="twitter:card" content="summary">
@@ -205,10 +206,32 @@ GitHub 是一个非常大的开源宝库，里面有非常多的开源项目，�
 <a id="more"></a>
 
 <h2 style="color:#000;">1.按照项目名/仓库名搜索(大小写不敏感)</h2>
-<p>
+<p style="font-size:14px;">
 首先我们可以根据项目名进行查找，使用的是 in:name 前缀，这样社区将帮助我们搜索出所有 vue 的项目，目测项目是3万多个，如果我们想获取当下比较火热的项目，我们可以使用点赞的限定，stars:>1000 这样的形式，表示项目点赞数要大于 1000. 这样搜索出来的项目是 228 个，这样就过滤掉了一些项目，只显示当下比较火热的项目 。
 </p>
 <img src="/images/github/github查找项目-inname-2.png" />
+<br/><br/><br/>
+
+<h2 style="color:#000;">2.按照项目简介进行搜索(大小写不敏感)</h2>
+<p style="font-size:14px;">
+项目名下面有一行项目简介，这是开发者对这个项目的大致描述，比如说 "这是一个什么什么项目之类的..."，然后我们可以通过这一行简单的简介描述，也可以搜索出我们想要的项目，比如我们搜索 "初学者"，in:description 初学者，这样就会搜索出来适合初学者的开源项目了。
+</p>
+<img src="/images/github/github查找项目-indescription-3.png" />
+<br/><br/><br/>
+
+<h2 style="color:#000;">3.其他搜索(大小写不敏感)</h2>
+<p style="font-size:14px;">
+我们也可以根据其他选项进行搜索，我们搜索的条件越多，当然搜索的精度也就越高 。<br>
+<ul>
+    <ol>1.按照REMDME进行搜索: in:readme xxx</ol>
+    <ol>2.按照STARS点赞进行搜索: stars:> xxx</ol>
+    <ol>3.按照FORK拉取数量进行搜索: forks:> xxx</ol>
+    <ol>4.按照编程语言进行搜索: language:> xxx</ol>
+    <ol>5.最新更新时间晚于: pushed:> YYYY-MM-DD</ol>
+</ul>
+</p>
+
+
 
       
 
@@ -321,7 +344,7 @@ GitHub 是一个非常大的开源宝库，里面有非常多的开源项目，�
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#GitHub-怎么获取好用的开源项目"><span class="toc-number">1.</span> <span class="toc-text">GitHub 怎么获取好用的开源项目?</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-number">1.1.</span> <span class="toc-text">1.按照项目名&#x2F;仓库名搜索(大小写不敏感)</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#GitHub-怎么获取好用的开源项目"><span class="toc-number">1.</span> <span class="toc-text">GitHub 怎么获取好用的开源项目?</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-number">1.1.</span> <span class="toc-text">1.按照项目名&#x2F;仓库名搜索(大小写不敏感)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-number">1.2.</span> <span class="toc-text">2.按照项目简介进行搜索(大小写不敏感)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-number">1.3.</span> <span class="toc-text">3.其他搜索(大小写不敏感)</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -437,6 +460,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Babel</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">代码托管</a>
               </li>
              
@@ -449,15 +476,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Babel</a>
+                <a href="javascript:void(0)" class="js-tag color4">APP移动端测试</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">腾讯地图 api</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">APP移动端测试</a>
               </li>
             
             <div class="clearfix"></div>
