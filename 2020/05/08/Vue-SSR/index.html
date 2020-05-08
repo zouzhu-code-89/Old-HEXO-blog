@@ -6,20 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Vue-SSR | zouzhu@blog</title>
+  <title>Vue-SSR 服务端渲染教程 | zouzhu@blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="彼岸世界，希望未来的每一天都是充满阳光的，用一行行代码成就梦想">
+  <meta name="description" content="1.什么是服务端渲染(SSR)? Vue.js 是构建客户端应用程序的框架，默认情况下可以在浏览器中输出 Vue 组件，进行生成 DOM 和操作 DOM， 然而也可以将同一个组件渲染为服务器端的 HTML 字符串，将它们直接发送给浏览器，最后将这些静态标记 &quot;激活&quot; 为客户端上完全可交互的应用程序. 服务器渲染的 Vue.js 应用程序也可以认为是 &quot;同构&quot; 或 &quot;通用&quot;，因为应用程序的大部分代">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Vue-SSR">
+<meta property="og:title" content="Vue-SSR 服务端渲染教程">
 <meta property="og:url" content="http://yoursite.com/2020/05/08/Vue-SSR/index.html">
 <meta property="og:site_name" content="zouzhu@blog">
-<meta property="og:description" content="彼岸世界，希望未来的每一天都是充满阳光的，用一行行代码成就梦想">
+<meta property="og:description" content="1.什么是服务端渲染(SSR)? Vue.js 是构建客户端应用程序的框架，默认情况下可以在浏览器中输出 Vue 组件，进行生成 DOM 和操作 DOM， 然而也可以将同一个组件渲染为服务器端的 HTML 字符串，将它们直接发送给浏览器，最后将这些静态标记 &quot;激活&quot; 为客户端上完全可交互的应用程序. 服务器渲染的 Vue.js 应用程序也可以认为是 &quot;同构&quot; 或 &quot;通用&quot;，因为应用程序的大部分代">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://yoursite.com/images/vue-ssr/vue-ssr%E6%B5%81%E7%A8%8B%E5%9B%BE%E7%89%87.jpg">
 <meta property="article:published_time" content="2020-05-08T09:57:36.000Z">
-<meta property="article:modified_time" content="2020-05-08T13:38:45.622Z">
+<meta property="article:modified_time" content="2020-05-08T18:01:25.803Z">
 <meta property="article:author" content="彼岸世界">
 <meta property="article:tag" content="Vue">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/images/vue-ssr/vue-ssr%E6%B5%81%E7%A8%8B%E5%9B%BE%E7%89%87.jpg">
   
     <link rel="alternative" href="/atom.xml" title="zouzhu@blog" type="application/atom+xml">
   
@@ -180,7 +182,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Vue-SSR
+      Vue-SSR 服务端渲染教程
     </h1>
   
 
@@ -193,7 +195,29 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p style='font-size:14px'>
+<strong style='color:#78cb95'>1.什么是服务端渲染(SSR)?</strong><br>
+Vue.js 是构建客户端应用程序的框架，默认情况下可以在浏览器中输出 Vue 组件，进行生成 DOM 和操作 DOM，
+然而也可以将同一个组件渲染为服务器端的 HTML 字符串，将它们直接发送给浏览器，最后将这些静态标记 "激活" 为客户端上完全可交互的应用程序.<br>
+服务器渲染的 Vue.js 应用程序也可以认为是 "同构" 或 "通用"，因为应用程序的大部分代码都可以在服务器和客户端上运行.<br>
+</p>
+<p style='font-size:14px'>
+<strong style='color:#78cb95'>2.为什么使用服务器渲染(SSR)?</strong><br>
+与传统 SPA (单页应用程序(Single-Page Application)) 相比，服务器端渲染 SSR 的优势主要在于：<br>
+1.更好的 SEO 由于搜索引擎爬虫抓取工具可以直接查看完全渲染的页面.<br>
+2.更快的内容到达时间(time-to-content)，特别是对于缓慢的网络情况或运行缓慢的设备，无需等待所有的 JavaScript 都完全下载并执行，才显示服务器渲染的标记，所以你的用户将会更快速地看到完整渲染的页面，通常可以产生更好的用户体验，并且对于那些 [内容到达时间(time-to-content)与转化率直接相关] 的应用程序而言，服务器渲染(SSR)至关重要.<br>
+<div align='center'><img src='/images/vue-ssr/vue-ssr流程图片.jpg' /></div>
+</p>
+<a id="more"></a>
+<p style='font-size:14px'>
+<strong style='color:#78cb95'>3.使用服务器渲染(SSR)时还需要有一些权衡之处</strong><br>
+1.开发条件受限：浏览器特定的代码，只能在某些生命周期钩子函数中使用，一些外部扩展库可能需要特殊处理，才能在服务器渲染应用程序中运行.<br>
+2.构建设置和部署的更多要求，与可以部署在服务器上的任何静态文件单页面应用程序(SPA)不同，服务器渲染应用程序，需要处于 Node.js server 运行环境.<br>
+3.更多的服务器端负载，在 node.js 中渲染完整的应用程序，显然会比仅仅提供静态文件的 server 更加大量的占用 CPU 资源(CPU-intensive-CPU 密集)，因此如果你预料在高流量环境(high traffic)下使用，请准备相应的服务器负载，并明智地采用缓存策论.
+<div style='border:1px dashed #81c784;font-size:14px;padding:15px;'>
+在对你的应用程序使用服务器端渲染 (SSR) 之前，你应该问的第一个问题是，是否真的需要它。这主要取决于内容到达时间 (time-to-content) 对应用程序的重要程度。例如，如果你正在构建一个内部仪表盘，初始加载时的额外几百毫秒并不重要，这种情况下去使用服务器端渲染 (SSR) 将是一个小题大作之举。然而，内容到达时间 (time-to-content) 要求是绝对关键的指标，在这种情况下，服务器端渲染 (SSR) 可以帮助你实现最佳的初始加载性能。
+</div>
+</p>
       
 
       
@@ -287,7 +311,7 @@
   
   
     <a href="/2020/05/08/VueX/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">VueX</div>
+      <div class="article-nav-title">VueX 全局状态管理教程</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -430,11 +454,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ES6</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">GitHub</a>
+                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -442,11 +462,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color4">ES6</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -458,7 +474,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">html5</a>
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -466,7 +482,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">html5</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">腾讯地图 api</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">GitHub</a>
               </li>
             
             <div class="clearfix"></div>
