@@ -8,18 +8,20 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>hexo_教程 | zouzhu@blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="hexo 文章信息设置hexo 中各种问题 ? 搭建博客的过程中，通常会遇到很多问题, 我在这一章中将统一概述 。  1.文章中如何导入图片 ?因为 hexo 部署到 github 上面时，我们不知道资源文件具体放在哪, 导致我们无法正确的引入图片路径 。">
+  <meta name="description" content="HEXO 博客框架  hexo 是一个简单、快速、强大的基于 GitHub Pages 的博客框架，支持 Markdown 格式，有众多优秀插件和主题，我们只用负责编辑文章，通过命令 hexo 会帮助我们一栈式搞定编译、部署等工作，渲染成浏览器可识别的 html 页面，我将在这篇文章中分享 hexo 的基本使用流程，hexo 是依赖 node 环境的，首先你要确保你已经安装了 node 环境，在开">
 <meta property="og:type" content="article">
 <meta property="og:title" content="hexo_教程">
 <meta property="og:url" content="http://yoursite.com/2020/05/01/hexo-%E6%95%99%E7%A8%8B/index.html">
 <meta property="og:site_name" content="zouzhu@blog">
-<meta property="og:description" content="hexo 文章信息设置hexo 中各种问题 ? 搭建博客的过程中，通常会遇到很多问题, 我在这一章中将统一概述 。  1.文章中如何导入图片 ?因为 hexo 部署到 github 上面时，我们不知道资源文件具体放在哪, 导致我们无法正确的引入图片路径 。">
+<meta property="og:description" content="HEXO 博客框架  hexo 是一个简单、快速、强大的基于 GitHub Pages 的博客框架，支持 Markdown 格式，有众多优秀插件和主题，我们只用负责编辑文章，通过命令 hexo 会帮助我们一栈式搞定编译、部署等工作，渲染成浏览器可识别的 html 页面，我将在这篇文章中分享 hexo 的基本使用流程，hexo 是依赖 node 环境的，首先你要确保你已经安装了 node 环境，在开">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://yoursite.com/images/hexo/hexo-GuangWang-1.png">
 <meta property="article:published_time" content="2020-05-01T13:16:26.000Z">
-<meta property="article:modified_time" content="2020-05-04T01:41:08.079Z">
+<meta property="article:modified_time" content="2020-05-08T02:18:32.232Z">
 <meta property="article:author" content="彼岸世界">
 <meta property="article:tag" content="hexo">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/images/hexo/hexo-GuangWang-1.png">
   
     <link rel="alternative" href="/atom.xml" title="zouzhu@blog" type="application/atom+xml">
   
@@ -193,7 +195,25 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="hexo-文章信息设置"><a href="#hexo-文章信息设置" class="headerlink" title="hexo 文章信息设置"></a>hexo 文章信息设置</h1><h1 id="hexo-中各种问题"><a href="#hexo-中各种问题" class="headerlink" title="hexo 中各种问题 ?"></a>hexo 中各种问题 ?</h1><blockquote>
+        <h1>HEXO 博客框架</h1>
+<p style='font-size:14px;'>
+hexo 是一个简单、快速、强大的基于 GitHub Pages 的博客框架，支持 Markdown 格式，有众多优秀插件和主题，我们只用负责编辑文章，通过命令 hexo 会帮助我们一栈式搞定编译、部署等工作，渲染成浏览器可识别的 html 页面，我将在这篇文章中分享 hexo 的基本使用流程，hexo 是依赖 node 环境的，首先你要确保你已经安装了 node 环境，在开始下面的操作.<br>
+hexo 原理，由于github pages存放的都是静态文件，博客存放的不只是文章内容，还有文章列表、分类、标签、翻页等动态内容，假如每次写完一篇文章都要手动更新博客目录和相关链接信息，相信谁都会疯掉，所以 hexo 所做的就是将这些 md 文件都放在本地，每次写完文章后调用写好的命令来批量完成相关页面的生成，然后再将有改动的页面提交到github.
+<img src="/images/hexo/hexo-GuangWang-1.png">
+<p>
+<a id="more"></a>
+<br><br>
+
+
+
+<h2>hexo 文章信息设置</h2>
+
+
+
+
+
+
+<h1 id="hexo-中各种问题"><a href="#hexo-中各种问题" class="headerlink" title="hexo 中各种问题 ?"></a>hexo 中各种问题 ?</h1><blockquote>
 <p>搭建博客的过程中，通常会遇到很多问题, 我在这一章中将统一概述 。</p>
 </blockquote>
 <h2 id="1-文章中如何导入图片"><a href="#1-文章中如何导入图片" class="headerlink" title="1.文章中如何导入图片 ?"></a>1.文章中如何导入图片 ?</h2><p>因为 hexo 部署到 github 上面时，我们不知道资源文件具体放在哪, 导致我们无法正确的引入图片路径 。</p>
@@ -318,7 +338,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#hexo-文章信息设置"><span class="toc-number">1.</span> <span class="toc-text">hexo 文章信息设置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#hexo-中各种问题"><span class="toc-number">2.</span> <span class="toc-text">hexo 中各种问题 ?</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-文章中如何导入图片"><span class="toc-number">2.1.</span> <span class="toc-text">1.文章中如何导入图片 ?</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-number">1.</span> <span class="toc-text">HEXO 博客框架</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-number">1.1.</span> <span class="toc-text">hexo 文章信息设置</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#hexo-中各种问题"><span class="toc-number">2.</span> <span class="toc-text">hexo 中各种问题 ?</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-文章中如何导入图片"><span class="toc-number">2.1.</span> <span class="toc-text">1.文章中如何导入图片 ?</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -430,11 +450,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ES6</a>
+                <a href="javascript:void(0)" class="js-tag color1">Babel</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Babel</a>
+                <a href="javascript:void(0)" class="js-tag color4">ES6</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -442,15 +462,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript 基础</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">vs-code</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">APP移动端测试</a>
+                <a href="javascript:void(0)" class="js-tag color3">mongodb</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -458,11 +470,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">腾讯地图 api</a>
+                <a href="javascript:void(0)" class="js-tag color3">JavaScript基础</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">mongodb</a>
+                <a href="javascript:void(0)" class="js-tag color3">vs-code</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">腾讯地图 api</a>
               </li>
             
             <div class="clearfix"></div>

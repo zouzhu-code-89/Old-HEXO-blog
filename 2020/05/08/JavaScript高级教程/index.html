@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Object对象 | zouzhu@blog</title>
+  <title>JavaScript高级对象教程 | zouzhu@blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Object 对象">
+  <meta name="description" content="JavaScript 高级教程，我将对 JavaScript 各大对象的使用进行讲解，包括 Object、String、Number、Date、Array、Boolean、Math、RegExp 因为这是我们在开发中经常接触的API，算是对它做的一个只是梳理。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Object对象">
-<meta property="og:url" content="http://yoursite.com/2020/05/07/Object%E5%AF%B9%E8%B1%A1/index.html">
+<meta property="og:title" content="JavaScript高级对象教程">
+<meta property="og:url" content="http://yoursite.com/2020/05/08/JavaScript%E9%AB%98%E7%BA%A7%E6%95%99%E7%A8%8B/index.html">
 <meta property="og:site_name" content="zouzhu@blog">
-<meta property="og:description" content="Object 对象">
+<meta property="og:description" content="JavaScript 高级教程，我将对 JavaScript 各大对象的使用进行讲解，包括 Object、String、Number、Date、Array、Boolean、Math、RegExp 因为这是我们在开发中经常接触的API，算是对它做的一个只是梳理。">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-05-07T02:39:19.000Z">
-<meta property="article:modified_time" content="2020-05-07T03:18:50.792Z">
+<meta property="article:published_time" content="2020-05-08T02:13:11.000Z">
+<meta property="article:modified_time" content="2020-05-08T03:13:31.611Z">
 <meta property="article:author" content="彼岸世界">
-<meta property="article:tag" content="JavaScript 基础">
+<meta property="article:tag" content="JavaScript基础">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="zouzhu@blog" type="application/atom+xml">
@@ -173,36 +173,93 @@
           <div id="js-content" class="content-ll">
             
 
-<article id="javascript基础-Object对象" class="article article-type-javascript基础 " itemscope itemprop="blogPost">
+<article id="javascript高级教程-JavaScript高级教程" class="article article-type-javascript高级教程 " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Object对象
+      JavaScript高级对象教程
     </h1>
   
 
         
-        <a href="/2020/05/07/Object%E5%AF%B9%E8%B1%A1/" class="archive-article-date">
-  	<time datetime="2020-05-07T02:39:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-07</time>
+        <a href="/2020/05/08/JavaScript%E9%AB%98%E7%BA%A7%E6%95%99%E7%A8%8B/" class="archive-article-date">
+  	<time datetime="2020-05-08T02:13:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-08</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1>Object 对象</h1>
-
+        <p style="font-size:14px;">
+JavaScript 高级教程，我将对 JavaScript 各大对象的使用进行讲解，包括 Object、String、Number、Date、Array、Boolean、Math、RegExp 因为这是我们在开发中经常接触的API，算是对它做的一个只是梳理。
+<p>
 <a id="more"></a>
+<br><br>
 
-<h2 style="color:#000;">1.Object.entries</h2>
+<h1>第 1 章 Object 对象</h1>
+<p>
+Object 类是所有 JavaScript 类的基类(父类)，提供了一种创建自定义对象的简单方式，不在不要程序员定义构造函数，可以在程序运行时为 JavaScript 对象随意添加属性，因此可以很容易地创建自定义对象.
+</p>
+
+<h2 style="color:#000;">1.Object.entries 将对象转换为可迭代的数组</h2>
 <p style="font-size:14px;">
 Object.entries() 方法返回一个给定对象自身可枚举属性的键值对数组，其排列与使用 for...in 循环遍历该对象时返回的顺序一致（区别在于 for-in 循环也枚举原型链中的属性），通俗点就是 Object.entries() 可以把一个对象的键值以数组的形式遍历出来，结果和 for...in 一致，但不会遍历原型属性 。
 </p>
 
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> user = &#123;</span><br><span class="line">    name: <span class="string">'zouzhu'</span>,</span><br><span class="line">    age: <span class="number">21</span>,</span><br><span class="line">    angurage: <span class="string">'javascript'</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">const</span> arrayUsers = <span class="built_in">Object</span>.entries(user);</span><br><span class="line">[ [ <span class="string">'name'</span>, <span class="string">'zouzhu'</span> ], [ <span class="string">'age'</span>, <span class="number">21</span> ], [ <span class="string">'angurage'</span>, <span class="string">'javascript'</span> ] ]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> num = [<span class="number">12</span>, <span class="number">13</span>, <span class="number">14</span>, <span class="number">15</span>];</span><br><span class="line"><span class="keyword">const</span> arrayNumber = <span class="built_in">Object</span>.entries(num);         </span><br><span class="line">[ [ <span class="string">'0'</span>, <span class="number">12</span> ], [ <span class="string">'1'</span>, <span class="number">13</span> ], [ <span class="string">'2'</span>, <span class="number">14</span> ], [ <span class="string">'3'</span>, <span class="number">15</span> ] ]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> str = <span class="string">'HelloWord'</span>;</span><br><span class="line"><span class="keyword">const</span> arrayStr = <span class="built_in">Object</span>.entries(str);</span><br><span class="line">[</span><br><span class="line">    [ <span class="string">'0'</span>, <span class="string">'H'</span> ],</span><br><span class="line">    [ <span class="string">'1'</span>, <span class="string">'e'</span> ],</span><br><span class="line">    [ <span class="string">'2'</span>, <span class="string">'l'</span> ],</span><br><span class="line">    [ <span class="string">'3'</span>, <span class="string">'l'</span> ],</span><br><span class="line">    [ <span class="string">'4'</span>, <span class="string">'o'</span> ],</span><br><span class="line">    [ <span class="string">'5'</span>, <span class="string">'W'</span> ],</span><br><span class="line">    [ <span class="string">'6'</span>, <span class="string">'o'</span> ],</span><br><span class="line">    [ <span class="string">'7'</span>, <span class="string">'r'</span> ],</span><br><span class="line">    [ <span class="string">'8'</span>, <span class="string">'d'</span> ]</span><br><span class="line">  ]</span><br></pre></td></tr></table></figure>
+<br>
+
+
+
+
+<h2 style="color:#000">2.Object.defineProperties(obj, props) 为对象添加新的属性</h2>
+<p style="font-size:14px">
+直接在一个对象上定义新的属性或修改现有属性，并返回该对象，这样我们在调用对象的时候就可以取出我们定义的属性值了
+<ul>
+    <li>参数一：obj 原型对象必须提前定义</li>
+    <li>参数二：props 需要添加新的属性</li>
+</ul>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person = &#123;</span><br><span class="line">    <span class="string">"eat"</span>: &#123;</span><br><span class="line">        type: <span class="string">'素食动物'</span>,</span><br><span class="line">        value: [<span class="string">'白菜'</span>, <span class="string">'土豆'</span>, <span class="string">'山竹'</span>]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> person = <span class="built_in">Object</span>.defineProperties(person, &#123;</span><br><span class="line">    userMessage: &#123;</span><br><span class="line">        value: <span class="string">"zouzhu"</span>,		<span class="comment">// 定义属性的值</span></span><br><span class="line">        writable: <span class="literal">true</span>			<span class="comment">// 属性是否可写, 如果为 false 表示这个属性只是可读的</span></span><br><span class="line">    &#125;,</span><br><span class="line">    userType: &#123;</span><br><span class="line">        value: <span class="string">"程序员"</span>,</span><br><span class="line">        writable: <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">person.userMessage = <span class="string">"huangshuangting"</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(person.userType);					&gt;&gt; person.userType = <span class="string">"程序员"</span></span><br></pre></td></tr></table></figure>
+</p>
+<br>
+
+
+<h2 style="color:#000;">3.Object.defineProperty(obj，prop，descriptor)</h2>
+<p style="font-size:14px;">
+在一个对象上定义一个新的属性或者修改一个对象的现有属性，并返回这个对象
+<ul>
+    <li>obj: 要定义属性的对象 。<li>
+    <li>prop: 要定义或修改的属性的名称或 Symbol 。</li>
+    <li>descriptor: 要定义或修改的属性描述符 。</li>
+</ul>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> object1 = &#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span>.defineProperty(object1, <span class="string">'property1'</span>, &#123;</span><br><span class="line">  value: <span class="number">42</span>,</span><br><span class="line">  writable: <span class="literal">false</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">object1.property1 = <span class="number">77</span>;				<span class="comment">// 因为这里设置了只读属性,我们改变它的属性值将报错 throws an error in strict mode</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(object1.property1);		<span class="comment">// expected output: 42</span></span><br></pre></td></tr></table></figure>
+
+<p>该方法允许精确地添加或修改对象的属性，通过赋值操作添加的普通属性是可枚举的，在枚举对象属性时会被枚举到（[<code>for...in</code>] 或 [<code>Object.keys</code>]方法），可以改变这些属性的值，也可以删除这些属性，这个方法允许修改默认的额外选项（或配置），默认情况下使用 Object.defineProperty() 添加的属性值是不可修改（immutable）的</p>
+<p><a href="">对象里目前存在的属性描述符有两种主要形式：<em>数据描述符</em>和<em>存取描述符</em>。</a></p>
+<p><em>数据描述符</em>是一个具有值的属性，该值可以是可写的，也可以是不可写的。</p>
+<p><em>存取描述符</em>是由 getter 函数和 setter 函数所描述的属性，一个描述符只能是这两者其中之一，不能同时是两者。</p>
+<p><a href="">configurable</a></p>
+<p>当且仅当该属性的 configurable 键值为 true 时，该属性的描述符才能够被改变，同时该属性也能从对应的对象上被删除，默认为 false 。</p>
+<p><a href="">enumerable</a></p>
+<p>当且仅当该属性的 enumerable 键值为 true 时，该属性才会出现在对象的枚举属性中，默认为 false 。</p>
+<p>数据描述符还具有以下可选键值：</p>
+<p><a href="">value</a></p>
+<p>该属性对应的值，可以是任何有效的 JavaScript 值（数值，对象，函数等）， 默认为 undefined。</p>
+<p><a href="">writable</a></p>
+<p>当且仅当该属性的  writable 键值为  true 时，属性的值，也就是上面的 value，才能被赋值运算符改变，默认为 false。</p>
+<p><a href="">存取描述符还具有以下可选键值 :</a></p>
+<p><code>get</code></p>
+<p>  属性的 getter 函数，如果没有 getter，则为 undefined 当访问该属性时，会调用此函数，执行时不传入任何参数，但是会传入 this 对象（由于继承关系，这里的 this 并不一定是定义该属性的对象）。该函数的返回值会被用作属性的值。默认为 undefined。</p>
+<p><code>set</code></p>
+<p>  属性的 setter 函数，如果没有 setter，则为 undefined，当属性值被修改时，会调用此函数。该方法接受一个参数（也就是被赋予的新值），会传入赋值时的 this 对象。 默认为 undefined</p>
+</p>
+
+
       
 
       
@@ -215,7 +272,7 @@ Object.entries() 方法返回一个给定对象自身可枚举属性的键值对
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JavaScript 基础</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">JavaScript基础</a>
         		</li>
       		
 		</ul>
@@ -271,7 +328,7 @@ Object.entries() 方法返回一个给定对象自身可枚举属性的键值对
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://zouzhu-code-89.github.io/2020/05/07/Object%E5%AF%B9%E8%B1%A1/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://zouzhu-code-89.github.io/2020/05/08/JavaScript%E9%AB%98%E7%BA%A7%E6%95%99%E7%A8%8B/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -285,18 +342,9 @@ Object.entries() 方法返回一个给定对象自身可枚举属性的键值对
   
 <nav id="article-nav">
   
-    <a href="/2020/05/07/mongoose/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          mongoose 教程
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/05/06/GitHub%E6%80%8E%E4%B9%88%E8%8E%B7%E5%8F%96%E5%A5%BD%E7%94%A8%E7%9A%84%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">GitHub代码托管教程</div>
+    <a href="/2020/05/07/mongoose/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">mongoose 教程</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -323,7 +371,7 @@ Object.entries() 方法返回一个给定对象自身可枚举属性的键值对
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-number">1.</span> <span class="toc-text">Object 对象</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-number">1.1.</span> <span class="toc-text">1.Object.entries</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-number">1.</span> <span class="toc-text">第 1 章 Object 对象</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-number">1.1.</span> <span class="toc-text">1.Object.entries 将对象转换为可迭代的数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-number">1.2.</span> <span class="toc-text">2.Object.defineProperties(obj, props) 为对象添加新的属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-number">1.3.</span> <span class="toc-text">3.Object.defineProperty(obj，prop，descriptor)</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -435,11 +483,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ES6</a>
+                <a href="javascript:void(0)" class="js-tag color1">Babel</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Babel</a>
+                <a href="javascript:void(0)" class="js-tag color4">ES6</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -447,15 +495,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript 基础</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">vs-code</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">APP移动端测试</a>
+                <a href="javascript:void(0)" class="js-tag color3">mongodb</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -463,11 +503,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">腾讯地图 api</a>
+                <a href="javascript:void(0)" class="js-tag color3">JavaScript基础</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">mongodb</a>
+                <a href="javascript:void(0)" class="js-tag color3">vs-code</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">腾讯地图 api</a>
               </li>
             
             <div class="clearfix"></div>
