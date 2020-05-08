@@ -6,17 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: Babel | zouzhu@blog</title>
+  <title>Vue 响应式框架教程 | zouzhu@blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="彼岸世界，希望未来的每一天都是充满阳光的，用一行行代码成就梦想">
-<meta property="og:type" content="website">
-<meta property="og:title" content="zouzhu@blog">
-<meta property="og:url" content="http://yoursite.com/tags/Babel/index.html">
+  <meta name="description" content="Vue.js (读音 &#x2F;vju:，类似于 view) 是一套构建用户界面的渐进式框架，与其他重量级框架不同的是，Vue 采用自底向上增量开发的设计，Vue 的核心只关注视图层，并且非常容易学习，非常容易与其他库或已有项目整合，另一方面 Vue 完全有能力驱动采用(单文件组件)和(Vue生态系统支持的库)开发复杂单页应用. Vue.js 的目标是通过尽可能简单的 API 实现响应的数据绑定和组合的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue 响应式框架教程">
+<meta property="og:url" content="http://yoursite.com/2020/05/08/Vue/index.html">
 <meta property="og:site_name" content="zouzhu@blog">
-<meta property="og:description" content="彼岸世界，希望未来的每一天都是充满阳光的，用一行行代码成就梦想">
+<meta property="og:description" content="Vue.js (读音 &#x2F;vju:，类似于 view) 是一套构建用户界面的渐进式框架，与其他重量级框架不同的是，Vue 采用自底向上增量开发的设计，Vue 的核心只关注视图层，并且非常容易学习，非常容易与其他库或已有项目整合，另一方面 Vue 完全有能力驱动采用(单文件组件)和(Vue生态系统支持的库)开发复杂单页应用. Vue.js 的目标是通过尽可能简单的 API 实现响应的数据绑定和组合的">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://yoursite.com/images/vue/vue-%E5%AE%98%E7%BD%91%E5%9B%BE%E7%89%87.png">
+<meta property="og:image" content="http://yoursite.com/images/vue/vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png">
+<meta property="article:published_time" content="2020-05-08T09:55:24.000Z">
+<meta property="article:modified_time" content="2020-05-08T14:22:52.256Z">
 <meta property="article:author" content="彼岸世界">
+<meta property="article:tag" content="Vue">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/images/vue/vue-%E5%AE%98%E7%BD%91%E5%9B%BE%E7%89%87.png">
   
     <link rel="alternative" href="/atom.xml" title="zouzhu@blog" type="application/atom+xml">
   
@@ -169,59 +175,183 @@
           </div>
           <div id="js-content" class="content-ll">
             
-  
-  
+
+<article id="vue-Vue" class="article article-type-vue " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/01/Babel-%E9%A2%84%E7%BC%96%E8%AF%91%E6%95%99%E7%A8%8B/" class="archive-article-date">
-  	<time datetime="2020-05-01T11:40:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-01</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/01/Babel-%E9%A2%84%E7%BC%96%E8%AF%91%E6%95%99%E7%A8%8B/">Babel_预编译教程</a>
+    <h1 class="article-title" itemprop="name">
+      Vue 响应式框架教程
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2020/05/08/Vue/" class="archive-article-date">
+  	<time datetime="2020-05-08T09:55:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p style='font-size:14px;'>
+Vue.js (读音 /vju:，类似于 view) 是一套构建用户界面的渐进式框架，与其他重量级框架不同的是，Vue 采用自底向上增量开发的设计，Vue 的核心只关注视图层，并且非常容易学习，非常容易与其他库或已有项目整合，另一方面 Vue 完全有能力驱动采用(单文件组件)和(Vue生态系统支持的库)开发复杂单页应用. Vue.js 的目标是通过尽可能简单的 API 实现响应的数据绑定和组合的视图组件。
+<img src="/images/vue/vue-官网图片.png"/>
+</p>
+<a id="more"></a>
+<br>
+
+
+
+<h1>第 2 章 Vue 生命周期</h1>
+<p style='font-size:14px;'>
+我们知道 vue 是一个构建数据驱动的 web 界面的渐进式框架，那么 vue 生命周期是什么 ?<br>
+vue 生命周期是指 vue 实例对象从创建之初到销毁的过程，vue 所有功能的实现都是围绕其生命周期进行的，在生命周期的不同阶段调用对应的钩子函数实现组件数据管理和DOM渲染两大重要功能，我们来看官网给的 vue 生命周期图片。
+<div align='center'><img src="/images/vue/vue生命周期.png" width="65%"/><div>
+
+</p>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Babel</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Vue</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://zouzhu-code-89.github.io/2020/05/08/Vue/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2020/05/08/VueRouter/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          VueRouter
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2020/05/08/JavaScript%E9%AB%98%E7%BA%A7%E6%95%99%E7%A8%8B/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">JavaScript高级对象教程</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-number">1.</span> <span class="toc-text">第 2 章 Vue 生命周期</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -244,9 +374,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
