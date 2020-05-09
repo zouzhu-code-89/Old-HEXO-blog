@@ -270,6 +270,13 @@ HTML5 标准出来的时候，我曾经诧异为什么要定义那么多的 head
     
     <div class="article-entry" itemprop="articleBody">
       
+        <p style="font-size:14px;">
+首先我们要了解移动端最麻烦的是什么 ? 不同分辨率的适配，具体来说有的屏幕宽 750px，有的屏幕宽 640px，有的甚至更宽，如果你写固定的 px，那么要么小的放不下，要么大的有大片留白。那该怎么办呢 ? 如果元素固定占用屏幕空间(一般是指宽度而非高度，下同)的百分之几就好了。比如 320px 的 10% 是 32px，640px 的 10% 是 64px，那么 10 个 10% 宽度的元素放在一起，那肯定就是 100%，即挤满屏幕(宽度)，不会超出，也不会留空白 。<br>简单来说 rem 就是指屏幕宽度的百分之几，或者说 "n 个 rem = 用户可视区域的 100%" .<br>
+
+<p>rem (font size of the root element) 是指相对于根元素的字体大小的单位，简单的说它就是一个相对单位。看到 rem 大家一定会想起 em 单位，em (font-size of the element) 是指相对于父元素的字体大小的单位，它们之间其实很相似，只不过 rem 计算的规则是依赖根元素 em 是依赖父元素计算的 。</p>
+</p>
+        
+          <a class="article-more-a" href="/2020/05/08/%E5%A4%9A%E7%BB%88%E7%AB%AF%E5%B1%8F%E5%B9%95%E9%80%82%E9%85%8D%E6%96%B9%E6%A1%88-rem/#more">more >></a>
         
       
 
@@ -344,13 +351,13 @@ HTML5 标准出来的时候，我曾经诧异为什么要定义那么多的 head
     <div class="article-entry" itemprop="articleBody">
       
         <p style='font-size:14px'>
-<strong style='color:#78cb95'>1.什么是服务端渲染(SSR)?</strong><br>
+<strong style='color:#4caf50'>1.什么是服务端渲染(SSR)?</strong><br>
 Vue.js 是构建客户端应用程序的框架，默认情况下可以在浏览器中输出 Vue 组件，进行生成 DOM 和操作 DOM，
 然而也可以将同一个组件渲染为服务器端的 HTML 字符串，将它们直接发送给浏览器，最后将这些静态标记 "激活" 为客户端上完全可交互的应用程序.<br>
 服务器渲染的 Vue.js 应用程序也可以认为是 "同构" 或 "通用"，因为应用程序的大部分代码都可以在服务器和客户端上运行.<br>
 </p>
 <p style='font-size:14px'>
-<strong style='color:#78cb95'>2.为什么使用服务器渲染(SSR)?</strong><br>
+<strong style='color:#4caf50'>2.为什么使用服务器渲染(SSR)?</strong><br>
 与传统 SPA (单页应用程序(Single-Page Application)) 相比，服务器端渲染 SSR 的优势主要在于：<br>
 1.更好的 SEO 由于搜索引擎爬虫抓取工具可以直接查看完全渲染的页面.<br>
 2.更快的内容到达时间(time-to-content)，特别是对于缓慢的网络情况或运行缓慢的设备，无需等待所有的 JavaScript 都完全下载并执行，才显示服务器渲染的标记，所以你的用户将会更快速地看到完整渲染的页面，通常可以产生更好的用户体验，并且对于那些 [内容到达时间(time-to-content)与转化率直接相关] 的应用程序而言，服务器渲染(SSR)至关重要.<br>
@@ -431,6 +438,14 @@ Vue.js 是构建客户端应用程序的框架，默认情况下可以在浏览�
     
     <div class="article-entry" itemprop="articleBody">
       
+        <p style='font-size:14px'>
+Vuex 是一个专门为 Vue.js 应用程序开发的<strong style="color:#4caf50"> 状态管理模式 </strong>，它采用集中式存储管理应用的所有组件的状态，并以相应的规则保证状态以一种可预测的方式发生变化，Vuex 也集成到 Vue 的官网调试工具 devtools extension，提供了诸如零配置的 time-travel 调式、状态快照导入导出等高级调试功能.<br><br>
+<strong style="color:#4caf50">我们为什么要使用 "状态管理" 呢 ?</strong><br>
+因为我们在组件中定义的数据只在当前组件中有效，一个大型项目中有成百上千的组件或组件构成的页面，如果我们离开当前组件，数据也将在一次刷新，所以如果我们想保存用户的状态行为，我们就必须要声明一个全局的状态管理器，这个全局状态管理器将应用到整个项目的上下文，所以你开发大型项目时一定会考虑使用这个技术，同时你也要考虑什么数据，是你将要声明为全局的状态，否则大量的全局状态会造成数据污染，之后我们会对数据污染进行讲解.
+<img src="/images/vue/vue-官网图片.png"/>
+</p>
+        
+          <a class="article-more-a" href="/2020/05/08/VueX/#more">more >></a>
         
       
 
@@ -504,6 +519,19 @@ Vue.js 是构建客户端应用程序的框架，默认情况下可以在浏览�
     
     <div class="article-entry" itemprop="articleBody">
       
+        <p style='font-size:14px'>
+Vue Router 是 Vue.js 官方的路由管理器，它和 Vue.js 的核心深度集成，让构建单页面应用变得易如反掌，可以根据路由来渲染指定组件，当然这不是它的全部功能，它的功能还包括以下几点 。<br>
+1.嵌套的路由/视图表<br>
+2.模块化的、基于组件的路由配置<br>
+3.路由参数、查询、通配符<br> 
+4.基于Vue.js过渡系统的视图过渡效果<br>
+5.细粒度的导航控制等等<br>
+6.HTML5历史模式或 hash 模式，在 IE9 中自动降级<br>
+7.自定义的滚动条行为
+<img src="/images/vue/vue-官网图片.png"/>
+</p>
+        
+          <a class="article-more-a" href="/2020/05/08/VueRouter/#more">more >></a>
         
       
 
@@ -1053,7 +1081,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
+                <a href="javascript:void(0)" class="js-tag color4">ES6</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">GitHub</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1061,7 +1093,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ES6</a>
+                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1070,10 +1106,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">vs-code</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1086,10 +1118,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">腾讯地图 api</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">GitHub</a>
               </li>
             
             <div class="clearfix"></div>

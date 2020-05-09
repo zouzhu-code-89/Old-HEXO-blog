@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>多终端屏幕适配方案(rem) | zouzhu@blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="彼岸世界，希望未来的每一天都是充满阳光的，用一行行代码成就梦想">
+  <meta name="description" content="首先我们要了解移动端最麻烦的是什么 ? 不同分辨率的适配，具体来说有的屏幕宽 750px，有的屏幕宽 640px，有的甚至更宽，如果你写固定的 px，那么要么小的放不下，要么大的有大片留白。那该怎么办呢 ? 如果元素固定占用屏幕空间(一般是指宽度而非高度，下同)的百分之几就好了。比如 320px 的 10% 是 32px，640px 的 10% 是 64px，那么 10 个 10% 宽度的元素放">
 <meta property="og:type" content="article">
 <meta property="og:title" content="多终端屏幕适配方案(rem)">
 <meta property="og:url" content="http://yoursite.com/2020/05/08/%E5%A4%9A%E7%BB%88%E7%AB%AF%E5%B1%8F%E5%B9%95%E9%80%82%E9%85%8D%E6%96%B9%E6%A1%88-rem/index.html">
 <meta property="og:site_name" content="zouzhu@blog">
-<meta property="og:description" content="彼岸世界，希望未来的每一天都是充满阳光的，用一行行代码成就梦想">
+<meta property="og:description" content="首先我们要了解移动端最麻烦的是什么 ? 不同分辨率的适配，具体来说有的屏幕宽 750px，有的屏幕宽 640px，有的甚至更宽，如果你写固定的 px，那么要么小的放不下，要么大的有大片留白。那该怎么办呢 ? 如果元素固定占用屏幕空间(一般是指宽度而非高度，下同)的百分之几就好了。比如 320px 的 10% 是 32px，640px 的 10% 是 64px，那么 10 个 10% 宽度的元素放">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-05-08T14:38:34.000Z">
-<meta property="article:modified_time" content="2020-05-08T14:39:23.019Z">
+<meta property="article:modified_time" content="2020-05-09T03:27:50.199Z">
 <meta property="article:author" content="彼岸世界">
 <meta property="article:tag" content="html">
 <meta name="twitter:card" content="summary">
@@ -193,7 +193,18 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p style="font-size:14px;">
+首先我们要了解移动端最麻烦的是什么 ? 不同分辨率的适配，具体来说有的屏幕宽 750px，有的屏幕宽 640px，有的甚至更宽，如果你写固定的 px，那么要么小的放不下，要么大的有大片留白。那该怎么办呢 ? 如果元素固定占用屏幕空间(一般是指宽度而非高度，下同)的百分之几就好了。比如 320px 的 10% 是 32px，640px 的 10% 是 64px，那么 10 个 10% 宽度的元素放在一起，那肯定就是 100%，即挤满屏幕(宽度)，不会超出，也不会留空白 。<br>简单来说 rem 就是指屏幕宽度的百分之几，或者说 "n 个 rem = 用户可视区域的 100%" .<br>
+
+<p>rem (font size of the root element) 是指相对于根元素的字体大小的单位，简单的说它就是一个相对单位。看到 rem 大家一定会想起 em 单位，em (font-size of the element) 是指相对于父元素的字体大小的单位，它们之间其实很相似，只不过 rem 计算的规则是依赖根元素 em 是依赖父元素计算的 。</p>
+</p>
+<a id="more"></a>
+<br>
+
+
+<h1>第 1 章 怎么使用 REM</h1>
+一般在项目开发时，我们都是首先将根元素的字体大小进行设置，因为 rem 就是相对于根元素的字体大小的单位，下面这段代码就是我项目中对字体进行初始化的配置。
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**初始化REM单位</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@description </span>项目启动的时候、我们就应该初始化这个 rem</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author </span>zouzhuqcom@163.com（邹柱）</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@time </span>2020.04.01 21.16</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">document, window</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 1. 获取整个文档对象</span></span><br><span class="line">    <span class="keyword">var</span> docElement = <span class="built_in">document</span>.documentElement;      </span><br><span class="line">    <span class="comment">/* 2. 'orientationchange' in window 这个是判断在 window 对象中是否有 orientationchange 属性,因为 orientationchange</span></span><br><span class="line"><span class="comment">           会遇到兼容性问题, 有的浏览器不支持, 所以这边做了判断来决定是用 orientationchange 还是 resize */</span></span><br><span class="line">    <span class="keyword">var</span> resizeEvent = <span class="string">'orientationchange'</span> <span class="keyword">in</span> <span class="built_in">window</span> ? <span class="string">'orientationchange'</span> : <span class="string">'resize'</span>;</span><br><span class="line">    <span class="comment">// 3. 针对屏幕宽度设置不同的百分比 rem</span></span><br><span class="line">    <span class="keyword">var</span> recalc = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">                    <span class="keyword">var</span> clientWidth = docElement.clientWidth;</span><br><span class="line">                    <span class="keyword">if</span> (!clientWidth) <span class="keyword">return</span>;</span><br><span class="line">                    docElement.style.fontSize = <span class="number">20</span> * (clientWidth / <span class="number">320</span>) + <span class="string">'px'</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="comment">// 4. 浏览器是否支持事件监听</span></span><br><span class="line">    <span class="keyword">if</span> (!<span class="built_in">document</span>.addEventListener) <span class="keyword">return</span>;</span><br><span class="line">    <span class="comment">// 5. window 对象添加 resize 事件监听，如果调整屏幕大小将触发这个事件监听</span></span><br><span class="line">    <span class="built_in">window</span>.addEventListener(resizeEvent, recalc, <span class="literal">false</span>);</span><br><span class="line">    <span class="comment">// 6. window 对象添加 DOMContentLoaded 事件监听 </span></span><br><span class="line">    <span class="built_in">document</span>.addEventListener(<span class="string">'DOMContentLoaded'</span>, recalc, <span class="literal">false</span>);</span><br><span class="line">    <span class="comment">// 从页面空白到展示出页面内容, 会触发 DOMContentLoaded 事件, 而这段时间就是HTML文档被加载和解析完成</span></span><br><span class="line">&#125;)(<span class="built_in">document</span>, <span class="built_in">window</span>);</span><br></pre></td></tr></table></figure>
       
 
       
@@ -314,7 +325,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-number">1.</span> <span class="toc-text">第 1 章 怎么使用 REM</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -430,7 +441,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
+                <a href="javascript:void(0)" class="js-tag color4">ES6</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">GitHub</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -438,7 +453,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ES6</a>
+                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -447,10 +466,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">vs-code</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -463,10 +478,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">腾讯地图 api</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">GitHub</a>
               </li>
             
             <div class="clearfix"></div>
