@@ -41,11 +41,48 @@
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
     <div class="left-col" q-class="show:isShow">
       
+
+<style>
+	.js-avatar{
+		position: absolute;
+		z-index: 5;
+	}
+	.touxiang{
+		content: '';
+		height: 100%;
+		width: 100%;
+		background-color: rgba(147, 207, 150, 0.2);
+		position: absolute;
+		z-index: 1000000;
+		left: 0;
+		top: 0;
+	}
+	.touxiang::after{
+		content: '';
+		height: 150%;
+		width: 150%;
+		background-color: RGBA(252, 252, 252, 0.7);
+		position: absolute;
+		z-index: 1000000;
+		left: 50%;
+		top: -10%;
+		transform: translate(-50%, -60%);
+		border-radius: 40%;
+		animation: wave 5s linear infinite;
+	}
+	@keyframes wave {
+        100%{
+            transform: translate(-50%, -60%) rotate(360deg);
+    	}
+	}
+</style>
 <div class="overlay" style="background: #4d4d4d"></div>
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="/assets/touxiang-1.jpg" class="js-avatar">
+			<img src="/assets/touxiang-1.jpg" class="js-avatar touxiang">
+			<div class="touxiang"></div>
+			<!-- /assets/touxiang-1.jpg -->
 		</a>
 		<hgroup>
 		  <h1 class="header-author"><a href="/">彼岸世界</a></h1>
@@ -100,6 +137,7 @@
 		</nav>
 	</header>		
 </div>
+
 
     </div>
     <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
@@ -1068,15 +1106,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ES6</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Babel</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">GitHub</a>
+                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1084,7 +1114,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
+                <a href="javascript:void(0)" class="js-tag color1">Babel</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ES6</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1104,15 +1138,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">html5</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">html</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">腾讯地图 api</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">GitHub</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">html5</a>
               </li>
             
             <div class="clearfix"></div>
