@@ -8,20 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Vue-SSR 服务端渲染教程 | zouzhu@blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1.什么是服务端渲染(SSR)? Vue.js 是构建客户端应用程序的框架，默认情况下可以在浏览器中输出 Vue 组件，进行生成 DOM 和操作 DOM， 然而也可以将同一个组件渲染为服务器端的 HTML 字符串，将它们直接发送给浏览器，最后将这些静态标记 &quot;激活&quot; 为客户端上完全可交互的应用程序. 服务器渲染的 Vue.js 应用程序也可以认为是 &quot;同构&quot; 或 &quot;通用&quot;，因为应用程序的大部分代">
+  <meta name="description" content="Here&#39;s something encrypted, password is required to continue reading.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Vue-SSR 服务端渲染教程">
 <meta property="og:url" content="http://yoursite.com/2020/05/08/Vue-SSR/index.html">
 <meta property="og:site_name" content="zouzhu@blog">
-<meta property="og:description" content="1.什么是服务端渲染(SSR)? Vue.js 是构建客户端应用程序的框架，默认情况下可以在浏览器中输出 Vue 组件，进行生成 DOM 和操作 DOM， 然而也可以将同一个组件渲染为服务器端的 HTML 字符串，将它们直接发送给浏览器，最后将这些静态标记 &quot;激活&quot; 为客户端上完全可交互的应用程序. 服务器渲染的 Vue.js 应用程序也可以认为是 &quot;同构&quot; 或 &quot;通用&quot;，因为应用程序的大部分代">
+<meta property="og:description" content="Here&#39;s something encrypted, password is required to continue reading.">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://yoursite.com/images/vue-ssr/vue-ssr%E6%B5%81%E7%A8%8B%E5%9B%BE%E7%89%87.jpg">
 <meta property="article:published_time" content="2020-05-08T09:57:36.000Z">
-<meta property="article:modified_time" content="2020-05-09T02:31:50.987Z">
+<meta property="article:modified_time" content="2020-05-10T08:07:11.856Z">
 <meta property="article:author" content="彼岸世界">
 <meta property="article:tag" content="Vue">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/images/vue-ssr/vue-ssr%E6%B5%81%E7%A8%8B%E5%9B%BE%E7%89%87.jpg">
   
     <link rel="alternative" href="/atom.xml" title="zouzhu@blog" type="application/atom+xml">
   
@@ -195,29 +193,15 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p style='font-size:14px'>
-<strong style='color:#4caf50'>1.什么是服务端渲染(SSR)?</strong><br>
-Vue.js 是构建客户端应用程序的框架，默认情况下可以在浏览器中输出 Vue 组件，进行生成 DOM 和操作 DOM，
-然而也可以将同一个组件渲染为服务器端的 HTML 字符串，将它们直接发送给浏览器，最后将这些静态标记 "激活" 为客户端上完全可交互的应用程序.<br>
-服务器渲染的 Vue.js 应用程序也可以认为是 "同构" 或 "通用"，因为应用程序的大部分代码都可以在服务器和客户端上运行.<br>
-</p>
-<p style='font-size:14px'>
-<strong style='color:#4caf50'>2.为什么使用服务器渲染(SSR)?</strong><br>
-与传统 SPA (单页应用程序(Single-Page Application)) 相比，服务器端渲染 SSR 的优势主要在于：<br>
-1.更好的 SEO 由于搜索引擎爬虫抓取工具可以直接查看完全渲染的页面.<br>
-2.更快的内容到达时间(time-to-content)，特别是对于缓慢的网络情况或运行缓慢的设备，无需等待所有的 JavaScript 都完全下载并执行，才显示服务器渲染的标记，所以你的用户将会更快速地看到完整渲染的页面，通常可以产生更好的用户体验，并且对于那些 [内容到达时间(time-to-content)与转化率直接相关] 的应用程序而言，服务器渲染(SSR)至关重要.<br>
-<div align='center'><img src='/images/vue-ssr/vue-ssr流程图片.jpg' /></div>
-</p>
-<a id="more"></a>
-<p style='font-size:14px'>
-<strong style='color:#4caf50'>3.使用服务器渲染(SSR)时还需要有一些权衡之处</strong><br>
-1.开发条件受限：浏览器特定的代码，只能在某些生命周期钩子函数中使用，一些外部扩展库可能需要特殊处理，才能在服务器渲染应用程序中运行.<br>
-2.构建设置和部署的更多要求，与可以部署在服务器上的任何静态文件单页面应用程序(SPA)不同，服务器渲染应用程序，需要处于 Node.js server 运行环境.<br>
-3.更多的服务器端负载，在 node.js 中渲染完整的应用程序，显然会比仅仅提供静态文件的 server 更加大量的占用 CPU 资源(CPU-intensive-CPU 密集)，因此如果你预料在高流量环境(high traffic)下使用，请准备相应的服务器负载，并明智地采用缓存策论.
-<div style='border:1px dashed #81c784;font-size:14px;padding:15px;'>
-在对你的应用程序使用服务器端渲染 (SSR) 之前，你应该问的第一个问题是，是否真的需要它。这主要取决于内容到达时间 (time-to-content) 对应用程序的重要程度。例如，如果你正在构建一个内部仪表盘，初始加载时的额外几百毫秒并不重要，这种情况下去使用服务器端渲染 (SSR) 将是一个小题大作之举。然而，内容到达时间 (time-to-content) 要求是绝对关键的指标，在这种情况下，服务器端渲染 (SSR) 可以帮助你实现最佳的初始加载性能。
+        <div id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <div class="hbe-input-container">
+  <input type="password" id="hbePass" placeholder="" />
+    <label for="hbePass">Hey, password is required here.</label>
+    <div class="bottom-line"></div>
+  </div>
+  <script id="hbeData" type="hbeData" data-hmacdigest="247c07498f2b9bf0b7ee7da4513c68c3ab005ceb684b755926a7e580e2f937b7">1ffc80def8f83640ae86f1b5e25dc38c67effd0ed3bb09f476e03c085b691744c0f93973b8f752597d8e389315ee16587b043959ab94b21698fa1e95d820c0773b92a5c5301fd7adb8b2a042ac2ef1a8e1f05c39e46e5390c363318d7408a0420e64c40b3b43e2d65271e245bace212ac380df393dbd94b8e87d9bf3e712dce5de719bb19c590e0e0e89286e068d5beb95837b004f746a0414c707deb15cadf6f15633ee3d1145379072150a025933203e93cb0af65278588d81268316efccea8c6bbec13d5e464b12fb28f4f1e5af7095c523807787f00b21abdc71507fee67a116c66925fb8fe7cce863948354ff1846b48b337857311b2ef7311d908e78bea38e6f690d1386550f48c581fdfcea9a088ef1cc83a6b7cbfb926f0434f6453fc99e95d17a93f46c8b1481469857d33205ff99852c412bf4ec08f02fcf1da06a3f194bbeaccef9572610aa0d3716b23b0f5b123a8555fcfff9eab808b65060e7aaf93d738b14778df60ae442b043dc58e5009ce5a3ec8de9f1a7caa8ae684df55f153899851aa15ad22e5e84288e81b96920d7d8e25ff1625080e586d930aa688c1988ff0581b991f87be4d9398259b4d2a4bd360fd980442558dbc35dcf35e41b08f77d3b8244a58b38fc98311da6c34714ec34feff33ae0ceec62dd2335572b0f7ce86b6219393c1d44510143b27af6aeb877f1f5b7f2b656247935abe8197c6fc482dbcdff04bcca3dda546862f0736f029da641beabd7dcb2b3106474cb6053b53da91b4cce74fa94702130abf5716de84cd9393266cf7571195db410af950d2df24af004de2f393ef2de637819b151690728f12c1aa1df3697d922e9086a75a4e6faf21a57ad6a324dd56d7ebf37d436f892d845528b2c02f0e503566ad269ce9fb7ab85b745146aeefdf411d764599bd46d4da69645d7a94fc1cf45832897b47b8d9c841ee8fbcbb18b1d6257827a76543144b326e762cab4a2a40ea9b3227e3b2f1b8f49ed4ecdaa3cd883f256452ed8216df9d385b26c92ba91a6ca23cbb9f6885814f828eaa64e84f7fc295f7d60c33dfdc2bb851bbdaa343ed3ca18d24378964d1e19eb15bba7d4a236796ad10967d60c7c625cc882aaada353432046f298fdf0839e429613a6e92891e7df83b22d45aa7dbd6c1db925cc68958ad8e0ce2e14e34d1ebbd1efc34a6e3a9f7863c2aa9ec905127f65e198d2785cb8fd087cf9e8de48bebecd296967658d075048499785f0940dcfeac9a084690841ce49abc122814f3e74ba88b15dfc7acd32c96664857a2b27380616f4221fdd84cb0ff341113dbf76e000852788d95919762fd87edbffd29d185b12f8929a7b1d1ab8b6f22df41f93d82b70119a8ddffa280f2966fad68fd3745bbf54e3442f9a3106764e6cfa72d5ac1c00bcea98295f6dc9081aac3a027e30cdcf00d1a54844fbbd67be62b36e1897721604faa578aa1c38062c03bec385d90356889339c16a4bd0719a99600a38ef5db6b0014413413afee0173ad20d88153c3dda0acd09f9e74c9b6f8fa784b50a7f80a2f77b461038e31288ac06f5f7c9ea0b0d297b81a0deb2196dbe639bd174650f8fb58d035e436e4839b820e1cc4e857faba5d461d2c2756d295a04847fa4eece58d9049488c9c1211b0d82bce4d61d09d923c41fd3336a7084992df24acd462f774a4e9a5e2ec8f2773a0927db4099f805c0a7fd1be93849c9c8dfb3cccfe7c4ee6e66b9b6ddab8abee594ff8150b370f1d579ef65a917fa205ab4b78240149e62cf93a554dc5b82aac925ecee623aecade6816f9a9eb0003658f5fb6f3b5df318344e311946dff744a05de6522caabbad4fc37d15d2a445a13be245bcfda05d15f194c9feb95826e2d2bcecd8e1df87b6981c29a30ad7e95e1839966f011d42561997fdd8a938c5ba9fc1480ff3017e6aa2d380ef8809ee00f7e969d8882b39d1d1bbe2e92fd153e7cf579161bb279fb48da3053108996b7d8014b3be43e05c30770d6dae8c43cad20b0e075be368741a311ce81d4eca61b3de6bc1be525e4595c0bb480f4d7cd05e36c90c95cd7379e336f48588f924a45a6efa71d4359e9fd0d1a70b5afc2404203eb9ff031fa165d05ad41d757d03e960c66b5550261223443e15c971100ffa7bc394c46ed507a6a8ff929123dd04b575416c890775e0ff1e74bb07df0cdb5fbb5a2b13fdd885f48a007e5825a25c783ecefb7780ff4f032e7c6fe7065dba1a8ceab60e3b00b5baf2d1656bcacdf3f9ec1dc2d7008bbbbbc3273d189db983309c3637c8c687237444366f7b2929c19622f8ee4ce061f5122049396e0efb870a5fd43c2ca7fecbafd0b6220aa68f7396e6f89ae2069f6d4fa01a6420a5c112ce8a7eb2d1984c1ddca48ecb82e7ebb0d0fc6d88ab3496cf5d649c3a431bbd3f43114fa8525011ee1779d9ea28b229e83da55e2d208b6f4bb8230bb079325921baf3dc0ab009a3610bac616ed5ce52f3835b72ae2e8ac4c505560bf61f2d149145178e2f43688dfc126cb0ea582fc9ef55a88b64ba2f053c8d0c3af18463fef468efa3d709296081019942416c474e98c61601a20c5e0628fe801503fa80d5f3e67261f472152fbe864b07e4b2a014585d35555df7a99849aa127395558c49d830710664be1cede0605a7078e1930117c43d8890369d00c566f092b5f3553d2eb1b75f706090d647deab78d9e3dd51ec241ff65f51b81e4acadfc1608b9fac75053c980c38bbca2d42eb5d07c803792b5f33d4d23ca58c062cb920794d41e8857a91c9398e82d4cf5bd33697364b9aaad606289be0de6a544b24ae9d2ca8ee12eb4f05e8b7d5bc315512e45b91a73887fe9887cc2fd927047011ae83fe2a0abf57abbe037668d982f4dddcc675fefee92bcc3d7d8f53fd3c7393818dbc87a8868db94b61b02e6876f6e595b9cbef5f5e29a0f3d3af89c369f0d7fc09eebc669a3bda858f8553d6b7c25526390c393da48f1c841db942d3dcc21f6a0236235270c872d8a023adaccfceecb84c42a4383b2592cd225a24927f68de7fcdd0723250ec58f6b7e97531e43dab866a1fbe04e791a8ab5b5405b546227a09433b02a5dda3d8c47924b3ccdc1b015863588a8ef0741fa663bea25e00f11776445791b2d6a7df6ef69d13f9158b6da461caf3faff91a8097ab8ed215638d69442e00731467475f02f4162697ceaa311561d19e2ead0d8278a8afc2f9c24bf2de5cb90eba5fe8196f2e040704bf0a52f948199a4998c86cba50fe3128b5dd14551e2cf7a7207ec454a4a7c77fdc81753bdeeab08953e3e03fe3831382f00c14c2a33e4bf57de4159faf300bc59b9435c087d3b3019dd0288738c632282031f2792d90e3f29ea7d4519fd8992712ae6027ceb15ed27aa0f5484f57d435b7f640735f0bff28283e4b5558f3231d66b1e4d22c853fc20aff5c1ec43e5db14287a4a5adf97588fb2cbb175a66e6c861085aefd1535bc82652e8e8288c0b2bcc152787fa9ce6d18674584c9d560271d9f6d2b1367264c7d45fb725a815a44141ecdaa7b5e06bd0abb05546c4c2a155139f2a907adc0f9971775f2d000f16f96faa38c1ba78f6c9e6b76610a65067fb4cb2da9fdabe2f19d54c7e4459580787822dbeed91e28a091bf9ce242b0ac267e84d1d83613cad0ad607d3a6c6c6584f4fc00384f5d98fdff70150a7da069a9f27fa31cb28bb54332a8f570ab32fe7d773271f58bfb2ef44984994f6d2be9b2a9fbbf6d1c128aae41e00dca4e9f2d023ab8fccf2020ce78a31c6f16463c188768f0b9a8918a574cc731381efa1f6052abb08433c5619790f040d362385215de288f20e94076785a47e031bf95520571ecca2d968b9905d99e1bdacb01c6f256055a21473260e611a7f3af879fa93e25eb80169de299bebe5e85dd75b3895a075b6658a43c3c225afd629ac1f91d8213333a758fbabb0a0f3d544c490e34052db750d8ab2439f37d3b02939e7cd8ef89ec97a2a88b571c5a598cad462b6664adaa20d2cec3530493424c1afd0dcbb899557f905f33a6b915ac43e91a9c3314928345b1dfb51fca74519a412036d1df4efa11648412c3efda1569833b8d28fc526c408326e8facdb47190709379446a2570779617f4288022d76499b495282c488c18f521414eb2963a114cd11698087fc07fc7840e306e89c80840b412d5885a01b47d1af2cf659892177a0fbfc438489b2db919894b732484fd4846410eb6abc1b7bcc42df7d09bb3e26d5c78b566ef010c26e5389ea83</script>
 </div>
-</p>
+<script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">
       
 
       
@@ -462,11 +446,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">JavaScript基础</a>
+                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
+                <a href="javascript:void(0)" class="js-tag color3">JavaScript基础</a>
               </li>
              
               <li class="article-tag-list-item">
