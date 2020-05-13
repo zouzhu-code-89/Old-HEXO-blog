@@ -6,17 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: GitHub | zouzhu@blog</title>
+  <title>GIT教程 | zouzhu@blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="彼岸世界，希望未来的每一天都是充满阳光的，用一行行代码成就梦想">
-<meta property="og:type" content="website">
-<meta property="og:title" content="zouzhu@blog">
-<meta property="og:url" content="http://yoursite.com/tags/GitHub/index.html">
+  <meta name="description" content="第 9 章 Git 钩子  Git 钩子是在 Git 仓库中特定事件发生时自动运行的脚本，可以定制一些钩子，这些钩子可以在特定的情况下被执行，分为 Client(客户端) 的钩子和 Server(服务端) 的钩子，Client 端钩子被 operation 触发，比如 commit、merge 等，Server 端钩子被网络动作触发 。 Git 内置的钩子都一般保存在当前项目的 .git&#x2F;hook">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GIT教程">
+<meta property="og:url" content="http://yoursite.com/2020/05/12/GIT%E6%95%99%E7%A8%8B/index.html">
 <meta property="og:site_name" content="zouzhu@blog">
-<meta property="og:description" content="彼岸世界，希望未来的每一天都是充满阳光的，用一行行代码成就梦想">
+<meta property="og:description" content="第 9 章 Git 钩子  Git 钩子是在 Git 仓库中特定事件发生时自动运行的脚本，可以定制一些钩子，这些钩子可以在特定的情况下被执行，分为 Client(客户端) 的钩子和 Server(服务端) 的钩子，Client 端钩子被 operation 触发，比如 commit、merge 等，Server 端钩子被网络动作触发 。 Git 内置的钩子都一般保存在当前项目的 .git&#x2F;hook">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://yoursite.com/images/git/%E9%92%A9%E5%AD%90%E8%84%9A%E6%9C%AC.png">
+<meta property="og:image" content="http://yoursite.com/images/git/%E9%92%A9%E5%AD%90%E8%84%9A%E6%9C%AC%E5%86%85%E5%AE%B9%E6%89%A7%E8%A1%8C.png">
+<meta property="og:image" content="http://yoursite.com/images/git/git-js-1.png">
+<meta property="article:published_time" content="2020-05-12T12:38:51.000Z">
+<meta property="article:modified_time" content="2020-05-13T00:53:15.473Z">
 <meta property="article:author" content="彼岸世界">
+<meta property="article:tag" content="git">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/images/git/%E9%92%A9%E5%AD%90%E8%84%9A%E6%9C%AC.png">
   
     <link rel="alternative" href="/atom.xml" title="zouzhu@blog" type="application/atom+xml">
   
@@ -99,7 +106,7 @@
 			</ul>
 		</nav>
 		<nav style="font-size: 12px;color:#7f7f7f">
-				总文章数 15
+				总文章数 16
 		</nav>
 		<nav class="header-smart-menu">
     		
@@ -206,59 +213,208 @@
           </div>
           <div id="js-content" class="content-ll">
             
-  
-  
+
+<article id="git-GIT教程" class="article article-type-git " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-git">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/06/GitHub%E6%80%8E%E4%B9%88%E8%8E%B7%E5%8F%96%E5%A5%BD%E7%94%A8%E7%9A%84%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/" class="archive-article-date">
-  	<time datetime="2020-05-06T14:24:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-06</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/06/GitHub%E6%80%8E%E4%B9%88%E8%8E%B7%E5%8F%96%E5%A5%BD%E7%94%A8%E7%9A%84%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/">GitHub代码托管教程</a>
+    <h1 class="article-title" itemprop="name">
+      GIT教程
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2020/05/12/GIT%E6%95%99%E7%A8%8B/" class="archive-article-date">
+  	<time datetime="2020-05-12T12:38:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 style='color:#000;'>第 9 章 Git 钩子</h1>
+<p style='font-size:14px'>
+Git 钩子是在 Git 仓库中特定事件发生时自动运行的脚本，可以定制一些钩子，这些钩子可以在特定的情况下被执行，分为 Client(客户端) 的钩子和 Server(服务端) 的钩子，Client 端钩子被 operation 触发，比如 commit、merge 等，Server 端钩子被网络动作触发 。<br>
+Git 内置的钩子都一般保存在当前项目的 .git/hooks/ 目录下，钩子脚本都是以 .sample 文件名结尾的，每个钩子脚本都有不同的作用 。
+<img src='/images/git/钩子脚本.png'/>
+</p>
+<a id="more"></a>
+
+<br>
+<h2 style='color:#000;'>9.1 钩子的基本使用</h2>
+<p style='font-size:14px'>
+这里提供了许多可用的钩子，但是 .simple 的后缀使它们不能默认执行，想要安装某一个钩子，我们所需要做的仅仅是移除 .simple 的扩展名，或者如果你动手撸了一个新脚本，那你可以将脚本添加到路径里，并用上面的文件名来命名你的脚本，记得去掉 .simple 后缀哟 。<br>
+我们安装一个简单的 prepare-commit-msg 钩子作为示例，删除文件的 .simple 后缀，并将下面的内容添加到文件中去 。
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;sh</span><br><span class="line"></span><br><span class="line">echo &quot;# 请输入一条有用的提交信息！&quot; &gt; $1</span><br></pre></td></tr></table></figure>
+</p>
+
+<span style='font-size:14px'>
+钩子文件必须可执行，因此如果我们是徒手撸的脚本，我们需要更改文件的权限。例如如果想要使 prepare-commit-msg 文件可执行，就需要运行下面的命令：
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x prepare-commit-msg</span><br></pre></td></tr></table></figure>
+现在我们应该能在每次运行 git commit 的时候看到默认的提交信息（就是上文脚本里的『请输入一条有用的提交信息』），我们将在准备提交信息一章仔细研究其工作机制，而现在只是基本了解这个东西，我们已经能自定义 Git 内部的方法了，内置的样例脚本是非常有用的参考，它们展示了传递给每个钩子的参数详情（这些参数在钩子之间顺序传递）.
+</span>
+
+<div align='center'>
+    <img src='/images/git/钩子脚本内容执行.png' width='60%'/>
+</div>
+
+
+
+
+<p><br><br></p>
+<h2 style='color:#000;'>9.2 脚本语言</h2>
+<p style='font-size:14px'>
+我们编写的脚本一般是 shell，但是只要我们的脚本能够执行，你可以使用任何一种脚本语言 node、python、go 等等，每个脚本文件的
+<strong style='color:green'> 事务行(shebang line)也就是第一行 </strong>定义了该文件的解释方式，因此想要使用其他的脚本语言，我们只需要改变事务行中解释器的路径就可以了，留心一下文件的第一行指到了 node 的解析器，我们首先还是要执行 "chmod +x prepare-commit-msg" 使这个文件生效
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/usr/bin/env node</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'Hello World!'</span>);</span><br></pre></td></tr></table></figure>
+<span style='font-size:14px'>
+控制台成功的在我们每次提交 commit 的时候执行这个钩子脚本 HelloWord.
+</span>
+<img src='/images/git/git-js-1.png'/>
+</p>
+
+
+
+<br>
+<h2 style='color:#000;'>9.2 本地的钩子</h2>
+<p style='font-size:14px'>
+本地的钩子也就是上文中，我们在 .git/hook/ 目录下所有以 .simple 结尾的文件，这些文件都是不会被执行的，这些就是我们本地设定的钩子，我们对它进行逐个的介绍.
+</p>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">GitHub</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">git</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://zouzhu-code-89.github.io/2020/05/12/GIT%E6%95%99%E7%A8%8B/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2020/05/09/node%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%95%99%E7%A8%8B/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">node 服务端教程</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-number">1.</span> <span class="toc-text">第 9 章 Git 钩子</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-number">1.1.</span> <span class="toc-text">9.1 钩子的基本使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-number">1.2.</span> <span class="toc-text">9.2 脚本语言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-number">1.3.</span> <span class="toc-text">9.2 本地的钩子</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -281,9 +437,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
@@ -351,7 +507,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Babel</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ES6</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -359,15 +523,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">GitHub</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ES6</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -391,11 +547,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">腾讯地图 api</a>
+                <a href="javascript:void(0)" class="js-tag color5">html</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">html</a>
+                <a href="javascript:void(0)" class="js-tag color4">腾讯地图 api</a>
               </li>
             
             <div class="clearfix"></div>
