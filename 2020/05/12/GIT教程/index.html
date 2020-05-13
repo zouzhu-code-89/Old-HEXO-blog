@@ -15,15 +15,16 @@
 <meta property="og:site_name" content="zouzhu@blog">
 <meta property="og:description" content="第 9 章 Git 钩子  Git 钩子是在 Git 仓库中特定事件发生时自动运行的脚本，可以定制一些钩子，这些钩子可以在特定的情况下被执行，分为 Client(客户端) 的钩子和 Server(服务端) 的钩子，Client 端钩子被 operation 触发，比如 commit、merge 等，Server 端钩子被网络动作触发 。 Git 内置的钩子都一般保存在当前项目的 .git&#x2F;hook">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://yoursite.com/images/git/%E9%92%A9%E5%AD%90%E8%84%9A%E6%9C%AC.png">
+<meta property="og:image" content="http://yoursite.com/images/git/GitHook.png">
 <meta property="og:image" content="http://yoursite.com/images/git/%E9%92%A9%E5%AD%90%E8%84%9A%E6%9C%AC%E5%86%85%E5%AE%B9%E6%89%A7%E8%A1%8C.png">
 <meta property="og:image" content="http://yoursite.com/images/git/git-js-1.png">
+<meta property="og:image" content="http://yoursite.com/images/git/%E9%92%A9%E5%AD%90%E8%84%9A%E6%9C%AC.png">
 <meta property="article:published_time" content="2020-05-12T12:38:51.000Z">
-<meta property="article:modified_time" content="2020-05-13T00:53:15.473Z">
+<meta property="article:modified_time" content="2020-05-13T01:12:19.936Z">
 <meta property="article:author" content="彼岸世界">
 <meta property="article:tag" content="git">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/images/git/%E9%92%A9%E5%AD%90%E8%84%9A%E6%9C%AC.png">
+<meta name="twitter:image" content="http://yoursite.com/images/git/GitHook.png">
   
     <link rel="alternative" href="/atom.xml" title="zouzhu@blog" type="application/atom+xml">
   
@@ -238,7 +239,9 @@
 <p style='font-size:14px'>
 Git 钩子是在 Git 仓库中特定事件发生时自动运行的脚本，可以定制一些钩子，这些钩子可以在特定的情况下被执行，分为 Client(客户端) 的钩子和 Server(服务端) 的钩子，Client 端钩子被 operation 触发，比如 commit、merge 等，Server 端钩子被网络动作触发 。<br>
 Git 内置的钩子都一般保存在当前项目的 .git/hooks/ 目录下，钩子脚本都是以 .sample 文件名结尾的，每个钩子脚本都有不同的作用 。
-<img src='/images/git/钩子脚本.png'/>
+<div align='center'>
+    <img src='/images/git/GitHook.png'/>
+</div>
 </p>
 <a id="more"></a>
 
@@ -280,10 +283,17 @@ Git 内置的钩子都一般保存在当前项目的 .git/hooks/ 目录下，钩
 
 
 <br>
-<h2 style='color:#000;'>9.2 本地的钩子</h2>
+<h2 style='color:#000;'>9.3 本地的钩子</h2>
 <p style='font-size:14px'>
 本地的钩子也就是上文中，我们在 .git/hook/ 目录下所有以 .simple 结尾的文件，这些文件都是不会被执行的，这些就是我们本地设定的钩子，我们对它进行逐个的介绍.
+<div align='center'>
+    <img src='/images/git/钩子脚本.png'/>
+</div>
 </p>
+
+
+
+<h1>还未总结完.后期在继续总结<h1>
       
 
       
@@ -395,7 +405,7 @@ Git 内置的钩子都一般保存在当前项目的 .git/hooks/ 目录下，钩
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-number">1.</span> <span class="toc-text">第 9 章 Git 钩子</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-number">1.1.</span> <span class="toc-text">9.1 钩子的基本使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-number">1.2.</span> <span class="toc-text">9.2 脚本语言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-number">1.3.</span> <span class="toc-text">9.2 本地的钩子</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-number">1.</span> <span class="toc-text">第 9 章 Git 钩子</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-number">1.1.</span> <span class="toc-text">9.1 钩子的基本使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-number">1.2.</span> <span class="toc-text">9.2 脚本语言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-number">1.3.</span> <span class="toc-text">9.3 本地的钩子</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-number">2.</span> <span class="toc-text">还未总结完.后期在继续总结</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-number">3.</span> <span class="toc-text"></span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -507,11 +517,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color1">Babel</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Babel</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -524,10 +534,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -552,6 +558,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">腾讯地图 api</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
             
             <div class="clearfix"></div>
