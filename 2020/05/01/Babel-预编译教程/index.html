@@ -15,15 +15,15 @@
 <meta property="og:site_name" content="zouzhu@blog">
 <meta property="og:description" content="第 1 章 Babel 介绍  Babel 是一个通用的多用途 JavaScript 编译器，通过 Babel 你可以无障碍地使用最新的 JavaScript 语法，不用考虑各大主流浏览器的兼容问题，因为 Bable 会帮我们进行一个代码的编译，把最新标准编写的 JavaScript 代码向下编译成可以在今天随处可使用的版本，这一过程叫做 &quot;源码到源码&quot;. Babel 还支持扩张语法，能支持像 R">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://yoursite.com/images/babel-image.png">
-<meta property="og:image" content="http://yoursite.com/images/babel/babel-cli-build-image.png">
-<meta property="og:image" content="http://yoursite.com/images/babel/babel-es5-%E6%8F%92%E4%BB%B6.png">
+<meta property="og:image" content="http://yoursite.com/images/loading.png">
+<meta property="og:image" content="http://yoursite.com/images/loading.png">
+<meta property="og:image" content="http://yoursite.com/images/loading.png">
 <meta property="article:published_time" content="2020-05-01T11:40:45.000Z">
 <meta property="article:modified_time" content="2020-05-08T01:50:28.996Z">
 <meta property="article:author" content="彼岸世界">
 <meta property="article:tag" content="Babel">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/images/babel-image.png">
+<meta name="twitter:image" content="http://yoursite.com/images/loading.png">
   
     <link rel="alternative" href="/atom.xml" title="zouzhu@blog" type="application/atom+xml">
   
@@ -83,7 +83,7 @@
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic" style='background: white;'>
-			<img src="/assets/touxiang-1.jpg" class="js-avatar">
+			<img src="/images/loading.png" data-original="/assets/touxiang-1.jpg" class="js-avatar">
 			<div class="touxiang"></div>
 			<!-- /assets/touxiang-1.jpg -->
 		</a>
@@ -153,7 +153,7 @@
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="/assets/touxiang-1.jpg" class="js-avatar">
+				<img src="/images/loading.png" data-original="/assets/touxiang-1.jpg" class="js-avatar">
 			</div>
 			<hgroup>
 			  <h1 class="header-author js-header-author">彼岸世界</h1>
@@ -240,7 +240,7 @@ Babel 是一个通用的多用途 JavaScript 编译器，通过 Babel 你可以�
 Babel 还支持扩张语法，能支持像 React 所用的 JSX 语法，同时还支持用于静态类型检查的流方语法（Flow Syntax），更加重要的是 Babel 的一切都是简单的插件，谁都可以创建自己的插件，利用 Babel 的全部威力去做任何事情.<br>
 Babel 自身被分解成了数个核心模块，任何人都可以利用它们来创建下一代的 JavaScript 工具，已经有很多人都这样做了，围绕着 Babel 涌现出了非常大规模和多样化的生态系统，在这本手册中，我将介绍如何使用 Babel 的内建工具以及一些来自社区的非常有用的东西.
 <div align="center">
-  <img src="/images/babel-image.png"/>
+  <img src="/images/loading.png" data-original="/images/babel-image.png"/>
 </div>
 </p>
 <a id="more"></a>
@@ -285,7 +285,7 @@ Babel 自身被分解成了数个核心模块，任何人都可以利用它们�
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install --save-dev babel-cli</span><br></pre></td></tr></table></figure>
 <p>现在我们不直接从命令行运行 bable 了，取而代之我们将把运行的命令卸载 package.json scripts 脚本命令中，这样就可以使用 Babel 的本地版本.</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"name"</span>: <span class="string">"bable-demo"</span>,</span><br><span class="line">  <span class="string">"version"</span>: <span class="string">"1.0.0"</span>,</span><br><span class="line">  <span class="string">"scripts"</span>: &#123;</span><br><span class="line">      <span class="string">"build"</span>: <span class="string">"babel src -d dist"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">"devDependencies"</span>: &#123;</span><br><span class="line">      <span class="string">"babel-cli"</span>: <span class="string">"^6.0.0"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>现在可以在终端里面运行 ：$ npm run build （这将以之前同样方式运行 Babel，但这一次我们使用的是本地副本）<br><img src="/images/babel/babel-cli-build-image.png"/></p>
+<p>现在可以在终端里面运行 ：$ npm run build （这将以之前同样方式运行 Babel，但这一次我们使用的是本地副本）<br><img src="/images/loading.png" data-original="/images/babel/babel-cli-build-image.png"/></p>
 <br>
 
 <h2 id="2-2-babel-register-导入库"><a href="#2-2-babel-register-导入库" class="headerlink" title="2.2 babel-register (导入库)"></a>2.2 babel-register (导入库)</h2><p>通过 babel-register 这种方法只需要引入文件就可以运行 Babel，或许能更好地融入你的项目设置，但请注意这种方法并不适合正式产品环境使用，直接部署用此方式编译的代码不是好的做法，在部署之前预先编译会更加的好，不过用于构建脚本或者是其他本地运行的脚本中是非常适合的 .</p>
@@ -328,7 +328,7 @@ Babel 自身被分解成了数个核心模块，任何人都可以利用它们�
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install --save-dev babel-preset-es2015</span><br></pre></td></tr></table></figure>
 <p>2.然后修改 .babelrc 来包含这个预设</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"presets"</span>: [</span><br><span class="line">        <span class="string">"es2015"</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="attr">"plugins"</span>: []</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>3.不管我们现在使用 babel-register 或者 babel-core、babel-cli 都会自动转换成 es5 ，因为我们下载的这个预设像一套规则，将所有的 es6 代码翻译成 es5 .<br><img src="/images/babel/babel-es5-插件.png"/></p>
+<p>3.不管我们现在使用 babel-register 或者 babel-core、babel-cli 都会自动转换成 es5 ，因为我们下载的这个预设像一套规则，将所有的 es6 代码翻译成 es5 .<br><img src="/images/loading.png" data-original="/images/babel/babel-es5-插件.png"/></p>
 <br>
 
 <h2 id="3-3-pabel-preset-react"><a href="#3-3-pabel-preset-react" class="headerlink" title="3.3 pabel-preset-react"></a>3.3 pabel-preset-react</h2><p>设置 React 一样容易，只需要安装这个预设</p>
@@ -528,7 +528,7 @@ Babel 自身被分解成了数个核心模块，任何人都可以利用它们�
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://zouzhu-code-89.github.io/2020/05/01/Babel-%E9%A2%84%E7%BC%96%E8%AF%91%E6%95%99%E7%A8%8B/" alt="微信分享二维码">
+      <img src="/images/loading.png" data-original="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://zouzhu-code-89.github.io/2020/05/01/Babel-%E9%A2%84%E7%BC%96%E8%AF%91%E6%95%99%E7%A8%8B/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -692,15 +692,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Babel</a>
+                <a href="javascript:void(0)" class="js-tag color4">ES6</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ES6</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -709,6 +705,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Vue</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Babel</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -733,10 +737,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">腾讯地图 api</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
             
             <div class="clearfix"></div>
@@ -877,5 +877,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
 
 </div>
   </div>
-</body>
+<script>
+            window.imageLazyLoadSetting = {
+                isSPA: false,
+                processImages: null,
+            };
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(n){n.imageLazyLoadSetting.processImages=o;var i=n.imageLazyLoadSetting.isSPA,r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function o(){i&&(r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")));for(var t,e,a=0;a<r.length;a++)t=r[a],0<=(e=t.getBoundingClientRect()).bottom&&0<=e.left&&e.top<=(n.innerHeight||document.documentElement.clientHeight)&&function(){var t,e,n,i,o=r[a];t=o,e=function(){r=r.filter(function(t){return o!==t})},n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,e&&e()},n.src=i}()}o(),n.addEventListener("scroll",function(){var t,e;t=o,e=n,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(e)},500)})}(this);</script></body>
 </html>

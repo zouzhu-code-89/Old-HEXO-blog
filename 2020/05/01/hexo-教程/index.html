@@ -15,13 +15,13 @@
 <meta property="og:site_name" content="zouzhu@blog">
 <meta property="og:description" content="HEXO 博客框架  hexo 是一个简单、快速、强大的基于 GitHub Pages 的博客框架，支持 Markdown 格式，有众多优秀插件和主题，我们只用负责编辑文章，通过命令 hexo 会帮助我们一栈式搞定编译、部署等工作，渲染成浏览器可识别的 html 页面，我将在这篇文章中分享 hexo 的基本使用流程，hexo 是依赖 node 环境的，首先你要确保你已经安装了 node 环境，在开">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://yoursite.com/images/hexo/hexo-GuangWang-1.png">
+<meta property="og:image" content="http://yoursite.com/images/loading.png">
 <meta property="article:published_time" content="2020-05-01T13:16:26.000Z">
-<meta property="article:modified_time" content="2020-05-08T02:18:32.232Z">
+<meta property="article:modified_time" content="2020-05-13T01:29:20.027Z">
 <meta property="article:author" content="彼岸世界">
 <meta property="article:tag" content="hexo">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/images/hexo/hexo-GuangWang-1.png">
+<meta name="twitter:image" content="http://yoursite.com/images/loading.png">
   
     <link rel="alternative" href="/atom.xml" title="zouzhu@blog" type="application/atom+xml">
   
@@ -81,7 +81,7 @@
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic" style='background: white;'>
-			<img src="/assets/touxiang-1.jpg" class="js-avatar">
+			<img src="/images/loading.png" data-original="/assets/touxiang-1.jpg" class="js-avatar">
 			<div class="touxiang"></div>
 			<!-- /assets/touxiang-1.jpg -->
 		</a>
@@ -151,7 +151,7 @@
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="/assets/touxiang-1.jpg" class="js-avatar">
+				<img src="/images/loading.png" data-original="/assets/touxiang-1.jpg" class="js-avatar">
 			</div>
 			<hgroup>
 			  <h1 class="header-author js-header-author">彼岸世界</h1>
@@ -236,7 +236,7 @@
 <p style='font-size:14px;'>
 hexo 是一个简单、快速、强大的基于 GitHub Pages 的博客框架，支持 Markdown 格式，有众多优秀插件和主题，我们只用负责编辑文章，通过命令 hexo 会帮助我们一栈式搞定编译、部署等工作，渲染成浏览器可识别的 html 页面，我将在这篇文章中分享 hexo 的基本使用流程，hexo 是依赖 node 环境的，首先你要确保你已经安装了 node 环境，在开始下面的操作.<br>
 hexo 原理，由于github pages存放的都是静态文件，博客存放的不只是文章内容，还有文章列表、分类、标签、翻页等动态内容，假如每次写完一篇文章都要手动更新博客目录和相关链接信息，相信谁都会疯掉，所以 hexo 所做的就是将这些 md 文件都放在本地，每次写完文章后调用写好的命令来批量完成相关页面的生成，然后再将有改动的页面提交到github.
-<img src="/images/hexo/hexo-GuangWang-1.png">
+<img src="/images/loading.png" data-original="/images/hexo/hexo-GuangWang-1.png">
 <p>
 <a id="more"></a>
 <br><br>
@@ -250,10 +250,28 @@ hexo 原理，由于github pages存放的都是静态文件，博客存放的不
 
 
 
-<h1 id="hexo-中各种问题"><a href="#hexo-中各种问题" class="headerlink" title="hexo 中各种问题 ?"></a>hexo 中各种问题 ?</h1><blockquote>
+<h1>hexo 中各种问题 ?</h1>
+
+
+<blockquote>
 <p>搭建博客的过程中，通常会遇到很多问题, 我在这一章中将统一概述 。</p>
 </blockquote>
-<h2 id="1-文章中如何导入图片"><a href="#1-文章中如何导入图片" class="headerlink" title="1.文章中如何导入图片 ?"></a>1.文章中如何导入图片 ?</h2><p>因为 hexo 部署到 github 上面时，我们不知道资源文件具体放在哪, 导致我们无法正确的引入图片路径 。</p>
+<h2 style='color:#000'>1.文章中如何导入图片 ?</h2>
+因为 hexo 部署到 github 上面时，我们不知道资源文件具体放在哪, 导致我们无法正确的引入图片路径 。
+
+
+
+
+<p><br><br></p>
+<h2 style='color:#000'>2.hexo 博客图片懒加载</h2>
+<p style='font-size:14px;'>
+自从博客的文件图片量越来越大，发现博客网站加载比较缓慢，就想着给图片添加懒加载功能，解决方案也很简单，就是通过以来 hexo-lazyload-image 模块<br>
+首先本地下载这个模块 ：npm install hexo-lazyload-image --save，然后在项目的根目录 _config.yml 配置文件文件中进行配置。<br>
+1.onlypost： 是否仅文章中的图片做懒加载，如果为 false，则主题中的其他图片，也会做懒加载，如头像、logo 等任何图片 。<br>
+2.loadingImg： 图片未加载时的代替图，不填写使用默认加载图片，如果需要自定义，添填入 loading 图片地址，如果是本地图片，不要忘记把图片添加到你的主题目录下，Next 主题需将图片放到 \themes\next\source\images 目录下，然后引用时: loadingImg: /images/图片文件名 。
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">lazyload:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">onlypost:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">loadingImg:</span> <span class="string">/images/loading.png</span></span><br></pre></td></tr></table></figure>
+</p>
+
 
       
 
@@ -323,7 +341,7 @@ hexo 原理，由于github pages存放的都是静态文件，博客存放的不
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://zouzhu-code-89.github.io/2020/05/01/hexo-%E6%95%99%E7%A8%8B/" alt="微信分享二维码">
+      <img src="/images/loading.png" data-original="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://zouzhu-code-89.github.io/2020/05/01/hexo-%E6%95%99%E7%A8%8B/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -375,7 +393,7 @@ hexo 原理，由于github pages存放的都是静态文件，博客存放的不
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-number">1.</span> <span class="toc-text">HEXO 博客框架</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-number">1.1.</span> <span class="toc-text">hexo 文章信息设置</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#hexo-中各种问题"><span class="toc-number">2.</span> <span class="toc-text">hexo 中各种问题 ?</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-文章中如何导入图片"><span class="toc-number">2.1.</span> <span class="toc-text">1.文章中如何导入图片 ?</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-number">1.</span> <span class="toc-text">HEXO 博客框架</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-number">1.1.</span> <span class="toc-text">hexo 文章信息设置</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-number">2.</span> <span class="toc-text">hexo 中各种问题 ?</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-number">2.1.</span> <span class="toc-text">1.文章中如何导入图片 ?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-number">2.2.</span> <span class="toc-text">2.hexo 博客图片懒加载</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -487,15 +505,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Babel</a>
+                <a href="javascript:void(0)" class="js-tag color4">ES6</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ES6</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -504,6 +518,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Vue</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Babel</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -528,10 +550,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">腾讯地图 api</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
             
             <div class="clearfix"></div>
@@ -672,5 +690,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
 
 </div>
   </div>
-</body>
+<script>
+            window.imageLazyLoadSetting = {
+                isSPA: false,
+                processImages: null,
+            };
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(n){n.imageLazyLoadSetting.processImages=o;var i=n.imageLazyLoadSetting.isSPA,r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function o(){i&&(r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")));for(var t,e,a=0;a<r.length;a++)t=r[a],0<=(e=t.getBoundingClientRect()).bottom&&0<=e.left&&e.top<=(n.innerHeight||document.documentElement.clientHeight)&&function(){var t,e,n,i,o=r[a];t=o,e=function(){r=r.filter(function(t){return o!==t})},n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,e&&e()},n.src=i}()}o(),n.addEventListener("scroll",function(){var t,e;t=o,e=n,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(e)},500)})}(this);</script></body>
 </html>
