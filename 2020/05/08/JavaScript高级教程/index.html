@@ -6,20 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>JavaScript高级对象教程 | zouzhu@blog</title>
+  <title>JavaScript 高级对象教程 | zouzhu@blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="JavaScript 高级教程，我将对 JavaScript 各大对象的使用进行讲解，包括 Object、String、Number、Date、Array、Boolean、Math、RegExp 因为这是我们在开发中经常接触的API，算是对它做的一个只是梳理。">
+  <meta name="description" content="JavaScript 高级教程，我将对 JavaScript 各大对象的使用进行讲解，包括 Object、String、Number、Date、Array、Boolean、Math、RegExp 因为这是我们在开发中经常接触的API，算是对它做的一个只是梳理 。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JavaScript高级对象教程">
+<meta property="og:title" content="JavaScript 高级对象教程">
 <meta property="og:url" content="http://yoursite.com/2020/05/08/JavaScript%E9%AB%98%E7%BA%A7%E6%95%99%E7%A8%8B/index.html">
 <meta property="og:site_name" content="zouzhu@blog">
-<meta property="og:description" content="JavaScript 高级教程，我将对 JavaScript 各大对象的使用进行讲解，包括 Object、String、Number、Date、Array、Boolean、Math、RegExp 因为这是我们在开发中经常接触的API，算是对它做的一个只是梳理。">
+<meta property="og:description" content="JavaScript 高级教程，我将对 JavaScript 各大对象的使用进行讲解，包括 Object、String、Number、Date、Array、Boolean、Math、RegExp 因为这是我们在开发中经常接触的API，算是对它做的一个只是梳理 。">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://yoursite.com/images/javascript/js%E5%AE%98%E7%BD%91%E5%9B%BE%E7%89%87.jpg">
 <meta property="article:published_time" content="2020-05-08T02:13:11.000Z">
-<meta property="article:modified_time" content="2020-05-08T03:13:31.611Z">
+<meta property="article:modified_time" content="2020-05-13T16:07:20.380Z">
 <meta property="article:author" content="彼岸世界">
-<meta property="article:tag" content="JavaScript基础">
+<meta property="article:tag" content="JavaScript">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/images/javascript/js%E5%AE%98%E7%BD%91%E5%9B%BE%E7%89%87.jpg">
   
     <link rel="alternative" href="/atom.xml" title="zouzhu@blog" type="application/atom+xml">
   
@@ -102,7 +104,7 @@
 			</ul>
 		</nav>
 		<nav style="font-size: 12px;color:#7f7f7f">
-				总文章数 16
+				总文章数 32
 		</nav>
 		<nav class="header-smart-menu">
     		
@@ -217,7 +219,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      JavaScript高级对象教程
+      JavaScript 高级对象教程
     </h1>
   
 
@@ -231,8 +233,10 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p style="font-size:14px;">
-JavaScript 高级教程，我将对 JavaScript 各大对象的使用进行讲解，包括 Object、String、Number、Date、Array、Boolean、Math、RegExp 因为这是我们在开发中经常接触的API，算是对它做的一个只是梳理。
+JavaScript 高级教程，我将对 JavaScript 各大对象的使用进行讲解，包括 Object、String、Number、Date、Array、Boolean、Math、RegExp 因为这是我们在开发中经常接触的API，算是对它做的一个只是梳理 。
 <p>
+<img src='/images/javascript/js官网图片.jpg'/>
+<br><br>
 <a id="more"></a>
 <br><br>
 
@@ -297,6 +301,250 @@ Object.entries() 方法返回一个给定对象自身可枚举属性的键值对
 </p>
 
 
+
+
+
+
+
+
+
+<h1 id="Object-prototype-function"><a href="#Object-prototype-function" class="headerlink" title="Object.prototype.function"></a>Object.prototype.function</h1><h2 id="Object-defineProperties-obj-props"><a href="#Object-defineProperties-obj-props" class="headerlink" title="Object.defineProperties(obj, props)"></a>Object.defineProperties(obj, props)</h2><p>直接在一个对象上定义新的属性或修改现有属性，并返回该对象，这样我们在调用对象的时候就可以取出我们定义的属性值了</p>
+<ul>
+<li>参数一  ：obj 原型对象必须提前定义</li>
+<li>参数二  ：props 需要添加新的属性</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person = &#123;</span><br><span class="line">    <span class="string">"eat"</span>: &#123;</span><br><span class="line">        type: <span class="string">'素食动物'</span>,</span><br><span class="line">        value: [<span class="string">'白菜'</span>, <span class="string">'土豆'</span>, <span class="string">'山竹'</span>]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> person = <span class="built_in">Object</span>.defineProperties(person, &#123;</span><br><span class="line">    userMessage: &#123;</span><br><span class="line">        value: <span class="string">"zouzhu"</span>,		<span class="comment">// 定义属性的值</span></span><br><span class="line">        writable: <span class="literal">true</span>			<span class="comment">// 属性是否可写, 如果为 false 表示这个属性只是可读的</span></span><br><span class="line">    &#125;,</span><br><span class="line">    userType: &#123;</span><br><span class="line">        value: <span class="string">"程序员"</span>,</span><br><span class="line">        writable: <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">person.userMessage = <span class="string">"huangshuangting"</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(person.userType);					&gt;&gt; person.userType = <span class="string">"程序员"</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="Object-defineProperty-obj，prop，descriptor"><a href="#Object-defineProperty-obj，prop，descriptor" class="headerlink" title="Object.defineProperty(obj，prop，descriptor)"></a>Object.defineProperty(obj，prop，descriptor)</h2><p>在一个对象上定义一个新的属性或者修改一个对象的现有属性，并返回这个对象</p>
+<ul>
+<li><p>obj ：要定义属性的对象 。</p>
+</li>
+<li><p>prop ：要定义或修改的属性的名称或 Symbol 。</p>
+</li>
+<li><p>descriptor ：要定义或修改的属性描述符 。</p>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> object1 = &#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span>.defineProperty(object1, <span class="string">'property1'</span>, &#123;</span><br><span class="line">  value: <span class="number">42</span>,</span><br><span class="line">  writable: <span class="literal">false</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">object1.property1 = <span class="number">77</span>;				<span class="comment">// 因为这里设置了只读属性,我们改变它的属性值将报错 throws an error in strict mode</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(object1.property1);		<span class="comment">// expected output: 42</span></span><br></pre></td></tr></table></figure>
+
+<p>​        该方法允许精确地添加或修改对象的属性，通过赋值操作添加的普通属性是可枚举的，在枚举对象属性时会被枚举到（<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/for...in" target="_blank" rel="noopener"><code>for...in</code></a> 或 <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/keys" target="_blank" rel="noopener"><code>Object.keys</code></a><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/keys" target="_blank" rel="noopener"> </a>方法），可以改变这些属性的值，也可以删除这些属性，这个方法允许修改默认的额外选项（或配置），默认情况下使用 Object.defineProperty() 添加的属性值是不可修改（immutable）的</p>
+<p><a href="">对象里目前存在的属性描述符有两种主要形式：<em>数据描述符</em>和<em>存取描述符</em>。</a></p>
+<ul>
+<li><p><em>数据描述符</em>是一个具有值的属性，该值可以是可写的，也可以是不可写的。</p>
+</li>
+<li><p><em>存取描述符</em>是由 getter 函数和 setter 函数所描述的属性，一个描述符只能是这两者其中之一，不能同时是两者。</p>
+</li>
+</ul>
+<p><a href="">configurable</a></p>
+<ul>
+<li>当且仅当该属性的 configurable 键值为 true 时，该属性的描述符才能够被改变，同时该属性也能从对应的对象上被删除，默认为 false 。</li>
+</ul>
+<p><a href="">enumerable</a></p>
+<ul>
+<li>当且仅当该属性的 enumerable 键值为 true 时，该属性才会出现在对象的枚举属性中，默认为 false 。</li>
+</ul>
+<p>数据描述符还具有以下可选键值：</p>
+<p><a href="">value</a></p>
+<ul>
+<li>该属性对应的值，可以是任何有效的 JavaScript 值（数值，对象，函数等）， 默认为 undefined。</li>
+</ul>
+<p><a href="">writable</a></p>
+<ul>
+<li>当且仅当该属性的  writable 键值为  true 时，属性的值，也就是上面的 value，才能被赋值运算符改变，默认为 false。</li>
+</ul>
+<p><a href="">存取描述符还具有以下可选键值 :</a></p>
+<ul>
+<li><p><code>get</code></p>
+<p>属性的 getter 函数，如果没有 getter，则为 undefined 当访问该属性时，会调用此函数，执行时不传入任何参数，但是会传入 this 对象（由于继承关系，这里的 this 并不一定是定义该属性的对象）。该函数的返回值会被用作属性的值。默认为 undefined。</p>
+</li>
+<li><p><code>set</code></p>
+<p>属性的 setter 函数，如果没有 setter，则为 undefined，当属性值被修改时，会调用此函数。该方法接受一个参数（也就是被赋予的新值），会传入赋值时的 this 对象。 默认为 undefined</p>
+</li>
+</ul>
+<h1 id="Array-prototype-function"><a href="#Array-prototype-function" class="headerlink" title="Array.prototype.function"></a>Array.prototype.function</h1><p><a href="">array 类型数据的相关方法做一个总结，以便后面操作的时候可以在这里看看自己写的一些代码笔记</a></p>
+<h2 id="1-Array-isArray-Object"><a href="#1-Array-isArray-Object" class="headerlink" title="1.Array.isArray(Object)"></a>1.Array.isArray(Object)</h2><p>判断对象是否是个数组类型，返回一个布尔类型，真为 true 假为 false</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> isArray = <span class="built_in">Array</span>.isArray(<span class="string">'zouzhu'</span>);			&gt;&gt; isArray = <span class="literal">false</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> isArray = <span class="built_in">Array</span>.isArray([<span class="number">1</span>,<span class="number">2</span>,<span class="number">8</span>]);			&gt;&gt; isArray = <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="2-array-unshift-amp-array-push-添加元素"><a href="#2-array-unshift-amp-array-push-添加元素" class="headerlink" title="2.array.unshift() &amp; array.push() 添加元素"></a>2.array.unshift() &amp; array.push() 添加元素</h2><p>unshift 表示从头部追加元素，当我们添加元素的时候，并返回数组长度</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> listCity = [</span><br><span class="line">    <span class="string">'武汉'</span>, </span><br><span class="line">    <span class="string">'上海'</span>,</span><br><span class="line">	<span class="string">'北京'</span>,</span><br><span class="line">	<span class="string">'湖南'</span></span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> length = listCity.unshift(<span class="string">'深圳'</span>,<span class="string">'广州'</span>);				&gt;&gt; length = <span class="number">6</span>	[<span class="string">'深圳'</span>,<span class="string">'广州'</span>,<span class="string">'武汉'</span>,<span class="string">'上海'</span>,<span class="string">'北京'</span>,<span class="string">'湖南'</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> length = listCity.unshift([<span class="string">'福建'</span>, <span class="string">'株洲'</span>])				&gt;&gt; length = <span class="number">5</span>	[array(<span class="number">2</span>), <span class="string">'武汉'</span>,<span class="string">'上海'</span>,<span class="string">'北京'</span>,<span class="string">'湖南'</span>]</span><br></pre></td></tr></table></figure>
+
+<p>push 表示从尾部添加元素，当我们添加元素的时候，返回数组的长度</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> listCity = [</span><br><span class="line">    <span class="string">'武汉'</span>, </span><br><span class="line">    <span class="string">'上海'</span>,</span><br><span class="line">	<span class="string">'北京'</span>,</span><br><span class="line">	<span class="string">'湖南'</span></span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> length = listCity.push(<span class="string">'深圳'</span>,<span class="string">'广州'</span>);				&gt;&gt; length = <span class="number">6</span>	[<span class="string">'武汉'</span>,<span class="string">'上海'</span>,<span class="string">'北京'</span>,<span class="string">'湖南'</span>,<span class="string">'深圳'</span>,<span class="string">'广州'</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> length = listCity.push([<span class="string">'福建'</span>, <span class="string">'株洲'</span>])			&gt;&gt; length = <span class="number">5</span>	[<span class="string">'武汉'</span>,<span class="string">'上海'</span>,<span class="string">'北京'</span>,<span class="string">'湖南'</span>,array(<span class="number">2</span>)]</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="3-array-shift-amp-array-pop-删除元素"><a href="#3-array-shift-amp-array-pop-删除元素" class="headerlink" title="3.array.shift() &amp; array.pop() 删除元素"></a>3.array.shift() &amp; array.pop() 删除元素</h2><p>shift 删除数组中的第一个元素，并将该元素作为返回值返回</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr3 = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> indexElement = arr3.shift();						&gt;&gt; indexElement = <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>pop 删除数组中的最后一个元素，并将该元素作为返回值返回</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr3 = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> lastElement = arr3.pop();							&gt;&gt; lastElement = <span class="number">4</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="4-array-concat-连接数组"><a href="#4-array-concat-连接数组" class="headerlink" title="4.array.concat() 连接数组"></a>4.array.concat() 连接数组</h2><p>连接两个或多个数组，返回连接后的新数组，不会改变原有数组</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr1 = [<span class="number">1</span>,<span class="number">5</span>,<span class="number">9</span>];</span><br><span class="line"><span class="keyword">var</span> arr2 = [<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> newArr = arr1.concat(arr2, <span class="string">'zou'</span>, <span class="string">'zhu'</span>);			&gt;&gt; newArr = [<span class="number">1</span>, <span class="number">5</span>, <span class="number">9</span>, <span class="string">'zou'</span>, <span class="string">'zhu'</span>]</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="5-array-join-amp-array-split-数组拆分组成-字符串"><a href="#5-array-join-amp-array-split-数组拆分组成-字符串" class="headerlink" title="5.array.join() &amp; array.split() 数组拆分组成(字符串)"></a>5.array.join() &amp; array.split() 数组拆分组成(字符串)</h2><p>join 将数组内容拼接成一个字符串并返回，默认以 <code>,</code>分隔指定参数后则以参数来分隔</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> listCity = [</span><br><span class="line">    <span class="string">'武汉'</span>, </span><br><span class="line">    <span class="string">'上海'</span>,</span><br><span class="line">	<span class="string">'北京'</span>,</span><br><span class="line">	<span class="string">'湖南'</span></span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> cityStr = listCity.join();						&gt;&gt; cityStr = <span class="string">"武汉,上海,北京,湖南"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> cityStr = listCity.join(<span class="string">"="</span>);					&gt;&gt; cityStr = <span class="string">"武汉=上海=北京=湖南"</span></span><br></pre></td></tr></table></figure>
+
+<p>split 将字符串按参数分割成一个个元素，返回由这些元素组成的数组，这样就将数据分割了</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> param = <span class="string">"username=zouzhu&amp;password=19980809"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> data = param.split(<span class="string">'&amp;'</span>);						&gt;&gt; data = [<span class="string">"username=zouzhu"</span>, <span class="string">"password=19980809"</span>]</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="6-array-indexOf-searchElement-fromIndex-查询索引"><a href="#6-array-indexOf-searchElement-fromIndex-查询索引" class="headerlink" title="6.array.indexOf(searchElement, fromIndex) 查询索引"></a>6.array.indexOf(searchElement, fromIndex) 查询索引</h2><p>查找元素在数组中出现的下标，第一个参数是元素值，第二个参数指定开始检索的位置(可选)，返回第一次找到该元素的下标</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> listChar = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'a'</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> indexChar = listChar.indexOf(<span class="string">'a'</span>);			&gt;&gt; indexChar = <span class="number">0</span></span><br><span class="line"><span class="keyword">let</span> indexChar = listChar.indexOf(<span class="string">'a'</span>, <span class="number">1</span>);		&gt;&gt; indexChar = <span class="number">3</span>		<span class="comment">// 表示从第二个元素开始查找, 也就是 b</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> lastChar  = listChar.lastIndexOf(<span class="string">'a'</span>);		&gt;&gt; lastChar = <span class="number">3</span>			<span class="comment">// 倒着查找</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="7-array-include-searchElement-fromIndex-查询包含"><a href="#7-array-include-searchElement-fromIndex-查询包含" class="headerlink" title="7.array.include(searchElement, fromIndex) 查询包含"></a>7.array.include(searchElement, fromIndex) 查询包含</h2><p>检测数组中是否包含否一个对象，第一个参数是我们需要搜索的元素，返回布尔类型</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> listCity = [</span><br><span class="line">    <span class="string">'武汉'</span>, </span><br><span class="line">    <span class="string">'上海'</span>,</span><br><span class="line">	<span class="string">'北京'</span>,</span><br><span class="line">	<span class="string">'湖南'</span></span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> isCity = listCity.include(<span class="string">'北京'</span>);		&gt;&gt; isCity = <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<p><a href="">第2个参数是可选参数表示从什么位置开始搜索</a></p>
+<p>如果 fromIndex 大于等于数组的长度，则会返回 false，且该数组不会被搜索</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>];</span><br><span class="line"></span><br><span class="line">arr.includes(<span class="string">'c'</span>, <span class="number">3</span>);   					&gt;&gt; <span class="literal">false</span></span><br><span class="line">arr.includes(<span class="string">'c'</span>, <span class="number">100</span>); 					&gt;&gt; <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+
+<p>如果 fromIndex 为负值，计算出的索引将作为开始搜索 searchElement 的位置，如果计算出的索引小于 0，则整个数组都会被搜索</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// array length is 3</span></span><br><span class="line"><span class="comment">// fromIndex is -100</span></span><br><span class="line"><span class="comment">// computed index is 3 + (-100) = -97</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> arr = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>];</span><br><span class="line"></span><br><span class="line">arr.includes(<span class="string">'a'</span>, <span class="number">-100</span>); 		<span class="comment">// true			&gt;&gt; -97 -&gt; 2</span></span><br><span class="line">arr.includes(<span class="string">'b'</span>, <span class="number">-100</span>); 		<span class="comment">// true</span></span><br><span class="line">arr.includes(<span class="string">'c'</span>, <span class="number">-100</span>); 		<span class="comment">// true</span></span><br><span class="line">arr.includes(<span class="string">'a'</span>, <span class="number">-2</span>); 			<span class="comment">// false		&gt;&gt; 1 -&gt; 2</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="8-array-reverse-颠倒数组"><a href="#8-array-reverse-颠倒数组" class="headerlink" title="8.array.reverse() 颠倒数组"></a>8.array.reverse() 颠倒数组</h2><p>颠倒数组中元素的顺序并返回，改变了原来的数组</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> list = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>];</span><br><span class="line"></span><br><span class="line">list.reverse();</span><br><span class="line"></span><br><span class="line">&gt;&gt; list = [<span class="string">'c'</span>, <span class="string">'b'</span>, <span class="string">'a'</span>];</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="9-array-sort-排序"><a href="#9-array-sort-排序" class="headerlink" title="9.array.sort() 排序"></a>9.array.sort() 排序</h2><p>这个方法是将数组排序、默认按字母排序、如果给数字排序需要传递一个函数、返回新排序的数组</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span></span><br><span class="line"><span class="actionscript">          <span class="keyword">var</span> array1 = [<span class="string">"b"</span>, <span class="string">"a"</span>, <span class="string">"c"</span>, <span class="string">"e"</span>, <span class="string">"d"</span>];</span></span><br><span class="line">    </span><br><span class="line"><span class="actionscript">          array1.sort();        <span class="comment">// 默认按字符排序</span></span></span><br><span class="line"><span class="javascript">          <span class="built_in">console</span>.log(<span class="string">"sort array : "</span> + array1);</span></span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line"><span class="actionscript">          <span class="keyword">var</span> array2 = [<span class="number">5</span>,<span class="number">1</span>,<span class="number">8</span>,<span class="number">2</span>,<span class="number">6</span>,<span class="number">9</span>,<span class="number">3</span>];</span></span><br><span class="line"><span class="actionscript">          <span class="comment">// 升序 a-b   降序 b-a</span></span></span><br><span class="line"><span class="javascript">          array2.sort(<span class="function">(<span class="params">a, b</span>) =&gt;</span> (a-b));</span></span><br><span class="line"><span class="javascript">          <span class="built_in">console</span>.log(<span class="string">"conut : "</span> + array2.toString());</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="10-array-slice-截取数组"><a href="#10-array-slice-截取数组" class="headerlink" title="10.array.slice() 截取数组"></a>10.array.slice() 截取数组</h2><p>它的作用就是将旧数组根据索引截取，生成一个新的数组，对原数组没有影响</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">			  <span class="number">0</span>		 <span class="number">1</span>      <span class="number">2</span>       <span class="number">3</span>      <span class="number">4</span></span><br><span class="line"><span class="keyword">var</span> array = [<span class="string">"小明"</span>, <span class="string">"张三"</span>, <span class="string">"小黑"</span>, <span class="string">"张良"</span>, <span class="string">"李四"</span>];</span><br><span class="line">    </span><br><span class="line"><span class="keyword">var</span> array1 = array.slice(<span class="number">0</span>,<span class="number">3</span>);		<span class="comment">// 这个方法就是根据我们指定的下表截取数组 = 新数组  3 这个下标不包括 [0, 3)</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"array1 : "</span> + array1);</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="11-array-splice-替换插入元素"><a href="#11-array-splice-替换插入元素" class="headerlink" title="11.array.splice() 替换插入元素"></a>11.array.splice() 替换插入元素</h2><p>这个方法允许我们将指定下标区间的元素删除，并替换我们指定的新元素，如果没指定新元素将只执行删除操作，返回删除的元素，以数组的方式返回，这个操作是改变原始数组</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">               <span class="number">0</span>     <span class="number">1</span>       <span class="number">2</span>      <span class="number">3</span>       <span class="number">4</span></span><br><span class="line"><span class="keyword">var</span> array = [<span class="string">"小张"</span>,<span class="string">"小明"</span>, <span class="string">"张三"</span>, <span class="string">"李四"</span>, <span class="string">"小黑"</span>];			[<span class="number">1</span>,<span class="number">2</span>]</span><br><span class="line">    </span><br><span class="line"><span class="keyword">var</span> deleteElement = array.splice(<span class="number">1</span>, <span class="number">2</span>, <span class="string">"曹操"</span>, <span class="string">"张良"</span>);   			&gt;&gt; deleteElement = [<span class="string">'小明'</span>, <span class="string">'张三'</span>]</span><br><span class="line">    </span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"new array : "</span> + array);		&gt;&gt; <span class="string">"new array : [小张，曹操，张良，李四，小黑]"</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="12-array-map-数组过滤"><a href="#12-array-map-数组过滤" class="headerlink" title="12.array.map() 数组过滤"></a>12.array.map() 数组过滤</h2><p>这个方法将迭代所有元素，我们可以对它进行判断，如果符合我们的条件就将这个元素返回，返回一个新的数组</p>
+<p><a href="">我们可以一个总结使用 map 还是 filter 的方案 :</a></p>
+<ul>
+<li>如果我们仅仅是需要满足条件的数据，就使用 filter 就可以了</li>
+<li>如果我们需要满足条件的数据，且要进一步改进，我们就应该使用 map</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> newArray = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>].map(<span class="function"><span class="keyword">function</span>(<span class="params">x</span>)</span>&#123;</span><br><span class="line">      						<span class="keyword">if</span>(x%<span class="number">2</span> == <span class="number">0</span>)&#123;</span><br><span class="line">                   				<span class="keyword">return</span> x;       		&gt;&gt; newArray = [<span class="number">2</span>, <span class="number">4</span>] </span><br><span class="line">                			&#125;</span><br><span class="line">            			&#125;);</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="13-array-filter-数组过滤"><a href="#13-array-filter-数组过滤" class="headerlink" title="13.array.filter() 数组过滤"></a>13.array.filter() 数组过滤</h2><p>这个方法将迭代所有元素，我们可以对它进行判断，如果符合我们的条件就返回 true，返回一个新的数组</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> newArray = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>].filter(<span class="function"><span class="keyword">function</span>(<span class="params">x</span>)</span>&#123;</span><br><span class="line">               			<span class="keyword">return</span> x%<span class="number">2</span> == <span class="number">0</span>;		    &gt;&gt; newArray = [<span class="number">2</span>,<span class="number">4</span>]</span><br><span class="line">           	&#125;);</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="14-array-some-检测数组-1项"><a href="#14-array-some-检测数组-1项" class="headerlink" title="14.array.some() 检测数组(1项)"></a>14.array.some() 检测数组(1项)</h2><p>检测数组中是否有元素满足函数条件，只要有一个满足条件即返回 true，全部都不满足才返回 false</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> list = [<span class="number">111</span>, <span class="number">15</span>, <span class="number">25</span>, <span class="number">66</span>, <span class="number">789</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> isCondition = list.some(<span class="function"><span class="keyword">function</span>(<span class="params">ele</span>)</span>&#123;			&gt;&gt; isCondition = <span class="literal">true</span></span><br><span class="line">	<span class="keyword">return</span> ele &gt; <span class="number">100</span>;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> isCondition = list.some(<span class="function"><span class="keyword">function</span>(<span class="params">ele</span>)</span>&#123;			&gt;&gt; isCondition = <span class="literal">false</span></span><br><span class="line">	<span class="keyword">return</span> ele &lt; <span class="number">10</span>;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="15-array-every-检测数组-全部"><a href="#15-array-every-检测数组-全部" class="headerlink" title="15.array.every() 检测数组(全部)"></a>15.array.every() 检测数组(全部)</h2><p>检测数组中的元素是否全部满足函数条件，只有所有元素都满足条件才返回 true ，只要有一个元素不满足则会返回 false</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> list = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">7</span>, <span class="number">8</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> isCondition = list.every(<span class="function"><span class="keyword">function</span>(<span class="params">ele</span>)</span>&#123;			&gt;&gt; isCondition = <span class="literal">false</span>		<span class="comment">// 是否为偶数集合</span></span><br><span class="line">	<span class="keyword">return</span> ele % <span class="number">2</span> == <span class="number">0</span>;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="16-array-forEach"><a href="#16-array-forEach" class="headerlink" title="16.array.forEach()"></a>16.array.forEach()</h2><p>使数组中的每一个元素执行函数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> list = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line"></span><br><span class="line">list.forEach(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">"input number: "</span> + list);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h1 id="String-prototype-function"><a href="#String-prototype-function" class="headerlink" title="String.prototype.function()"></a>String.prototype.function()</h1><p>项目开发的时候，我们大多时候都要处理字符串的情况，字符串API也是我们常用的API，所以我们有必要学习一下</p>
+<h2 id="1-substr"><a href="#1-substr" class="headerlink" title="1.substr"></a>1.substr</h2><h1 id="JavaScript-Object-Notation-JSON"><a href="#JavaScript-Object-Notation-JSON" class="headerlink" title="JavaScript Object Notation(JSON)"></a>JavaScript Object Notation(JSON)</h1><blockquote>
+<p>JSON 指的是 JavaScript 对象表示法，JSON 是轻量级的文本数据交换格式</p>
+<p>JSON 独立于语言 ：JSON 使用 Javascript 语法来描述数据对象，但是 JSON 仍然独立于语言和平台，JSON 解析器和 JSON 库支持许多不同的编程语言，目前非常多的动态（PHP，JSP，.NET）编程语言都支持JSON，JSON 具有自我描述性，更易理解</p>
+</blockquote>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"sites"</span>: [</span><br><span class="line">    	&#123; <span class="attr">"name"</span>:<span class="string">"菜鸟教程"</span> , <span class="attr">"url"</span>:<span class="string">"www.runoob.com"</span> &#125;, </span><br><span class="line">    	&#123; <span class="attr">"name"</span>:<span class="string">"google"</span> , <span class="attr">"url"</span>:<span class="string">"www.google.com"</span> &#125;, </span><br><span class="line">    	&#123; <span class="attr">"name"</span>:<span class="string">"微博"</span> , <span class="attr">"url"</span>:<span class="string">"www.weibo.com"</span> &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>JSON - 转换为 JavaScript 对象，JSON 文本格式在语法上与创建 JavaScript 对象的代码相同</p>
+<p>由于这种相似性，无需解析器，JavaScript 程序能够使用内建的 eval() 函数，用 JSON 数据来生成原生的 JavaScript 对象。</p>
+<h2 id="1-JSON-parse-string，-reviver"><a href="#1-JSON-parse-string，-reviver" class="headerlink" title="1.JSON.parse(string，[reviver])"></a>1.JSON.parse(string，[reviver])</h2><blockquote>
+<p>我们可以通过这个方法，将字符串的 JSON 对象，转为 JavaScript 的 JSON 对象</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> json = <span class="string">"</span></span><br><span class="line"><span class="string">	&#123;</span></span><br><span class="line"><span class="string">        "</span>username<span class="string">": "</span>zouzhu<span class="string">",</span></span><br><span class="line"><span class="string">        "</span>age<span class="string">": 21</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> data = <span class="built_in">JSON</span>.parse(json);</span><br><span class="line"><span class="built_in">console</span>.log(data.username);</span><br><span class="line"></span><br><span class="line">&gt;&gt; <span class="string">"zouzhu"</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>我们将使用第二个函数，对里面的每一个值进行操作并返回</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> json = <span class="string">"</span></span><br><span class="line"><span class="string">	&#123;</span></span><br><span class="line"><span class="string">        "</span>name<span class="string">": "</span>zouzhu<span class="string">",</span></span><br><span class="line"><span class="string">        "</span>age<span class="string">": 23,</span></span><br><span class="line"><span class="string">        "</span>sex<span class="string">": "</span>female<span class="string">"</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> data = <span class="built_in">JSON</span>.parse(json, <span class="function"><span class="keyword">function</span> (<span class="params">key, value</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> value === <span class="string">'string'</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> value.toUpperCase();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> value;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">&gt;&gt; &#123;<span class="attr">name</span>: <span class="string">"ZOUZHU"</span>, <span class="attr">age</span>: <span class="number">23</span>, <span class="attr">sex</span>: <span class="string">"FEMALE"</span>&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="2-JSON-stringify-value，-replacer-，-space"><a href="#2-JSON-stringify-value，-replacer-，-space" class="headerlink" title="2.JSON.stringify(value，[replacer]，[space])"></a>2.JSON.stringify(value，[replacer]，[space])</h2><blockquote>
+<p>可以将 JSON 对象，转为字符串对象</p>
+<p><strong>value:</strong></p>
+<ol>
+<li>必需， 要转换的 JavaScript 值（通常为对象或数组）。</li>
+</ol>
+<p><strong>replacer</strong>：</p>
+<ol>
+<li>如果是一个函数，则对键值进行操作，如果函数返回的是undefined，则排除该成员</li>
+<li>如果是一个数组，则只转化数组和对象键同时拥有的值</li>
+</ol>
+<p><strong>space</strong> ：</p>
+<ol>
+<li>可选， 向返回值JSON 文本添加缩进、空格和换行符以使其更易于读取  “<strong>\t</strong>“</li>
+</ol>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> json = &#123;</span><br><span class="line">    <span class="string">"username"</span>: <span class="string">"zouzhu"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> text = <span class="built_in">JSON</span>.stringify(json, <span class="function"><span class="keyword">function</span>(<span class="params">key, value</span>)</span>&#123;...&#125;, <span class="string">"\t"</span>);</span><br></pre></td></tr></table></figure>
+
+<p><strong>实现对象深拷贝</strong></p>
+<p>实际开发中，如果怕影响原数据，我们常深拷贝出一份数据做任意操作，其实使用JSON.stringify()与JSON.parse()来实现深拷贝是很不错的选择。</p>
+<p><strong>JSON.stringify() 与 toString() 的区别</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];		<span class="built_in">JSON</span>.stringify(arr);	<span class="comment">//'[1,2,3]' 		</span></span><br><span class="line">						arr.toString();			<span class="comment">//1,2,3</span></span><br></pre></td></tr></table></figure>
+
+
       
 
       
@@ -309,7 +557,7 @@ Object.entries() 方法返回一个给定对象自身可枚举属性的键值对
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">JavaScript基础</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
         		</li>
       		
 		</ul>
@@ -417,7 +665,7 @@ Object.entries() 方法返回一个给定对象自身可枚举属性的键值对
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-number">1.</span> <span class="toc-text">第 1 章 Object 对象</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-number">1.1.</span> <span class="toc-text">1.Object.entries 将对象转换为可迭代的数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-number">1.2.</span> <span class="toc-text">2.Object.defineProperties(obj, props) 为对象添加新的属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-number">1.3.</span> <span class="toc-text">3.Object.defineProperty(obj，prop，descriptor)</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-number">1.</span> <span class="toc-text">第 1 章 Object 对象</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-number">1.1.</span> <span class="toc-text">1.Object.entries 将对象转换为可迭代的数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-number">1.2.</span> <span class="toc-text">2.Object.defineProperties(obj, props) 为对象添加新的属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-number">1.3.</span> <span class="toc-text">3.Object.defineProperty(obj，prop，descriptor)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Object-prototype-function"><span class="toc-number">2.</span> <span class="toc-text">Object.prototype.function</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Object-defineProperties-obj-props"><span class="toc-number">2.1.</span> <span class="toc-text">Object.defineProperties(obj, props)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Object-defineProperty-obj，prop，descriptor"><span class="toc-number">2.2.</span> <span class="toc-text">Object.defineProperty(obj，prop，descriptor)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Array-prototype-function"><span class="toc-number">3.</span> <span class="toc-text">Array.prototype.function</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Array-isArray-Object"><span class="toc-number">3.1.</span> <span class="toc-text">1.Array.isArray(Object)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-array-unshift-amp-array-push-添加元素"><span class="toc-number">3.2.</span> <span class="toc-text">2.array.unshift() &amp; array.push() 添加元素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-array-shift-amp-array-pop-删除元素"><span class="toc-number">3.3.</span> <span class="toc-text">3.array.shift() &amp; array.pop() 删除元素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-array-concat-连接数组"><span class="toc-number">3.4.</span> <span class="toc-text">4.array.concat() 连接数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-array-join-amp-array-split-数组拆分组成-字符串"><span class="toc-number">3.5.</span> <span class="toc-text">5.array.join() &amp; array.split() 数组拆分组成(字符串)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-array-indexOf-searchElement-fromIndex-查询索引"><span class="toc-number">3.6.</span> <span class="toc-text">6.array.indexOf(searchElement, fromIndex) 查询索引</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-array-include-searchElement-fromIndex-查询包含"><span class="toc-number">3.7.</span> <span class="toc-text">7.array.include(searchElement, fromIndex) 查询包含</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-array-reverse-颠倒数组"><span class="toc-number">3.8.</span> <span class="toc-text">8.array.reverse() 颠倒数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-array-sort-排序"><span class="toc-number">3.9.</span> <span class="toc-text">9.array.sort() 排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-array-slice-截取数组"><span class="toc-number">3.10.</span> <span class="toc-text">10.array.slice() 截取数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-array-splice-替换插入元素"><span class="toc-number">3.11.</span> <span class="toc-text">11.array.splice() 替换插入元素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-array-map-数组过滤"><span class="toc-number">3.12.</span> <span class="toc-text">12.array.map() 数组过滤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13-array-filter-数组过滤"><span class="toc-number">3.13.</span> <span class="toc-text">13.array.filter() 数组过滤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#14-array-some-检测数组-1项"><span class="toc-number">3.14.</span> <span class="toc-text">14.array.some() 检测数组(1项)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#15-array-every-检测数组-全部"><span class="toc-number">3.15.</span> <span class="toc-text">15.array.every() 检测数组(全部)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#16-array-forEach"><span class="toc-number">3.16.</span> <span class="toc-text">16.array.forEach()</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#String-prototype-function"><span class="toc-number">4.</span> <span class="toc-text">String.prototype.function()</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-substr"><span class="toc-number">4.1.</span> <span class="toc-text">1.substr</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#JavaScript-Object-Notation-JSON"><span class="toc-number">5.</span> <span class="toc-text">JavaScript Object Notation(JSON)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-JSON-parse-string，-reviver"><span class="toc-number">5.1.</span> <span class="toc-text">1.JSON.parse(string，[reviver])</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-JSON-stringify-value，-replacer-，-space"><span class="toc-number">5.2.</span> <span class="toc-text">2.JSON.stringify(value，[replacer]，[space])</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -529,7 +777,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ES6</a>
+                <a href="javascript:void(0)" class="js-tag color1">axios</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">CSS3</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -537,11 +789,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ES6</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">JavaScript基础</a>
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">http</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">npm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Redis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -553,11 +825,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">mongodb</a>
+                <a href="javascript:void(0)" class="js-tag color2">jQuery</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">node</a>
+                <a href="javascript:void(0)" class="js-tag color1">html5</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -565,7 +837,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">html5</a>
+                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">node</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -574,6 +850,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">腾讯地图 api</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">mongodb</a>
               </li>
             
             <div class="clearfix"></div>
