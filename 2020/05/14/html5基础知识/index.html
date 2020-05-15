@@ -6,17 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>zouzhu@blog</title>
+  <title>html 基础知识 | zouzhu@blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="彼岸世界，希望未来的每一天都是充满阳光的，用一行行代码成就梦想">
-<meta property="og:type" content="website">
-<meta property="og:title" content="zouzhu@blog">
-<meta property="og:url" content="http://yoursite.com/page/3/index.html">
+  <meta name="description" content="这一篇文章中，我将对 html 的一些常用标签做一些整理，包括 html5 新增的一些标签和属性，以便后续的查看与翻阅，今天是 2020年5月15日，心情非常低落，我不知道为什么活着，逐渐开始焦虑，不知道前行的意义是什么，从开始的肯定到现在的不自信，从前总想着时间快点过去，直到现在我才想回到过去，怀念学校的自己和她，我们都变了变得不再那么简单，但是我们都知道我们已经回不去了，心中万般不舍、煎熬和">
+<meta property="og:type" content="article">
+<meta property="og:title" content="html 基础知识">
+<meta property="og:url" content="http://yoursite.com/2020/05/14/html5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/index.html">
 <meta property="og:site_name" content="zouzhu@blog">
-<meta property="og:description" content="彼岸世界，希望未来的每一天都是充满阳光的，用一行行代码成就梦想">
+<meta property="og:description" content="这一篇文章中，我将对 html 的一些常用标签做一些整理，包括 html5 新增的一些标签和属性，以便后续的查看与翻阅，今天是 2020年5月15日，心情非常低落，我不知道为什么活着，逐渐开始焦虑，不知道前行的意义是什么，从开始的肯定到现在的不自信，从前总想着时间快点过去，直到现在我才想回到过去，怀念学校的自己和她，我们都变了变得不再那么简单，但是我们都知道我们已经回不去了，心中万般不舍、煎熬和">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://yoursite.com/images/%E9%9A%8F%E7%AC%94/1.jpg">
+<meta property="article:published_time" content="2020-05-14T15:47:41.000Z">
+<meta property="article:modified_time" content="2020-05-15T01:38:41.092Z">
 <meta property="article:author" content="彼岸世界">
+<meta property="article:tag" content="html5">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/images/%E9%9A%8F%E7%AC%94/1.jpg">
   
     <link rel="alternative" href="/atom.xml" title="zouzhu@blog" type="application/atom+xml">
   
@@ -206,35 +211,39 @@
           </div>
           <div id="js-content" class="content-ll">
             
-  
-    <article id="前端语义化-前端页面语义化标签" class="article article-type-前端语义化  article-index" itemscope itemprop="blogPost">
+
+<article id="html5-html5基础知识" class="article article-type-html5 " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/08/%E5%89%8D%E7%AB%AF%E9%A1%B5%E9%9D%A2%E8%AF%AD%E4%B9%89%E5%8C%96%E6%A0%87%E7%AD%BE/">HTML5 前端页面语义化标签</a>
+    <h1 class="article-title" itemprop="name">
+      html 基础知识
     </h1>
   
 
         
-        <a href="/2020/05/08/%E5%89%8D%E7%AB%AF%E9%A1%B5%E9%9D%A2%E8%AF%AD%E4%B9%89%E5%8C%96%E6%A0%87%E7%AD%BE/" class="archive-article-date">
-  	<time datetime="2020-05-08T14:51:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-08</time>
+        <a href="/2020/05/14/html5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="archive-article-date">
+  	<time datetime="2020-05-14T15:47:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-14</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p style='font-size:14px;'>
-HTML5 标准出来的时候，我曾经诧异为什么要定义那么多的 header footer nav article 标准，DIV 不挺好的嘛，方便开发人员记忆啊。但当页面开发完后面对所有都是DIV标签的网页就会混乱了，到底哪里是页头，哪里是正文，当然我们可以用浏览器打开，F12一下就一目了然了，但如果是网络爬虫，那就没那么容易识别到这个东西了.<br>
-引用 wiki 的定义，语义化是前端开发里面的一个专业术语，其优点在于标签语义化有助于构建良好的 html 结构，有利于搜索引擎的建立索引、抓取；另外亦有利于页面在不同的设备上显示尽可能相同；此外亦有利于构建清晰的机构，有利于团队的开发和维护. 通俗而言就是 HTML 的结构清晰，该段落就是用 p 标签，该是页脚就用 footer 标签，而不要同一都用 DIV.
-<div align='center'><img src="/images/html/html语义化.png" width="50%"></div>
+        <p>
+这一篇文章中，我将对 html 的一些常用标签做一些整理，包括 html5 新增的一些标签和属性，以便后续的查看与翻阅，今天是 2020年5月15日，心情非常低落，我不知道为什么活着，逐渐开始焦虑，不知道前行的意义是什么，从开始的肯定到现在的不自信，从前总想着时间快点过去，直到现在我才想回到过去，怀念学校的自己和她，我们都变了变得不再那么简单，但是我们都知道我们已经回不去了，心中万般不舍、煎熬和无奈、但前面的路还需要一步步的走，希望现在的自己不要迷失自我，不要只是为了活着而活着 。<br>
 </p>
-        
-          <a class="article-more-a" href="/2020/05/08/%E5%89%8D%E7%AB%AF%E9%A1%B5%E9%9D%A2%E8%AF%AD%E4%B9%89%E5%8C%96%E6%A0%87%E7%AD%BE/#more">more >></a>
-        
+<div align='center'>
+    <img src='/images/随笔/1.jpg' width='60%' />
+</div>
+<a id="more"></a>
+<p>
+引自下 W3school 的定义说明，元数据（metadata）是关于数据的信息，标签提供关于 HTML 文档的元数据，元数据不会显示在页面上，但是对于机器是可读的 。<br>
+典型的情况是，meta 元素被用于规定页面的描述，关键词、文档的作者、最后修改时间以及其他元数据，标签始终位于 head 元素中，元数据可用于浏览器（如何显示内容或重新加载页面），搜索引擎（关键词），或者其他 web 服务 。
+</p>
+
       
 
       
@@ -256,16 +265,75 @@ HTML5 标准出来的时候，我曾经诧异为什么要定义那么多的 head
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/08/%E5%89%8D%E7%AB%AF%E9%A1%B5%E9%9D%A2%E8%AF%AD%E4%B9%89%E5%8C%96%E6%A0%87%E7%AD%BE/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://zouzhu-code-89.github.io/2020/05/14/html5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2020/05/14/CSS3%E5%8A%A8%E7%94%BB%E5%B0%8F%E6%A1%88%E4%BE%8B/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">CSS3动画小案例</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -280,737 +348,32 @@ HTML5 标准出来的时候，我曾经诧异为什么要定义那么多的 head
         </div>
         
         
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="多终端屏幕适配方案-多终端屏幕适配方案-rem" class="article article-type-多终端屏幕适配方案  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/08/%E5%A4%9A%E7%BB%88%E7%AB%AF%E5%B1%8F%E5%B9%95%E9%80%82%E9%85%8D%E6%96%B9%E6%A1%88-rem/">多终端屏幕适配方案(rem)</a>
-    </h1>
-  
-
-        
-        <a href="/2020/05/08/%E5%A4%9A%E7%BB%88%E7%AB%AF%E5%B1%8F%E5%B9%95%E9%80%82%E9%85%8D%E6%96%B9%E6%A1%88-rem/" class="archive-article-date">
-  	<time datetime="2020-05-08T14:38:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p style="font-size:14px;">
-首先我们要了解移动端最麻烦的是什么 ? 不同分辨率的适配，具体来说有的屏幕宽 750px，有的屏幕宽 640px，有的甚至更宽，如果你写固定的 px，那么要么小的放不下，要么大的有大片留白。那该怎么办呢 ? 如果元素固定占用屏幕空间(一般是指宽度而非高度，下同)的百分之几就好了。比如 320px 的 10% 是 32px，640px 的 10% 是 64px，那么 10 个 10% 宽度的元素放在一起，那肯定就是 100%，即挤满屏幕(宽度)，不会超出，也不会留空白 。<br>简单来说 rem 就是指屏幕宽度的百分之几，或者说 "n 个 rem = 用户可视区域的 100%" .<br>
-
-<p>rem (font size of the root element) 是指相对于根元素的字体大小的单位，简单的说它就是一个相对单位。看到 rem 大家一定会想起 em 单位，em (font-size of the element) 是指相对于父元素的字体大小的单位，它们之间其实很相似，只不过 rem 计算的规则是依赖根元素 em 是依赖父元素计算的 。</p>
-</p>
-        
-          <a class="article-more-a" href="/2020/05/08/%E5%A4%9A%E7%BB%88%E7%AB%AF%E5%B1%8F%E5%B9%95%E9%80%82%E9%85%8D%E6%96%B9%E6%A1%88-rem/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">html</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/08/%E5%A4%9A%E7%BB%88%E7%AB%AF%E5%B1%8F%E5%B9%95%E9%80%82%E9%85%8D%E6%96%B9%E6%A1%88-rem/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    目录，不存在的…
+                    </div>
+                </span>
             </div>
         </div>
         
-        
     </div>
 </aside>
 
 
 
-
-  
-    <article id="vue-Vue-SSR" class="article article-type-vue  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/08/Vue-SSR/">Vue-SSR 服务端渲染教程</a>
-    </h1>
-  
-
-        
-        <a href="/2020/05/08/Vue-SSR/" class="archive-article-date">
-  	<time datetime="2020-05-08T09:57:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p style='font-size:14px'><strong style='color:#4caf50'>1.什么是服务端渲染(SSR)?</strong><br>Vue.js 是构建客户端应用程序的框架，默认情况下可以在浏览器中输出 Vue 组件，进行生成 DOM 和操作 DOM，然而也可以将同一个组件渲染为服务器端的 HTML 字符串，将它们直接发送给浏览器，最后将这些静态标记 "激活" 为客户端上完全可交互的应用程序.<br>服务器渲染的 Vue.js 应用程序也可以认为是 "同构" 或 "通用"，因为应用程序的大部分代码都可以在服务器和客户端上运行.<br></p><p style='font-size:14px'><strong style='color:#4caf50'>2.为什么使用服务器渲染(SSR)?</strong><br>与传统 SPA (单页应用程序(Single-Page Application)) 相比，服务器端渲染 SSR 的优势主要在于：<br>1.更好的 SEO 由于搜索引擎爬虫抓取工具可以直接查看完全渲染的页面.<br>2.更快的内容到达时间(time-to-content)，特别是对于缓慢的网络情况或运行缓慢的设备，无需等待所有的 JavaScript 都完全下载并执行，才显示服务器渲染的标记，所以你的用户将会更快速地看到完整渲染的页面，通常可以产生更好的用户体验，并且对于那些 [内容到达时间(time-to-content)与转化率直接相关] 的应用程序而言，服务器渲染(SSR)至关重要.<br><div align='center'><img src='/images/SSR/源码结构.png' /></div></p>
-        
-          <a class="article-more-a" href="/2020/05/08/Vue-SSR/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Vue</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/08/Vue-SSR/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="vue-VueX" class="article article-type-vue  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/08/VueX/">VueX 全局状态管理教程</a>
-    </h1>
-  
-
-        
-        <a href="/2020/05/08/VueX/" class="archive-article-date">
-  	<time datetime="2020-05-08T09:56:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p style='font-size:14px'>
-Vuex 是一个专门为 Vue.js 应用程序开发的<strong style="color:#4caf50"> 状态管理模式 </strong>，它采用集中式存储管理应用的所有组件的状态，并以相应的规则保证状态以一种可预测的方式发生变化，Vuex 也集成到 Vue 的官网调试工具 devtools extension，提供了诸如零配置的 time-travel 调式、状态快照导入导出等高级调试功能.<br><br>
-<strong style="color:#4caf50">我们为什么要使用 "状态管理" 呢 ?</strong><br>
-因为我们在组件中定义的数据只在当前组件中有效，一个大型项目中有成百上千的组件或组件构成的页面，如果我们离开当前组件，数据也将在一次刷新，所以如果我们想保存用户的状态行为，我们就必须要声明一个全局的状态管理器，这个全局状态管理器将应用到整个项目的上下文，所以你开发大型项目时一定会考虑使用这个技术，同时你也要考虑什么数据，是你将要声明为全局的状态，否则大量的全局状态会造成数据污染，之后我们会对数据污染进行讲解.
-<img src="/images/vue/vue-官网图片.png"/>
-</p>
-        
-          <a class="article-more-a" href="/2020/05/08/VueX/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Vue</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/08/VueX/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="vue-VueRouter" class="article article-type-vue  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/08/VueRouter/">VueRouter 路由教程</a>
-    </h1>
-  
-
-        
-        <a href="/2020/05/08/VueRouter/" class="archive-article-date">
-  	<time datetime="2020-05-08T09:55:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p style='font-size:14px'>
-Vue Router 是 Vue.js 官方的路由管理器，它和 Vue.js 的核心深度集成，让构建单页面应用变得易如反掌，可以根据路由来渲染指定组件，当然这不是它的全部功能，它的功能还包括以下几点 。<br>
-1.嵌套的路由/视图表<br>
-2.模块化的、基于组件的路由配置<br>
-3.路由参数、查询、通配符<br> 
-4.基于Vue.js过渡系统的视图过渡效果<br>
-5.细粒度的导航控制等等<br>
-6.HTML5历史模式或 hash 模式，在 IE9 中自动降级<br>
-7.自定义的滚动条行为
-<img src="/images/vue/vue-官网图片.png"/>
-</p>
-        
-          <a class="article-more-a" href="/2020/05/08/VueRouter/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Vue</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/08/VueRouter/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="vue-Vue" class="article article-type-vue  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/08/Vue/">Vue 响应式框架教程</a>
-    </h1>
-  
-
-        
-        <a href="/2020/05/08/Vue/" class="archive-article-date">
-  	<time datetime="2020-05-08T09:55:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p style='font-size:14px;'>
-Vue.js (读音 /vju:，类似于 view) 是一套构建用户界面的渐进式框架，与其他重量级框架不同的是，Vue 采用自底向上增量开发的设计，Vue 的核心只关注视图层，并且非常容易学习，非常容易与其他库或已有项目整合，另一方面 Vue 完全有能力驱动采用(单文件组件)和(Vue生态系统支持的库)开发复杂单页应用. Vue.js 的目标是通过尽可能简单的 API 实现响应的数据绑定和组合的视图组件。
-<img src="/images/vue/vue-官网图片.png"/>
-</p>
-        
-          <a class="article-more-a" href="/2020/05/08/Vue/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Vue</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/08/Vue/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="javascript高级教程-JavaScript高级教程" class="article article-type-javascript高级教程  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/08/JavaScript%E9%AB%98%E7%BA%A7%E6%95%99%E7%A8%8B/">JavaScript 高级对象教程</a>
-    </h1>
-  
-
-        
-        <a href="/2020/05/08/JavaScript%E9%AB%98%E7%BA%A7%E6%95%99%E7%A8%8B/" class="archive-article-date">
-  	<time datetime="2020-05-08T02:13:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p style="font-size:14px;">
-JavaScript 高级教程，我将对 JavaScript 各大对象的使用进行讲解，包括 Object、String、Number、Date、Array、Boolean、Math、RegExp 因为这是我们在开发中经常接触的API，算是对它做的一个只是梳理 。
-<p>
-<img src='/images/javascript/js官网图片.jpg'/>
-<br><br>
-        
-          <a class="article-more-a" href="/2020/05/08/JavaScript%E9%AB%98%E7%BA%A7%E6%95%99%E7%A8%8B/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/08/JavaScript%E9%AB%98%E7%BA%A7%E6%95%99%E7%A8%8B/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-mongoose" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/07/mongoose/">mongoose 教程</a>
-    </h1>
-  
-
-        
-        <a href="/2020/05/07/mongoose/" class="archive-article-date">
-  	<time datetime="2020-05-07T11:41:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1>mongoose 使用教程</h1>
-<p style="font-size:14px">
-mongoose 是在 node.js 异步环境下对 mongodb 进行便捷操作的对象模型工具，mongoose 是在 node.js 异步环境下对 mongodb 进行便捷操作的对象模型工具，那么要使用它首先你得安装上 node.js 和 mongodb.
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install --save mongoose</span><br></pre></td></tr></table></figure>
-<img src="/images/mongoose/mongodb官网图片.png"/>
-</p>
-        
-          <a class="article-more-a" href="/2020/05/07/mongoose/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">mongodb</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/07/mongoose/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="git-GitHub怎么获取好用的开源项目" class="article article-type-git  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/06/GitHub%E6%80%8E%E4%B9%88%E8%8E%B7%E5%8F%96%E5%A5%BD%E7%94%A8%E7%9A%84%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/">GitHub代码托管教程</a>
-    </h1>
-  
-
-        
-        <a href="/2020/05/06/GitHub%E6%80%8E%E4%B9%88%E8%8E%B7%E5%8F%96%E5%A5%BD%E7%94%A8%E7%9A%84%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/" class="archive-article-date">
-  	<time datetime="2020-05-06T14:24:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="GitHub-怎么获取好用的开源项目"><a href="#GitHub-怎么获取好用的开源项目" class="headerlink" title="GitHub 怎么获取好用的开源项目?"></a>GitHub 怎么获取好用的开源项目?</h1><p style="font-size:14px;">
-GitHub 是一个非常大的开源宝库，里面有非常多的开源项目，因为不会用不会找，而错失了使用这个宝库的机会，这一片文章就是告诉大家，我平时是怎么去找这些开源项目的 。<br>
-下面这个项目分为 4 个部分，分别是(项目名、项目描述、项目文档、项目的活跃度[关注、点赞、拉取])，我们可以通过这4个描述来寻找我们需要的开源项目，如果我们需要找当下比较火热的开源项目，可以搜索时增加条件，只显示活跃度高的开源项目 。
-</p>
-<img src="/images/github/github查找项目-1.png" />
-<br/><br/><br/><br/>
-        
-          <a class="article-more-a" href="/2020/05/06/GitHub%E6%80%8E%E4%B9%88%E8%8E%B7%E5%8F%96%E5%A5%BD%E7%94%A8%E7%9A%84%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">git</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/06/GitHub%E6%80%8E%E4%B9%88%E8%8E%B7%E5%8F%96%E5%A5%BD%E7%94%A8%E7%9A%84%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="地图api-腾讯地图API" class="article article-type-地图api  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/04/%E8%85%BE%E8%AE%AF%E5%9C%B0%E5%9B%BEAPI/">腾讯地图API</a>
-    </h1>
-  
-
-        
-        <a href="/2020/05/04/%E8%85%BE%E8%AE%AF%E5%9C%B0%E5%9B%BEAPI/" class="archive-article-date">
-  	<time datetime="2020-05-04T01:36:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="第-1-章-腾讯地图服务-WebService-API"><a href="#第-1-章-腾讯地图服务-WebService-API" class="headerlink" title="第 1 章 腾讯地图服务 (WebService API)"></a>第 1 章 腾讯地图服务 (WebService API)</h1><p>腾讯地图服务现在非常火爆，尤其是在外卖行业、滴滴打车行业处处皆可见，我们在开发我们的应用程序的时候，难免会遇到获取定位的需求，这一篇文档是对腾讯地图的使用做一个基本的讲解。<br><img src="/images/腾讯地图/腾讯地图.png"/></p>
-        
-          <a class="article-more-a" href="/2020/05/04/%E8%85%BE%E8%AE%AF%E5%9C%B0%E5%9B%BEAPI/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">腾讯地图 api</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/04/%E8%85%BE%E8%AE%AF%E5%9C%B0%E5%9B%BEAPI/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Next &amp;raquo;</a>
-    </nav>
+  
+
+  
+
+  
+
   
 
 
@@ -1033,8 +396,8 @@ GitHub 是一个非常大的开源宝库，里面有非常多的开源项目，�
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
