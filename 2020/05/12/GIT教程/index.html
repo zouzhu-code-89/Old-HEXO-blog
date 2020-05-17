@@ -15,16 +15,19 @@
 <meta property="og:site_name" content="zouzhu@blog">
 <meta property="og:description" content="Git 代码托管中心，作为开源代码库以及版本控制系统，Github拥有超过900万开发者用户，随着越来越多的应用程序转移到了云上，Github已经成为了管理软件开发以及发现已有代码的首选方法 ，如前所述，作为一个分布式的版本控制系统，在 Git 中并不存在主库这样的概念，每一份复制出的库都可以独立使用，任何两个库之间的不一致之处都可以进行合并   GitHub 可以托管各种 git 库，并提">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://yoursite.com/images/git/ssh-%E5%AF%86%E9%92%A5%E7%94%9F%E6%88%90%E8%BF%87%E7%A8%8B%E6%88%AA%E5%9B%BE.png">
+<meta property="og:image" content="http://yoursite.com/images/git/git-id-rsa.pub%E5%85%AC%E9%92%A5.png">
+<meta property="og:image" content="http://yoursite.com/images/git/github-ssh-keys.png">
 <meta property="og:image" content="http://yoursite.com/images/git/GitHook.png">
 <meta property="og:image" content="http://yoursite.com/images/git/%E9%92%A9%E5%AD%90%E8%84%9A%E6%9C%AC%E5%86%85%E5%AE%B9%E6%89%A7%E8%A1%8C.png">
 <meta property="og:image" content="http://yoursite.com/images/git/git-js-1.png">
 <meta property="og:image" content="http://yoursite.com/images/git/%E9%92%A9%E5%AD%90%E8%84%9A%E6%9C%AC.png">
 <meta property="article:published_time" content="2020-05-12T12:38:51.000Z">
-<meta property="article:modified_time" content="2020-05-15T23:41:46.761Z">
+<meta property="article:modified_time" content="2020-05-17T23:24:58.198Z">
 <meta property="article:author" content="彼岸世界">
 <meta property="article:tag" content="git">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/images/git/GitHook.png">
+<meta name="twitter:image" content="http://yoursite.com/images/git/ssh-%E5%AF%86%E9%92%A5%E7%94%9F%E6%88%90%E8%BF%87%E7%A8%8B%E6%88%AA%E5%9B%BE.png">
   
     <link rel="alternative" href="/atom.xml" title="zouzhu@blog" type="application/atom+xml">
   
@@ -274,8 +277,7 @@ Git 代码托管中心，作为开源代码库以及版本控制系统，Github�
 <p>2，git add 【文件名】</p>
 <p>3，git  commit -m “日志消息”，这里千万不能加文件名，会报错，因为我们还在处于分支合并状态 MERGING</p>
 <p>4，完成操作</p>
-<p>Git Hub 远程仓库</p>
-<p>向远程库推送<br>1，我们创建一个远程仓库，最好与我们新建的本地仓库同命，让我们好辨认具体是哪一个项目</p>
+<h1 id="第-3-章-Git-Hub-远程仓库"><a href="#第-3-章-Git-Hub-远程仓库" class="headerlink" title="第 3 章 Git Hub 远程仓库"></a>第 3 章 Git Hub 远程仓库</h1><p>向远程库推送<br>1，我们创建一个远程仓库，最好与我们新建的本地仓库同命，让我们好辨认具体是哪一个项目</p>
 <p>2，将地址保存在本地命令如下，fetch 代表取回地址，push 代表推送地址，push 开始推送到我们的远程仓库</p>
 <p>3，我们来到团队远程仓库，发现springboot date.text 成功被推送，我们能查看到文件和与之对应的内容</p>
 <p>向本地库克隆<br>命令：git springboot_adder【远程地址】 效果：完整的把远程库下载到本地，替我们创建 springboot 远程地址别名，已经初始化好了本地库，不需要我们自己初始化</p>
@@ -283,7 +285,31 @@ Git 代码托管中心，作为开源代码库以及版本控制系统，Github�
 <p>我们将这个链接发给即将成为团队人，他登录自己的 GitHub 账号后，将链接复制到地址栏，就会显示 Accept invitation 同意加入团队</p>
 <p>远程库修改的拉取<br>比如说小明和小王同时克隆了远程库的分支，这时候小明对分支做了新的修改，并推送到了远程 GitHub 仓库，但小王在本地仓库还没有任何内容变化，小王说那我和你同步一下吧 ！然后就进行了远程库修改的拉取<br>命令 ：<br>$ …. git pull 远程仓库地址 分支名<br>命令 ：在数据简单的时候我们可以直接 pull ，但是在数据复杂的情况下我们可以分步进行拉取，合并<br>git  fetch  【远程库地址别名】 【远程分支名】抓取<br>git  merget 【远程库地址别名/远程分支名】合并<br>​<br>pull = fetch + merge</p>
 <p>协同开发时冲突的解决<br>比如说小明和小王同时克隆了远程库的分支，这时候小明对分支做了新的修改，并推送到了远程 GitHub 仓库，但小王在本地仓库还没有任何内容变化，小王还不知道小明对内容进行了更新，所以没拉取合并操作，当小王同时也对内容进行修改，推送到远程仓库的时候，却报错了，显示当前不是最新版本不能进行推送，因为小明已经推送了一个版本后，小王的版本自然不是最新的版本，现在就发生了协同开发时的冲突，解决的方式和之前的分支冲突解决方案是相同的，最后在 pull 分支<br>要点：如果不是基于 GitHub 远程库的最新版所做的修改，不能推送，必须先拉取 。拉取下来后如果进入冲突状态，则按照 “分支冲突解决“ 操作解决即可</p>
-<p>SSH 免密登录<br>1，我们先进入我们远程仓库，获取 SSH 免密登录链接</p>
+<h2 id="SSH-免密登录"><a href="#SSH-免密登录" class="headerlink" title="SSH 免密登录"></a>SSH 免密登录</h2><p style='font-size:14px'>
+SSH 免密登录的原理就是在本地 git 仓库通过命令生成一个密钥，然后保存到 github 的密钥管理器上，用户就可以通过 ssh 链接，在不使用密码的情况下对代码进行上传 。这个操作一般用于个人项目，在团队项目的时候，这样的操作时不可行的，代码肯定是需要经过审核通过的.<br>
+<strong style='font-size:14px;color:#009688'>
+1.首先在本地 git 仓库，通过命令生成一串密钥 $ ssh-keygen
+</strong>
+<img src='/images/git/ssh-密钥生成过程截图.png'/>
+</p>
+<p style='font-size:14px'>
+<strong style='font-size:14px;color:#009688'>
+2.生成的密钥保存在用户目录下的 .ssh 文件夹中，一个为私钥、另一个为公钥、我们要做的就是将公钥保存到 GitHub 配置里面.
+<img src='/images/git/git-id-rsa.pub公钥.png'/>
+</strong>
+</p>
+<p style='font-size:14px'>
+<strong style='font-size:14px;color:#009688'>
+2.回到 github 网站，进入 Account Settings，左边选择SSH Keys，Add SSH Key，title 随便输入一个就好了
+<img src='/images/git/github-ssh-keys.png'/>
+</strong>
+</p>
+
+
+
+
+<p>title随便填，粘贴key。</p>
+<p>1，我们先进入我们远程仓库，获取 SSH 免密登录链接</p>
 <p>2，然后再本地通过命令生成一个密钥，由下面代码我们看到了一连串的密文<br>lenovo@LAPTOP-DHOKAIOC MINGW64 ~<br>$ ssh-keygen -t rsa -C <a href="mailto:2118224692@qq.com">2118224692@qq.com</a></p>
 <p>Generating public/private rsa key pair.<br>Enter file in which to save the key (/c/Users/lenovo/.ssh/id_rsa):<br>Created directory ‘/c/Users/lenovo/.ssh’.<br>Enter passphrase (empty for no passphrase):<br>Enter same passphrase again:<br>Your identification has been saved in /c/Users/lenovo/.ssh/id_rsa.<br>Your public key has been saved in /c/Users/lenovo/.ssh/id_rsa.pub.<br>The key fingerprint is:<br>SHA256:A3rsOZGAqGBZTCD5dBRgoOHDQ/VjKaQHtsVJ2RKWqig <a href="mailto:2118224692@qq.com">2118224692@qq.com</a><br>The key’s randomart image is:<br>+—[RSA 3072]—-+<br>|+BX%O.           |<br>|O+@Oo..          |<br>|+%o+o=.          |<br>|+.= o+.o         |<br>|+   . = S        |<br>|E    o o .       |<br>|.     +          |<br>|       .         |<br>|                 |<br>+—-[SHA256]—–+<br>​<br>​<br>lenovo@LAPTOP-DHOKAIOC MINGW64 ~<br>$ cd .ssh/<br>​<br>lenovo@LAPTOP-DHOKAIOC MINGW64 ~/.ssh<br>$ ll<br>total 5<br>-rw-r–r– 1 lenovo 197609 2602  8月 23 21:50 id_rsa<br>-rw-r–r– 1 lenovo 197609  571  8月 23 21:50 id_rsa.pub<br>​<br>lenovo@LAPTOP-DHOKAIOC MINGW64 ~/.ssh<br>$ cat id_rsa.pub<br>ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDKuoERyiNJ1H93YmZYCRyAN5fGcVadM91Qq9AZxEWtkS69cCoRS4c5PmykITGrgI+oMybLLx9ApkfgbpZb9N5FsYkgFDnG2Z/<br>LOZsAPB12sHl80t/+LUBe3DIONzXi/+KRO13XzW/DYOuSL6zpoLH0nJyhDuublMM5GkcUWqmYj0xB6dTpJ10cJHj3rB0VRkGeMQHRSO3KBHsqF24SWro3AeHcqdciiO/x86Wlj<br>SGNecTf1lFQcpzQ9HMR/zoQhmZRW0bD6Iuw77x7haZlzmgUnFI1ke9JRcKVofAv60d4A9aAIeqmENXsiTEdfcawDq2CbFgFQqOrpqKaa+YgvurIk0mNfxZaYGXfIgj+tjSla1r<br>zQSHhbzE+BOaADo5TpW/TUd1Vw+PvAa7FqsAB9JucvvnOeynYuGjI+Lu7MItot/zU13I9h1qYrskib0jlIHEnPIkguJNjYf08CIXpT/tI8tr+HHiDeeBR9RoxytOEF7R8pVLC6/J<br>8ZPTgs9LOHT8= <a href="mailto:2118224692@qq.com">2118224692@qq.com</a><br>​<br>lenovo@LAPTOP-DHOKAIOC MINGW64 ~/.ssh<br>​</p>
 <p>3，我们在进入到我们的远程仓库，将我们生成的密钥添加到 Git Hub 上 ，点击 New SSH key</p>
@@ -480,7 +506,7 @@ Git 内置的钩子都一般保存在当前项目的 .git/hooks/ 目录下，钩
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-number">1.</span> <span class="toc-text">第 9 章 Git 钩子</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-number">1.1.</span> <span class="toc-text">9.1 钩子的基本使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-number">1.2.</span> <span class="toc-text">9.2 脚本语言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-number">1.3.</span> <span class="toc-text">9.3 本地的钩子</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-number">2.</span> <span class="toc-text">还未总结完.后期在继续总结</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-number">3.</span> <span class="toc-text"></span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#第-3-章-Git-Hub-远程仓库"><span class="toc-number">1.</span> <span class="toc-text">第 3 章 Git Hub 远程仓库</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#SSH-免密登录"><span class="toc-number">1.1.</span> <span class="toc-text">SSH 免密登录</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-number">2.</span> <span class="toc-text">第 9 章 Git 钩子</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-number">2.1.</span> <span class="toc-text">9.1 钩子的基本使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-number">2.2.</span> <span class="toc-text">9.2 脚本语言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-number">2.3.</span> <span class="toc-text">9.3 本地的钩子</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-number">3.</span> <span class="toc-text">还未总结完.后期在继续总结</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-number">4.</span> <span class="toc-text"></span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -592,10 +618,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">axios</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Babel</a>
               </li>
              
@@ -604,11 +626,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color1">axios</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -616,11 +638,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">http</a>
+                <a href="javascript:void(0)" class="js-tag color4">npm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -628,11 +654,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Redis</a>
+                <a href="javascript:void(0)" class="js-tag color5">http</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Vue</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Redis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -656,19 +686,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">html</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">腾讯地图 api</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
+                <a href="javascript:void(0)" class="js-tag color5">html</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">npm</a>
+                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
               </li>
              
               <li class="article-tag-list-item">
