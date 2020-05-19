@@ -20,8 +20,9 @@
 <meta property="og:image" content="http://yoursite.com/images/SSR/SSR%E6%9C%8D%E5%8A%A1%E7%AB%AF%E9%9B%86%E6%88%90%E6%B5%8F%E8%A7%88%E5%99%A8%E6%95%88%E6%9E%9C%E5%9B%BE.png">
 <meta property="og:image" content="http://yoursite.com/images/SSR/SSR%E5%AE%9A%E4%B9%89%E5%A4%96%E9%83%A8%E6%A8%A1%E6%9D%BF.png">
 <meta property="og:image" content="http://yoursite.com/images/SSR/SSR%E5%AE%9A%E4%B9%89%E5%A4%96%E9%83%A8%E6%A8%A1%E6%9D%BF-%E6%A8%A1%E6%9D%BF%E6%8F%92%E5%80%BC.png">
+<meta property="og:image" content="http://yoursite.com/images/SSR/%E6%BA%90%E7%A0%81%E7%BB%93%E6%9E%84.png">
 <meta property="article:published_time" content="2020-05-08T09:57:36.000Z">
-<meta property="article:modified_time" content="2020-05-18T23:33:50.033Z">
+<meta property="article:modified_time" content="2020-05-19T23:09:55.922Z">
 <meta property="article:author" content="彼岸世界">
 <meta property="article:tag" content="Vue">
 <meta name="twitter:card" content="summary">
@@ -415,10 +416,8 @@ SSR 服务器集成非常的简单，我们只需要在 Node 中使用 Express �
 
 <p><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></p>
 <h1 id="第-3-章-源码结构"><a href="#第-3-章-源码结构" class="headerlink" title="第 3 章 源码结构"></a>第 3 章 源码结构</h1><p style='font-size:14px'>
-
+我们在使用 SSR 开发项目的时候，需要理清源码放置的目录结构，因为脚手架只能生成纯客户端的项目，是不会帮你生成服务端项目的，所以项目需要我们自己进行创建，每个文件组件都有各自的作用，而且我们在使用 SSR 要避免单实例对象，因为每个新的请求都代表着一个用户，这样单例就有可能会使服务端实例污染 。下面我们将对这一章进行介绍
 </p>
-
-
 
 
 <br>
@@ -437,14 +436,43 @@ SSR 服务器集成非常的简单，我们只需要在 Node 中使用 Express �
 </p>
 
 
+
 <br>
 
-<h2 id="1-3-webpack-构建-Vue-SSR-项目下的源码目录结构"><a href="#1-3-webpack-构建-Vue-SSR-项目下的源码目录结构" class="headerlink" title="1.3 webpack 构建 Vue SSR 项目下的源码目录结构"></a>1.3 webpack 构建 Vue SSR 项目下的源码目录结构</h2><p>现在我们正在使用 webpack 来处理服务器和客户端的应用程序，大部分源码可以使用通用方式编写，可以使用 webpack 支持的所有功能。同时，在编写通用代码时，有一些事项要牢记在心。</p>
-<p>一个基本项目可能像是这样：</p>
+<h2 id="3-2-介绍构建步骤"><a href="#3-2-介绍构建步骤" class="headerlink" title="3.2 介绍构建步骤"></a>3.2 介绍构建步骤</h2><p style='font-size:14px'>
+到目前为止，我们还没有讨论好如何将相同的 Vue 应用程序提供给客户端，为了做到这一点我们需要使用 webpack 来打包我们的 Vue 应用程序，事实上我们可能需要在服务器上使用 webpack 打包 Vue 应用程序，因为通常 Vue 应用程序是由 webpack 和 vue-loader 构建，并且许多 webpack 特定功能不能直接在 Node.js 中运行，(例如通过 file-loader 导入文件，通过 css-loader 导入 css) 。<br>
+尽管 node.js 最新版本能够完全支持 ES6 特性，我们还是需要转译客户端代码以适应老版本浏览器，这也会涉及到构建步骤，所以基本看法是对于客户端应用程序和服务器应用程序，我们都要使用 webpack 打包-服务器需要「服务器 bundle」然后用于服务器端渲染(SSR)，而「客户端 bundle」会发送给浏览器，用于混合静态标记。
+<div align='center'><img src='/images/SSR/源码结构.png' width='70%'/></div>
+</p>
+
+
+
+
+
+<br>
+
+<h2 id="3-3-webpack-构建-Vue-SSR-项目下的源码目录结构"><a href="#3-3-webpack-构建-Vue-SSR-项目下的源码目录结构" class="headerlink" title="3.3 webpack 构建 Vue SSR 项目下的源码目录结构"></a>3.3 webpack 构建 Vue SSR 项目下的源码目录结构</h2><p style='font-size:14px'>
+现在我们正在使用 webpack 来处理服务器和客户端的应用程序，大部分源码可以使用通用方式编写，可以使用 webpack 支持的所有功能。同时在编写通用代码时，有一些事项要牢记在心，一个基本项目可能像是这样 。
+</p>
+
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">src</span><br><span class="line">├── components</span><br><span class="line">│   ├── Foo.vue</span><br><span class="line">│   ├── Bar.vue</span><br><span class="line">│   └── Baz.vue</span><br><span class="line">├── App.vue</span><br><span class="line">├── app.js # 通用 entry(universal entry)</span><br><span class="line">├── entry-client.js # 仅运行于浏览器</span><br><span class="line">└── entry-server.js # 仅运行于服务器</span><br></pre></td></tr></table></figure>
-<p>#app.js<br>app.js 是我们应用程序的「通用 entry」。在纯客户端应用程序中，我们将在此文件中创建根 Vue 实例，并直接挂载到 DOM。但是，对于服务器端渲染(SSR)，责任转移到纯客户端 entry 文件。app.js 简单地使用 export 导出一个 createApp 函数：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line"><span class="keyword">import</span> App <span class="keyword">from</span> <span class="string">'./App.vue'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 导出一个工厂函数，用于创建新的</span></span><br><span class="line"><span class="comment">// 应用程序、router 和 store 实例</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">createApp</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> app = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    <span class="comment">// 根实例简单的渲染应用程序组件。</span></span><br><span class="line">    render: <span class="function"><span class="params">h</span> =&gt;</span> h(App)</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="keyword">return</span> &#123; app &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">#entry-client.js:</span><br><span class="line">客户端 entry 只需创建应用程序，并且将其挂载到 DOM 中：</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123; createApp &#125; <span class="keyword">from</span> <span class="string">'./app'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 客户端特定引导逻辑……</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> &#123; app &#125; = createApp()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 这里假定 App.vue 模板中根元素具有 `id="app"`</span></span><br><span class="line">app.$mount(<span class="string">'#app'</span>)</span><br><span class="line">#entry-server.js:</span><br><span class="line">服务器 entry 使用 <span class="keyword">default</span> <span class="keyword">export</span> 导出函数，并在每次渲染中重复调用此函数。此时，除了创建和返回应用程序实例之外，它不会做太多事情 - 但是稍后我们将在此执行服务器端路由匹配 (server-side route matching) 和数据预取逻辑 (data pre-fetching logic)。</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123; createApp &#125; <span class="keyword">from</span> <span class="string">'./app'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> context =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; app &#125; = createApp()</span><br><span class="line">  <span class="keyword">return</span> app</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p style='font-size:14px'>
+app.js 是我们应用程序的通用 entry ，在纯客户端应用程序中，我们将在此文件中创建根 Vue 实例，并直接挂载到 DOM ，但是对于服务器渲染(SSR) 责任转移到纯客户端 entry 文件，app.js 简单地使用 export 导出一个 createApp 函数 。
+</p>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">#app.js</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line"><span class="keyword">import</span> App <span class="keyword">from</span> <span class="string">'./App.vue'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 导出一个工厂函数，用于创建新的应用程序、router 和 store 实例</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">createApp</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> app = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    <span class="comment">// 根实例简单的渲染应用程序组件。</span></span><br><span class="line">    render: <span class="function"><span class="params">h</span> =&gt;</span> h(App)</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="keyword">return</span> &#123; app &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p style='font-size:14px'>
+客户端 entry 只需创建应用程序、并且将其挂载到 DOM 中 ：
+</p>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#entry-client.js </span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123; createApp &#125; <span class="keyword">from</span> <span class="string">'./app'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 客户端特定引导逻辑……</span></span><br><span class="line"><span class="keyword">const</span> &#123; app &#125; = createApp()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 这里假定 App.vue 模板中根元素具有 `id="app"`</span></span><br><span class="line">app.$mount(<span class="string">'#app'</span>)</span><br></pre></td></tr></table></figure>
+
+<p style='font-size:14px'>
+服务器 entry 使用 default export 导出函数，并在每次渲染中重复调用此函数。此时，除了创建和返回应用程序实例之外，它不会做太多事情 - 但是稍后我们将在此执行服务器端路由匹配 (server-side route matching) 和数据预取逻辑 (data pre-fetching logic) 。
+<p>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#entry-server.js</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123; createApp &#125; <span class="keyword">from</span> <span class="string">'./app'</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> context =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; app &#125; = createApp()</span><br><span class="line">  <span class="keyword">return</span> app</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
 
       
@@ -565,7 +593,7 @@ SSR 服务器集成非常的简单，我们只需要在 Node 中使用 Express �
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-number">1.</span> <span class="toc-text">第 1 章 SSR 基本使用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 SSR 与服务器集成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 使用一个页面模板</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-number">1.3.</span> <span class="toc-text">1.3 模板插值</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-number">2.</span> <span class="toc-text">第 2 章 编写通用代码</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 服务器上的数据响应</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 组件生命周期钩子函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-number">2.3.</span> <span class="toc-text">2.3 访问特定平台(Platform-Specific) API</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-number">2.4.</span> <span class="toc-text">2.4 自定义指令</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第-3-章-源码结构"><span class="toc-number">3.</span> <span class="toc-text">第 3 章 源码结构</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-避免状态单例"><span class="toc-number">3.1.</span> <span class="toc-text">3.1 避免状态单例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-webpack-构建-Vue-SSR-项目下的源码目录结构"><span class="toc-number">3.2.</span> <span class="toc-text">1.3 webpack 构建 Vue SSR 项目下的源码目录结构</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-number">1.</span> <span class="toc-text">第 1 章 SSR 基本使用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 SSR 与服务器集成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 使用一个页面模板</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-number">1.3.</span> <span class="toc-text">1.3 模板插值</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-number">2.</span> <span class="toc-text">第 2 章 编写通用代码</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 服务器上的数据响应</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 组件生命周期钩子函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-number">2.3.</span> <span class="toc-text">2.3 访问特定平台(Platform-Specific) API</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-number">2.4.</span> <span class="toc-text">2.4 自定义指令</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第-3-章-源码结构"><span class="toc-number">3.</span> <span class="toc-text">第 3 章 源码结构</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-避免状态单例"><span class="toc-number">3.1.</span> <span class="toc-text">3.1 避免状态单例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-介绍构建步骤"><span class="toc-number">3.2.</span> <span class="toc-text">3.2 介绍构建步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3-webpack-构建-Vue-SSR-项目下的源码目录结构"><span class="toc-number">3.3.</span> <span class="toc-text">3.3 webpack 构建 Vue SSR 项目下的源码目录结构</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -681,11 +709,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color1">axios</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -693,11 +717,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ES6</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">axios</a>
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ES6</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -705,19 +733,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">http</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">npm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
               </li>
              
               <li class="article-tag-list-item">
