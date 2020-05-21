@@ -16,11 +16,12 @@
 <meta property="og:description" content="jQuery 是一个 JavaScript 库，jQuery 极大地简化了 JavaScript 编程，jQuery 使用户可以更加方便地处理 HTML(标准通用标记语言下的一个应用)、events、实现动画效果、而且方便地为网站提供 AJAX 交互，jQuery 还有一个比较大的优势是它的文档说明很全，而且各种应用也说得很详细，同时还有很多成熟的插件可供选择，jQuery 可以使用户的 htm">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://yoursite.com/images/jQuery/jQuery%E5%AE%98%E7%BD%91%E5%9B%BE%E7%89%87.png">
+<meta property="og:image" content="http://yoursite.com/images/jQuery/addClass.png">
 <meta property="og:image" content="http://yoursite.com/2020/05/13/jQuery%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/img/jquery.offset.png">
 <meta property="og:image" content="http://yoursite.com/2020/05/13/jQuery%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/img/jquery.offset.png">
 <meta property="og:image" content="http://yoursite.com/2020/05/13/jQuery%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/img/jquery.offset.png">
 <meta property="article:published_time" content="2020-05-13T07:48:21.000Z">
-<meta property="article:modified_time" content="2020-05-13T22:37:30.945Z">
+<meta property="article:modified_time" content="2020-05-21T23:38:41.389Z">
 <meta property="article:author" content="彼岸世界">
 <meta property="article:tag" content="jQuery">
 <meta name="twitter:card" content="summary">
@@ -244,78 +245,102 @@ jQuery是免费、开源的，使用MIT许可协议。jQuery的语法设计可�
 </div>
 <br>
 <a id="more"></a>
-# 第 1 章 jQuery DOM 标签属性
-
-<blockquote>
-<p>获取和设置页面元素的 DOM 属性</p>
-</blockquote>
-<h2 id="1-addClass-className"><a href="#1-addClass-className" class="headerlink" title="1.addClass(className)"></a>1.addClass(className)</h2><blockquote>
-<p>为指定的元素，添加类名</p>
-</blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">"#dom"</span>).addClass(<span class="string">"back-class-1  back-class-2"</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">$(<span class="string">"p"</span>).addClass(<span class="function"><span class="keyword">function</span>(<span class="params">index, currentClass</span>)</span>&#123;		<span class="comment">// 这个方法还可以接受一个函数, index 代表查找到 p 的所有索引</span></span><br><span class="line"> 	<span class="keyword">return</span> ....; </span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
 
+<style type='text/css'>
+.f{
+  font-size:14px;
+  padding: 0;
+  margin: 0 !importion;
+}
+</style>
 
-<h2 id="2-removeClass-className"><a href="#2-removeClass-className" class="headerlink" title="2.removeClass(className)"></a>2.removeClass(className)</h2><blockquote>
-<p>移除集合中每个匹配元素上一个，多个或全部样式</p>
-</blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">"#dom"</span>).removeClass(<span class="string">"blue-class back-class"</span>);</span><br><span class="line"></span><br><span class="line">$(<span class="string">"#dom"</span>).removeClass();		<span class="comment">// 这样是移除全部 class</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 我们也可以給它传入一个函数，返回值就是我们需要移除的 className</span></span><br><span class="line"><span class="comment">// index 参数表示在所有匹配元素的集合中当前元素的索引位置, class 参数表示原有的样式名</span></span><br><span class="line">$(<span class="string">"li"</span>).removeClass(<span class="function"><span class="keyword">function</span>(<span class="params">index, class</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;class&#125;</span>-<span class="subst">$&#123;index&#125;</span>`</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p><br><br><br><br><br></p>
+<h1 id="第-1-章-jQuery-对-DOM-属性的相关操作"><a href="#第-1-章-jQuery-对-DOM-属性的相关操作" class="headerlink" title="第 1 章 jQuery 对 DOM 属性的相关操作"></a>第 1 章 jQuery 对 DOM 属性的相关操作</h1><p class='f'>
+jQuery 可以直接对 DOM 标签属性进行操作，虽然 JavaScript 也可以实现，但是比起原生的代码这样的方式更加的简单.
+</p>
+<br>
+
+<h2 id="1-1-class设置类属性"><a href="#1-1-class设置类属性" class="headerlink" title="1.1 class设置类属性"></a>1.1 class设置类属性</h2><p class='f'>
+jQuery 可以直接设置类属性，这样方便我们将写好的类样式添加到指定的 Dom
+</p>
+
+<h3 id="1-1-1-addClass-className-添加类属性"><a href="#1-1-1-addClass-className-添加类属性" class="headerlink" title="1.1.1 addClass(className) 添加类属性"></a>1.1.1 addClass(className) 添加类属性</h3><p class='f'>
+为指定元素添加类属性，可以只添加一个、也可以同时添加多个，这里的 JS 已经生效了，成功了设置了宽高度样式和背景样式.
+</p>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.wh</span>&#123;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.backColor1</span>&#123;</span><br><span class="line">    <span class="attribute">background-color</span>: cadetblue;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"box-1"</span> <span class="attr">class</span>=<span class="string">"testClass"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    $(<span class="string">'#box-1'</span>).addClass(<span class="string">'wh backColor1'</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p class='f'>
+这个属性还有另外一个使用的技巧，它可以接受一个函数类型的参数，第一个参数是元素的索引，如果只针对一个特定的标签，那么这个数就是 0，如果是 li 就返回对应的索引值，第二个参数是标签上现有的 className
+<p>
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"box-1"</span> <span class="attr">class</span>=<span class="string">"testClass"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    $(<span class="string">'#box-1'</span>).addClass(<span class="function"><span class="keyword">function</span>(<span class="params">index,currentClassName</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(index + <span class="string">'-'</span> + currentClassName);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<img src='/images/jQuery/addClass.png'>
 
 
+<p><br><br></p>
+<h3 id="1-1-2-removeClass-className-移除类属性"><a href="#1-1-2-removeClass-className-移除类属性" class="headerlink" title="1.1.2 removeClass(className) 移除类属性"></a>1.1.2 removeClass(className) 移除类属性</h3><p class='f'>
+移除标签上的类，可以指定一个、也可以同时指定多个、并且这个函数也可以接受一个函数式类型的参数
+<p>
 
-<h2 id="3-hasClass-className"><a href="#3-hasClass-className" class="headerlink" title="3.hasClass(className)"></a>3.hasClass(className)</h2><blockquote>
-<p>判断某个标签是否具有某一个 class，返回布尔值</p>
-</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">"#dom"</span>).removeClass(<span class="string">"blue-class back-class"</span>);</span><br><span class="line"></span><br><span class="line">$(<span class="string">"#dom"</span>).removeClass();		<span class="comment">// 这样是移除全部 class</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 移除 -index 样式</span></span><br><span class="line">$(<span class="string">"li"</span>).removeClass(<span class="function"><span class="keyword">function</span>(<span class="params">index, currentClassName</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;currentClassName&#125;</span>-<span class="subst">$&#123;index&#125;</span>`</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h3 id="1-1-3-hasClass-className-是否存在指定类属性"><a href="#1-1-3-hasClass-className-是否存在指定类属性" class="headerlink" title="1.1.3 hasClass(className) 是否存在指定类属性"></a>1.1.3 hasClass(className) 是否存在指定类属性</h3><p class='f'>
+判断某个标签是否具有某一个 className，返回的是一个布尔值，如果存在则是 true ，如果没有则是 false.
+<p>
+
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> isClass = $(<span class="string">"#dom"</span>).hasClass(<span class="string">"back-class"</span>);</span><br></pre></td></tr></table></figure>
 
+<br>
 
-
-<h2 id="4-toggleClass-className"><a href="#4-toggleClass-className" class="headerlink" title="4.toggleClass(className)"></a>4.toggleClass(className)</h2><blockquote>
-<p>在匹配的元素集合中的每个元素上添加或删除一个或多个样式类,取决于这个样式类是否存在或值切换属性。</p>
-<p>即：<strong>如果存在（不存在）就删除（添加）一个类</strong></p>
-</blockquote>
+<h3 id="1-1-4-toggleClass-className-切换类属性"><a href="#1-1-4-toggleClass-className-切换类属性" class="headerlink" title="1.1.4 toggleClass(className) 切换类属性"></a>1.1.4 toggleClass(className) 切换类属性</h3><p class='f'>
+切换 className ，如果这个标签上已经存在这个 className 则删除这个 className，如果没有这个 className 则添加这个 className
+</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">"#dom"</span>).toggleClass(<span class="string">"blue-clss"</span>); 	<span class="comment">// 如果 dom 拥有这个类, 则删除, 没有这个类, 则添加这个类</span></span><br></pre></td></tr></table></figure>
 
+<p><br><br></p>
+<h2 id="1-2-attr-设置任意属性"><a href="#1-2-attr-设置任意属性" class="headerlink" title="1.2 attr 设置任意属性"></a>1.2 attr 设置任意属性</h2><p class='f'>
+attr 可以设置标签上的任何属性包括 src、title、alt、herf、class 等等，也可以是自定义的 attr 、比如说 username.
+</p>
 
+<h3 id="1-2-1-attr-attrName，-value-添加或获取标签属性"><a href="#1-2-1-attr-attrName，-value-添加或获取标签属性" class="headerlink" title="1.2.1 attr(attrName，[value]) 添加或获取标签属性"></a>1.2.1 attr(attrName，[value]) 添加或获取标签属性</h3><p class='f'>
+获取匹配的元素集合中的第一个元素的属性的值或设置每一个匹配元素的一个或多个属性 。
+</p>
 
-<h2 id="5-attr-attrName，-value"><a href="#5-attr-attrName，-value" class="headerlink" title="5.attr(attrName，[value])"></a>5.attr(attrName，[value])</h2><blockquote>
-<p>获取匹配的元素集合中的第一个元素的属性的值 或设置每一个匹配元素的一个或多个属性</p>
-</blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">"img1"</span>).attr(<span class="string">"src"</span>);						<span class="comment">// 获取 src 属性</span></span><br><span class="line"></span><br><span class="line">$(<span class="string">"img1"</span>).attr(<span class="string">"src"</span>, <span class="string">"./image1.jpg"</span>);		<span class="comment">// 设置属性值</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">"img1"</span>).attr(<span class="string">"src"</span>);						        <span class="comment">// 获取 src 属性</span></span><br><span class="line"></span><br><span class="line">$(<span class="string">"img1"</span>).attr(<span class="string">"src"</span>, <span class="string">"./image1.jpg"</span>);		<span class="comment">// 设置属性值</span></span><br></pre></td></tr></table></figure>
 
+<br>
 
+<h3 id="1-2-2-removeAttr-attrName-删除标签属性"><a href="#1-2-2-removeAttr-attrName-删除标签属性" class="headerlink" title="1.2.2 removeAttr(attrName) 删除标签属性"></a>1.2.2 removeAttr(attrName) 删除标签属性</h3><p class='f'>
+为匹配的元素集合中的每个元素中移除一个属性（attribute）
+</p>
 
-<h2 id="6-removeAttr-attrName"><a href="#6-removeAttr-attrName" class="headerlink" title="6.removeAttr(attrName)"></a>6.removeAttr(attrName)</h2><blockquote>
-<p>为匹配的元素集合中的每个元素中移除一个属性（attribute）</p>
-</blockquote>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">"#dom"</span>).removeAttr(<span class="string">"title"</span>);</span><br></pre></td></tr></table></figure>
 
 
+<p><br><br></p>
+<h2 id="1-3-获取和设置标签里面的内容"><a href="#1-3-获取和设置标签里面的内容" class="headerlink" title="1.3 获取和设置标签里面的内容"></a>1.3 获取和设置标签里面的内容</h2><p class='f'>
+我们可以通过 html() 和 val() 方法获取获取和设置标签里面的内容，这两个方法在获取和设置内容上是不同的，一个是 html 操作，一个仅限于文本操作
+</p>
 
-<h2 id="7-prop"><a href="#7-prop" class="headerlink" title="7.prop()"></a>7.prop()</h2><blockquote>
-<p>这个属性能返回元素样式的值，也可以设置样式的值，这里有一点问题，小心使用</p>
-</blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">"button"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> $x = $(<span class="string">"div"</span>);</span><br><span class="line">    $x.prop(<span class="string">"color"</span>,<span class="string">"FF0000"</span>);</span><br><span class="line">    $x.append(<span class="string">"The color 属性： "</span> + $x.prop(<span class="string">"color"</span>));</span><br><span class="line">    $x.removeProp(<span class="string">"color"</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="1-3-1-html-获取和设置标签里的html内容"><a href="#1-3-1-html-获取和设置标签里的html内容" class="headerlink" title="1.3.1 html() 获取和设置标签里的html内容"></a>1.3.1 html() 获取和设置标签里的html内容</h3><p class='f'>
+如果是获取元素内的内容，它会将整个 DOM 结构都获取出来，设置的情况下也是，它会先渲染内容、然后在添加到元素里面 。
+</p>
 
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">"#dom"</span>).html();					<span class="comment">// 1.返回元素底下的 html</span></span><br><span class="line"></span><br><span class="line">$(<span class="string">"#dom"</span>).html(<span class="string">"&lt;p&gt;this is a setting text p content !&lt;/p&gt;"</span>);			<span class="comment">// 2.这是我设置的一段文本</span></span><br><span class="line"></span><br><span class="line">$(<span class="string">"#dom"</span>).html(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"&lt;p&gt;this is a setting text p content !&lt;/p&gt;"</span>;					  <span class="comment">// 3.也可以通过函数返回</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
+<br>
 
-<h2 id="8-removeProp-propertyName"><a href="#8-removeProp-propertyName" class="headerlink" title="8.removeProp(propertyName)"></a>8.removeProp(propertyName)</h2><blockquote>
-<p>用于移除元素的某一个样式</p>
-</blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">"button"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> $x = $(<span class="string">"div"</span>);</span><br><span class="line">    $x.prop(<span class="string">"color"</span>,<span class="string">"FF0000"</span>);</span><br><span class="line">    $x.append(<span class="string">"The color 属性： "</span> + $x.prop(<span class="string">"color"</span>));</span><br><span class="line">    $x.removeProp(<span class="string">"color"</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">$(selector).prop(&#123;<span class="attr">property</span>:value, <span class="attr">property</span>:value,...&#125;)	<span class="comment">// 如果我们需要设置多个值, 我们可以传入一个对象</span></span><br></pre></td></tr></table></figure>
+<h3 id="1-3-2-val-获取和设置标签里的文本内容"><a href="#1-3-2-val-获取和设置标签里的文本内容" class="headerlink" title="1.3.2 val() 获取和设置标签里的文本内容"></a>1.3.2 val() 获取和设置标签里的文本内容</h3><p class='f'>
+这个属性仅限于文本操作，不会进行标签渲染，或者是获取 DOM 标签，而是纯文本形式的 。
+</p>
 
-
-
-<h2 id="9-html"><a href="#9-html" class="headerlink" title="9.html()"></a>9.html()</h2><blockquote>
-<p>获取某个元素下的全部子元素的 html，同时也可以设置指定元素下的 html 内容</p>
-</blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">"#dom"</span>).html();					<span class="comment">// 1.返回元素底下的 html</span></span><br><span class="line"></span><br><span class="line">$(<span class="string">"#dom"</span>).html(<span class="string">"&lt;p&gt;this is a setting text p content !&lt;/p&gt;"</span>);			<span class="comment">// 2.这是我设置的一段文本</span></span><br><span class="line"></span><br><span class="line">$(<span class="string">"#dom"</span>).html(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"&lt;p&gt;this is a setting text p content !&lt;/p&gt;"</span>;					<span class="comment">// 3.也可以通过函数返回</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="10-val"><a href="#10-val" class="headerlink" title="10.val()"></a>10.val()</h2><blockquote>
-<p>获取匹配的元素集合中第一个元素的当前值。设置匹配的元素集合中每个元素的值。</p>
-</blockquote>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">"input"</span>).val();</span><br></pre></td></tr></table></figure>
 
 
@@ -362,29 +387,47 @@ jQuery是免费、开源的，使用MIT许可协议。jQuery的语法设计可�
 
 
 
+<p><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></p>
+<h1 id="第-2-章-JQuery-CSS-样式"><a href="#第-2-章-JQuery-CSS-样式" class="headerlink" title="第 2 章 JQuery CSS 样式"></a>第 2 章 JQuery CSS 样式</h1><p class='f'>
+这一节，我们将使用 JQuery 设置 CSS 样式
+<p>
 
+<h2 id="2-1-css-设置或获取元素样式"><a href="#2-1-css-设置或获取元素样式" class="headerlink" title="2.1 css() 设置或获取元素样式"></a>2.1 css() 设置或获取元素样式</h2><p class='f'>
+获取匹配元素集合中的第一个元素的样式属性的值设置每个匹配元素的一个或多个CSS属性
+</p>
 
-<h1 id="第-2-章-JQuery-CSS-样式"><a href="#第-2-章-JQuery-CSS-样式" class="headerlink" title="第 2 章 JQuery CSS 样式"></a>第 2 章 JQuery CSS 样式</h1><blockquote>
-<p>这一节，我们将使用 JQuery 设置 CSS 样式</p>
-</blockquote>
-<h2 id="1-css"><a href="#1-css" class="headerlink" title="1.css()"></a>1.css()</h2><blockquote>
-<p>获取匹配元素集合中的第一个元素的样式属性的值设置每个匹配元素的一个或多个CSS属性</p>
-</blockquote>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> divBackgroundColor = $(<span class="string">"#box"</span>).css(<span class="string">"backgroundColor"</span>);			&gt;&gt; red</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> divStyles = $(<span class="string">"#box"</span>).css( [<span class="string">"width"</span>, <span class="string">"height"</span>, <span class="string">"color"</span>, <span class="string">"background-color"</span>])</span><br><span class="line"></span><br><span class="line">$(<span class="string">"#box"</span>).css(<span class="string">"backgroundColor"</span>, <span class="string">"red"</span>);		</span><br><span class="line"></span><br><span class="line">$(<span class="string">"#box"</span>).css(&#123;</span><br><span class="line">    <span class="string">"height"</span>: <span class="string">"100px"</span>,</span><br><span class="line">    <span class="string">"width"</span>: <span class="string">"100px"</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">$(<span class="string">"span"</span>).css(<span class="string">"backgroundColor"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">index, oldVle</span>)</span>&#123;</span><br><span class="line">   <span class="keyword">return</span>  oldVlue;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
+<br>
 
+<h2 id="2-2-prop-设置或获取元素样式属性"><a href="#2-2-prop-设置或获取元素样式属性" class="headerlink" title="2.2 prop() 设置或获取元素样式属性"></a>2.2 prop() 设置或获取元素样式属性</h2><p class='f'>
+这个属性能返回元素样式的值，也可以设置样式的值，这里有一点问题，小心使用
+</p>
 
-<h2 id="2-jQuery-cssHooks"><a href="#2-jQuery-cssHooks" class="headerlink" title="2.jQuery.cssHooks"></a>2.jQuery.cssHooks</h2><blockquote>
-<p>向 jQuery 中添加钩子，我们可以获取我们设置的样式值和元素，还可以设置样式和值</p>
-<p>更强大的是我们还可以自定义样式，cssHooks 其实就是典型的前人栽树后人乘凉的机制，封装属性</p>
-</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">"button"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> $x = $(<span class="string">"div"</span>);</span><br><span class="line">    $x.prop(<span class="string">"color"</span>,<span class="string">"FF0000"</span>);</span><br><span class="line">    $x.append(<span class="string">"The color 属性： "</span> + $x.prop(<span class="string">"color"</span>));</span><br><span class="line">    $x.removeProp(<span class="string">"color"</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h2 id="2-3-removeProp-propertyName-删除元素样式属性"><a href="#2-3-removeProp-propertyName-删除元素样式属性" class="headerlink" title="2.3 removeProp(propertyName) 删除元素样式属性"></a>2.3 removeProp(propertyName) 删除元素样式属性</h2><p class='f'>
+用于移除元素的某一个样式
+</p>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">"button"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> $x = $(<span class="string">"div"</span>);</span><br><span class="line">    $x.prop(<span class="string">"color"</span>,<span class="string">"FF0000"</span>);</span><br><span class="line">    $x.append(<span class="string">"The color 属性： "</span> + $x.prop(<span class="string">"color"</span>));</span><br><span class="line">    $x.removeProp(<span class="string">"color"</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">$(selector).prop(&#123;<span class="attr">property</span>:value, <span class="attr">property</span>:value,...&#125;)	<span class="comment">// 如果我们需要设置多个值, 我们可以传入一个对象</span></span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h2 id="2-4-jQuery-cssHooks-添加样式钩子"><a href="#2-4-jQuery-cssHooks-添加样式钩子" class="headerlink" title="2.4 jQuery.cssHooks 添加样式钩子"></a>2.4 jQuery.cssHooks 添加样式钩子</h2><p class='f'>
+向 jQuery 中添加钩子，我们可以获取我们设置的样式值和元素，还可以设置样式和值，更强大的是我们还可以自定义样式，cssHooks 其实就是典型的前人栽树后人乘凉的机制、封装属性.
+</p>
+
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="function"><span class="keyword">function</span>(<span class="params">$</span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 1.首先检查浏览器是否支持 cssHooks, 否则将抛出错误</span></span><br><span class="line">    <span class="keyword">if</span> (!$.cssHooks) <span class="keyword">throw</span>(<span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">"this is function need jQuery version big 1.4.3"</span>));</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 2.封装在Dom文档加载完毕的事件里, 要再这个时候写入cssHooks,避免该cssHooks在其他地方被重写</span></span><br><span class="line">    $(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        $.cssHooks.height = &#123;</span><br><span class="line">            <span class="keyword">get</span>: function(element)&#123;</span><br><span class="line">                <span class="keyword">return</span> element.offsetHeight();</span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="keyword">set</span>: function(element, value)&#123;</span><br><span class="line">                element.style.height = <span class="string">`<span class="subst">$&#123;value&#125;</span>px`</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 3.这里会调用 set</span></span><br><span class="line">    $(<span class="string">'body'</span>).css(<span class="string">'height'</span>,<span class="string">'100%'</span>);</span><br><span class="line">    </span><br><span class="line">&#125;)(jQuery);</span><br></pre></td></tr></table></figure>
 
+<br>
 
+<h2 id="2-5-jQuery-cssNumber"><a href="#2-5-jQuery-cssNumber" class="headerlink" title="2.5 jQuery.cssNumber"></a>2.5 jQuery.cssNumber</h2><p class='f'>
+jQuery.cssNumber 对象的键为驼峰式，值均设置为 true，如果要防止该 .css() 方法自动 px 为特定 CSS 属性添加单位，则可以向该 jQuery.cssNumber 对象添加额外的属性
+</p>
 
-<h2 id="3-jQuery-cssNumber"><a href="#3-jQuery-cssNumber" class="headerlink" title="3.jQuery.cssNumber"></a>3.jQuery.cssNumber</h2><blockquote>
-<p>jQuery.cssNumber 对象的键为驼峰式，值均设置为 true，如果要防止该 .css() 方法自动 px 为特定 CSS 属性添加单位，则可以向该 jQuery.cssNumber 对象添加额外的属性</p>
-</blockquote>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jQuery.cssNumber.someCSSProp = <span class="literal">true</span>;</span><br></pre></td></tr></table></figure>
 
 
@@ -497,37 +540,76 @@ jQuery是免费、开源的，使用MIT许可协议。jQuery的语法设计可�
 
 
 
+<p><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></p>
+<h1 id="第-3-章-JQuery-CSS-获取元素大小尺寸"><a href="#第-3-章-JQuery-CSS-获取元素大小尺寸" class="headerlink" title="第 3 章 JQuery CSS 获取元素大小尺寸"></a>第 3 章 JQuery CSS 获取元素大小尺寸</h1><p class='f'>
+这一章主要是获取元素的尺寸，我们依次进行介绍
+</p>
 
+<h2 id="3-1-height-返回内容-content-高度"><a href="#3-1-height-返回内容-content-高度" class="headerlink" title="3.1 height() 返回内容 content 高度"></a>3.1 height() 返回内容 content 高度</h2><p class='f'>
+返回内容的高度，不包括 marging 、padding 、border
+</p>
 
-<h1 id="第-3-章-JQuery-CSS-尺寸"><a href="#第-3-章-JQuery-CSS-尺寸" class="headerlink" title="第 3 章 JQuery CSS 尺寸"></a>第 3 章 JQuery CSS 尺寸</h1><blockquote>
-<p>这一章主要是获取元素的尺寸，我们依次进行介绍</p>
-</blockquote>
-<h2 id="1-height"><a href="#1-height" class="headerlink" title="1.height()"></a>1.height()</h2><blockquote>
-<p>返回内容的高度，不包括 marging 、padding 、border</p>
-</blockquote>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">const</span> height = $(<span class="string">"#dom"</span>).height();			&gt;&gt; height: <span class="number">100</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">$(<span class="string">"#dom"</span>).height(<span class="number">100</span>);		<span class="comment">// 设置高度, 我们不需要传入一个 px</span></span><br><span class="line"></span><br><span class="line">$(<span class="string">"p"</span>).height(<span class="function"><span class="keyword">function</span>(<span class="params">index, oldHeight</span>)</span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
+<br>
 
+<h2 id="3-2-width-返回内容-content-宽度"><a href="#3-2-width-返回内容-content-宽度" class="headerlink" title="3.2 width() 返回内容 content 宽度"></a>3.2 width() 返回内容 content 宽度</h2><p class='f'>
+返回内容的宽度，不包括 marging 、padding 、border
+</p>
 
-<h2 id="2-width"><a href="#2-width" class="headerlink" title="2.width()"></a>2.width()</h2><blockquote>
-<p>返回内容的宽度，不包括 marging 、padding 、border</p>
-</blockquote>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">const</span> width = $(<span class="string">"#dom"</span>).width();			&gt;&gt; width: <span class="number">100</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">$(<span class="string">"#dom"</span>).width(<span class="number">100</span>);		<span class="comment">// 设置宽度, 我们不需要传入一个 px</span></span><br><span class="line"></span><br><span class="line">$(<span class="string">"p"</span>).width(<span class="function"><span class="keyword">function</span>(<span class="params">index, oldWidth</span>)</span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
+<br>
+
+<h2 id="3-3-innerHeight-【content-padding】高度"><a href="#3-3-innerHeight-【content-padding】高度" class="headerlink" title="3.3 innerHeight() 【content+padding】高度"></a>3.3 innerHeight() 【content+padding】高度</h2><p class='f'>
+获取元素的高度，包括 padding ，但不包括 border
+</p>
+
+<br>
+
+<h2 id="3-4-innerWidth-【content-padding】宽度"><a href="#3-4-innerWidth-【content-padding】宽度" class="headerlink" title="3.4 innerWidth()【content+padding】宽度"></a>3.4 innerWidth()【content+padding】宽度</h2><p class='f'>
+获取元素的宽度，包括 padding ，但不包括 border
+</p>
+
+<br>
+
+<h2 id="3-5-outerHeight-【content-padding-boreder】高度"><a href="#3-5-outerHeight-【content-padding-boreder】高度" class="headerlink" title="3.5 outerHeight()【content+padding+boreder】高度"></a>3.5 outerHeight()【content+padding+boreder】高度</h2><p class='f'>
+获取元素的高度，content + padding + border
+</p>
+
+<br>
+
+<h2 id="3-6-outerWidth-【content-padding-boreder】宽度"><a href="#3-6-outerWidth-【content-padding-boreder】宽度" class="headerlink" title="3.6 outerWidth()【content+padding+boreder】宽度"></a>3.6 outerWidth()【content+padding+boreder】宽度</h2><p class='f'>
+获取元素的宽度，content + padding + border
+</p>
 
 
-<h2 id="3-innerHeight"><a href="#3-innerHeight" class="headerlink" title="3.innerHeight()"></a>3.innerHeight()</h2><blockquote>
-<p>获取元素的高度，包括 padding ，但不包括 border</p>
-</blockquote>
-<h2 id="4-innerWidth"><a href="#4-innerWidth" class="headerlink" title="4.innerWidth()"></a>4.innerWidth()</h2><blockquote>
-<p>获取元素的宽度，包括 padding ，但不包括 border</p>
-</blockquote>
-<h2 id="5-outerHeight"><a href="#5-outerHeight" class="headerlink" title="5.outerHeight()"></a>5.outerHeight()</h2><blockquote>
-<p>获取元素的高度，content + padding + border</p>
-</blockquote>
-<h2 id="6-outerWidth"><a href="#6-outerWidth" class="headerlink" title="6.outerWidth()"></a>6.outerWidth()</h2><blockquote>
-<p>获取元素的宽度，content + padding + border</p>
-</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></p>
 <h1 id="第-4-章-JQuery-CSS-偏移定位"><a href="#第-4-章-JQuery-CSS-偏移定位" class="headerlink" title="第 4 章 JQuery CSS 偏移定位"></a>第 4 章 JQuery CSS 偏移定位</h1><blockquote>
 <p>这些方法是主要获取距离的，这里做统一的概括</p>
 </blockquote>
@@ -612,8 +694,7 @@ jQuery是免费、开源的，使用MIT许可协议。jQuery的语法设计可�
 
 
 
-
-
+<p><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></p>
 <h1 id="第-5-章-JQuery-CSS-动画特效"><a href="#第-5-章-JQuery-CSS-动画特效" class="headerlink" title="第 5 章 JQuery CSS 动画特效"></a>第 5 章 JQuery CSS 动画特效</h1><p>jQuery 库里动画是这一框架的特色、包括隐藏显示、淡出淡入、滑动、动画、前端可以通过这些动画 api 来实现丰富生动的页面</p>
 <h2 id="1-隐藏和显示"><a href="#1-隐藏和显示" class="headerlink" title="1.隐藏和显示"></a>1.隐藏和显示</h2><blockquote>
 <p>我们可以使用 hide 和 show 这两个方法来创造、隐藏和显示的效果</p>
@@ -1105,7 +1186,7 @@ jQuery是免费、开源的，使用MIT许可协议。jQuery的语法设计可�
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-addClass-className"><span class="toc-number">1.</span> <span class="toc-text">1.addClass(className)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-removeClass-className"><span class="toc-number">2.</span> <span class="toc-text">2.removeClass(className)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-hasClass-className"><span class="toc-number">3.</span> <span class="toc-text">3.hasClass(className)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-toggleClass-className"><span class="toc-number">4.</span> <span class="toc-text">4.toggleClass(className)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-attr-attrName，-value"><span class="toc-number">5.</span> <span class="toc-text">5.attr(attrName，[value])</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-removeAttr-attrName"><span class="toc-number">6.</span> <span class="toc-text">6.removeAttr(attrName)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-prop"><span class="toc-number">7.</span> <span class="toc-text">7.prop()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-removeProp-propertyName"><span class="toc-number">8.</span> <span class="toc-text">8.removeProp(propertyName)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-html"><span class="toc-number">9.</span> <span class="toc-text">9.html()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-val"><span class="toc-number">10.</span> <span class="toc-text">10.val()</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第-2-章-JQuery-CSS-样式"><span class="toc-number"></span> <span class="toc-text">第 2 章 JQuery CSS 样式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-css"><span class="toc-number">1.</span> <span class="toc-text">1.css()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-jQuery-cssHooks"><span class="toc-number">2.</span> <span class="toc-text">2.jQuery.cssHooks</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-jQuery-cssNumber"><span class="toc-number">3.</span> <span class="toc-text">3.jQuery.cssNumber</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第-3-章-JQuery-CSS-尺寸"><span class="toc-number"></span> <span class="toc-text">第 3 章 JQuery CSS 尺寸</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-height"><span class="toc-number">1.</span> <span class="toc-text">1.height()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-width"><span class="toc-number">2.</span> <span class="toc-text">2.width()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-innerHeight"><span class="toc-number">3.</span> <span class="toc-text">3.innerHeight()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-innerWidth"><span class="toc-number">4.</span> <span class="toc-text">4.innerWidth()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-outerHeight"><span class="toc-number">5.</span> <span class="toc-text">5.outerHeight()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-outerWidth"><span class="toc-number">6.</span> <span class="toc-text">6.outerWidth()</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第-4-章-JQuery-CSS-偏移定位"><span class="toc-number"></span> <span class="toc-text">第 4 章 JQuery CSS 偏移定位</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-offset"><span class="toc-number">1.</span> <span class="toc-text">1.offset()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-offsetParent"><span class="toc-number">2.</span> <span class="toc-text">2.offsetParent()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-position"><span class="toc-number">3.</span> <span class="toc-text">3.position()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-scrollLeft"><span class="toc-number">4.</span> <span class="toc-text">4.scrollLeft()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-scrollTop"><span class="toc-number">5.</span> <span class="toc-text">5.scrollTop()</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第-5-章-JQuery-CSS-动画特效"><span class="toc-number"></span> <span class="toc-text">第 5 章 JQuery CSS 动画特效</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-隐藏和显示"><span class="toc-number">1.</span> <span class="toc-text">1.隐藏和显示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-淡出淡入"><span class="toc-number">2.</span> <span class="toc-text">2.淡出淡入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-滑动动画"><span class="toc-number">3.</span> <span class="toc-text">3.滑动动画</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-自定义动画"><span class="toc-number">4.</span> <span class="toc-text">4.自定义动画</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-停止动画"><span class="toc-number">5.</span> <span class="toc-text">5 停止动画</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-动画文档的-API"><span class="toc-number">6.</span> <span class="toc-text">6.动画文档的 API</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-clearQueue"><span class="toc-number">6.1.</span> <span class="toc-text">1.clearQueue()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-delay"><span class="toc-number">6.2.</span> <span class="toc-text">2.delay()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-queue"><span class="toc-number">6.3.</span> <span class="toc-text">3.queue()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-dequeue"><span class="toc-number">6.4.</span> <span class="toc-text">4.dequeue()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-finish"><span class="toc-number">6.5.</span> <span class="toc-text">5.finish()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-jQuery-fx-interval"><span class="toc-number">6.6.</span> <span class="toc-text">6.jQuery.fx.interval</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-jQuery-fx-off"><span class="toc-number">6.7.</span> <span class="toc-text">7.jQuery.fx.off</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-jQuery-speed"><span class="toc-number">6.8.</span> <span class="toc-text">8.jQuery.speed</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第-6-章-JQuery-CSS-选择器"><span class="toc-number"></span> <span class="toc-text">第 6 章 JQuery CSS 选择器</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-属性选择器"><span class="toc-number">1.</span> <span class="toc-text">1.属性选择器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-基础选择器"><span class="toc-number">2.</span> <span class="toc-text">2.基础选择器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-基础过滤"><span class="toc-number">3.</span> <span class="toc-text">3.基础过滤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-子元素过滤"><span class="toc-number">4.</span> <span class="toc-text">4.子元素过滤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-内容过滤"><span class="toc-number">5.</span> <span class="toc-text">5.内容过滤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-表单"><span class="toc-number">6.</span> <span class="toc-text">6.表单</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-层级"><span class="toc-number">7.</span> <span class="toc-text">7.层级</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-可见性过滤"><span class="toc-number">8.</span> <span class="toc-text">8.可见性过滤</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第-7-章-jQuery-事件"><span class="toc-number"></span> <span class="toc-text">第 7 章 jQuery 事件</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-window-浏览器事件"><span class="toc-number">1.</span> <span class="toc-text">1.window 浏览器事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-document-文档加载"><span class="toc-number">2.</span> <span class="toc-text">2.document 文档加载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-event-绑定事件处理器"><span class="toc-number">3.</span> <span class="toc-text">3.event 绑定事件处理器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-event-事件对象"><span class="toc-number">4.</span> <span class="toc-text">4.event 事件对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-from-表单事件"><span class="toc-number">5.</span> <span class="toc-text">5.from 表单事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-key-键盘事件"><span class="toc-number">6.</span> <span class="toc-text">6.key 键盘事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-mouse-鼠标事件"><span class="toc-number">7.</span> <span class="toc-text">7.mouse 鼠标事件</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第-8-章-jQuery-dom-元素的遍历"><span class="toc-number"></span> <span class="toc-text">第 8 章 jQuery dom 元素的遍历</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-向上遍历-祖先"><span class="toc-number">1.</span> <span class="toc-text">1.向上遍历(祖先)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-向下遍历-后代"><span class="toc-number">2.</span> <span class="toc-text">2.向下遍历(后代)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-水平遍历-同胞"><span class="toc-number">3.</span> <span class="toc-text">3.水平遍历(同胞)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-遍历-过滤"><span class="toc-number">4.</span> <span class="toc-text">4.遍历(过滤)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-框架标识符影响"><span class="toc-number">5.</span> <span class="toc-text">5.框架标识符影响</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第-9-章-jQuery-document-element"><span class="toc-number"></span> <span class="toc-text">第 9 章 jQuery document element</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#复制元素"><span class="toc-number">1.</span> <span class="toc-text">复制元素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DOM-插入"><span class="toc-number">2.</span> <span class="toc-text">DOM 插入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DOM-插入并包裹现有内容"><span class="toc-number">3.</span> <span class="toc-text">DOM 插入并包裹现有内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DOM-插入现有元素内"><span class="toc-number">4.</span> <span class="toc-text">DOM 插入现有元素内</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DOM-插入现有元素外"><span class="toc-number">5.</span> <span class="toc-text">DOM 插入现有元素外</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DOM-移除"><span class="toc-number">6.</span> <span class="toc-text">DOM 移除</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DOM-替换"><span class="toc-number">7.</span> <span class="toc-text">DOM 替换</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-number"></span> <span class="toc-text"></span></a>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#第-1-章-jQuery-对-DOM-属性的相关操作"><span class="toc-number">1.</span> <span class="toc-text">第 1 章 jQuery 对 DOM 属性的相关操作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-class设置类属性"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 class设置类属性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-1-addClass-className-添加类属性"><span class="toc-number">1.1.1.</span> <span class="toc-text">1.1.1 addClass(className) 添加类属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-2-removeClass-className-移除类属性"><span class="toc-number">1.1.2.</span> <span class="toc-text">1.1.2 removeClass(className) 移除类属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-3-hasClass-className-是否存在指定类属性"><span class="toc-number">1.1.3.</span> <span class="toc-text">1.1.3 hasClass(className) 是否存在指定类属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-4-toggleClass-className-切换类属性"><span class="toc-number">1.1.4.</span> <span class="toc-text">1.1.4 toggleClass(className) 切换类属性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-attr-设置任意属性"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 attr 设置任意属性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-1-attr-attrName，-value-添加或获取标签属性"><span class="toc-number">1.2.1.</span> <span class="toc-text">1.2.1 attr(attrName，[value]) 添加或获取标签属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-2-removeAttr-attrName-删除标签属性"><span class="toc-number">1.2.2.</span> <span class="toc-text">1.2.2 removeAttr(attrName) 删除标签属性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-获取和设置标签里面的内容"><span class="toc-number">1.3.</span> <span class="toc-text">1.3 获取和设置标签里面的内容</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-1-html-获取和设置标签里的html内容"><span class="toc-number">1.3.1.</span> <span class="toc-text">1.3.1 html() 获取和设置标签里的html内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-2-val-获取和设置标签里的文本内容"><span class="toc-number">1.3.2.</span> <span class="toc-text">1.3.2 val() 获取和设置标签里的文本内容</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第-2-章-JQuery-CSS-样式"><span class="toc-number">2.</span> <span class="toc-text">第 2 章 JQuery CSS 样式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-css-设置或获取元素样式"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 css() 设置或获取元素样式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-prop-设置或获取元素样式属性"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 prop() 设置或获取元素样式属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-removeProp-propertyName-删除元素样式属性"><span class="toc-number">2.3.</span> <span class="toc-text">2.3 removeProp(propertyName) 删除元素样式属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-4-jQuery-cssHooks-添加样式钩子"><span class="toc-number">2.4.</span> <span class="toc-text">2.4 jQuery.cssHooks 添加样式钩子</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-5-jQuery-cssNumber"><span class="toc-number">2.5.</span> <span class="toc-text">2.5 jQuery.cssNumber</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第-3-章-JQuery-CSS-获取元素大小尺寸"><span class="toc-number">3.</span> <span class="toc-text">第 3 章 JQuery CSS 获取元素大小尺寸</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-height-返回内容-content-高度"><span class="toc-number">3.1.</span> <span class="toc-text">3.1 height() 返回内容 content 高度</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-width-返回内容-content-宽度"><span class="toc-number">3.2.</span> <span class="toc-text">3.2 width() 返回内容 content 宽度</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3-innerHeight-【content-padding】高度"><span class="toc-number">3.3.</span> <span class="toc-text">3.3 innerHeight() 【content+padding】高度</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-4-innerWidth-【content-padding】宽度"><span class="toc-number">3.4.</span> <span class="toc-text">3.4 innerWidth()【content+padding】宽度</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-5-outerHeight-【content-padding-boreder】高度"><span class="toc-number">3.5.</span> <span class="toc-text">3.5 outerHeight()【content+padding+boreder】高度</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-6-outerWidth-【content-padding-boreder】宽度"><span class="toc-number">3.6.</span> <span class="toc-text">3.6 outerWidth()【content+padding+boreder】宽度</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第-4-章-JQuery-CSS-偏移定位"><span class="toc-number">4.</span> <span class="toc-text">第 4 章 JQuery CSS 偏移定位</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-offset"><span class="toc-number">4.1.</span> <span class="toc-text">1.offset()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-offsetParent"><span class="toc-number">4.2.</span> <span class="toc-text">2.offsetParent()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-position"><span class="toc-number">4.3.</span> <span class="toc-text">3.position()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-scrollLeft"><span class="toc-number">4.4.</span> <span class="toc-text">4.scrollLeft()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-scrollTop"><span class="toc-number">4.5.</span> <span class="toc-text">5.scrollTop()</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第-5-章-JQuery-CSS-动画特效"><span class="toc-number">5.</span> <span class="toc-text">第 5 章 JQuery CSS 动画特效</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-隐藏和显示"><span class="toc-number">5.1.</span> <span class="toc-text">1.隐藏和显示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-淡出淡入"><span class="toc-number">5.2.</span> <span class="toc-text">2.淡出淡入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-滑动动画"><span class="toc-number">5.3.</span> <span class="toc-text">3.滑动动画</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-自定义动画"><span class="toc-number">5.4.</span> <span class="toc-text">4.自定义动画</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-停止动画"><span class="toc-number">5.5.</span> <span class="toc-text">5 停止动画</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-动画文档的-API"><span class="toc-number">5.6.</span> <span class="toc-text">6.动画文档的 API</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-clearQueue"><span class="toc-number">5.6.1.</span> <span class="toc-text">1.clearQueue()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-delay"><span class="toc-number">5.6.2.</span> <span class="toc-text">2.delay()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-queue"><span class="toc-number">5.6.3.</span> <span class="toc-text">3.queue()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-dequeue"><span class="toc-number">5.6.4.</span> <span class="toc-text">4.dequeue()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-finish"><span class="toc-number">5.6.5.</span> <span class="toc-text">5.finish()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-jQuery-fx-interval"><span class="toc-number">5.6.6.</span> <span class="toc-text">6.jQuery.fx.interval</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-jQuery-fx-off"><span class="toc-number">5.6.7.</span> <span class="toc-text">7.jQuery.fx.off</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-jQuery-speed"><span class="toc-number">5.6.8.</span> <span class="toc-text">8.jQuery.speed</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第-6-章-JQuery-CSS-选择器"><span class="toc-number">6.</span> <span class="toc-text">第 6 章 JQuery CSS 选择器</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-属性选择器"><span class="toc-number">6.1.</span> <span class="toc-text">1.属性选择器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-基础选择器"><span class="toc-number">6.2.</span> <span class="toc-text">2.基础选择器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-基础过滤"><span class="toc-number">6.3.</span> <span class="toc-text">3.基础过滤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-子元素过滤"><span class="toc-number">6.4.</span> <span class="toc-text">4.子元素过滤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-内容过滤"><span class="toc-number">6.5.</span> <span class="toc-text">5.内容过滤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-表单"><span class="toc-number">6.6.</span> <span class="toc-text">6.表单</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-层级"><span class="toc-number">6.7.</span> <span class="toc-text">7.层级</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-可见性过滤"><span class="toc-number">6.8.</span> <span class="toc-text">8.可见性过滤</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第-7-章-jQuery-事件"><span class="toc-number">7.</span> <span class="toc-text">第 7 章 jQuery 事件</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-window-浏览器事件"><span class="toc-number">7.1.</span> <span class="toc-text">1.window 浏览器事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-document-文档加载"><span class="toc-number">7.2.</span> <span class="toc-text">2.document 文档加载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-event-绑定事件处理器"><span class="toc-number">7.3.</span> <span class="toc-text">3.event 绑定事件处理器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-event-事件对象"><span class="toc-number">7.4.</span> <span class="toc-text">4.event 事件对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-from-表单事件"><span class="toc-number">7.5.</span> <span class="toc-text">5.from 表单事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-key-键盘事件"><span class="toc-number">7.6.</span> <span class="toc-text">6.key 键盘事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-mouse-鼠标事件"><span class="toc-number">7.7.</span> <span class="toc-text">7.mouse 鼠标事件</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第-8-章-jQuery-dom-元素的遍历"><span class="toc-number">8.</span> <span class="toc-text">第 8 章 jQuery dom 元素的遍历</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-向上遍历-祖先"><span class="toc-number">8.1.</span> <span class="toc-text">1.向上遍历(祖先)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-向下遍历-后代"><span class="toc-number">8.2.</span> <span class="toc-text">2.向下遍历(后代)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-水平遍历-同胞"><span class="toc-number">8.3.</span> <span class="toc-text">3.水平遍历(同胞)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-遍历-过滤"><span class="toc-number">8.4.</span> <span class="toc-text">4.遍历(过滤)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-框架标识符影响"><span class="toc-number">8.5.</span> <span class="toc-text">5.框架标识符影响</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第-9-章-jQuery-document-element"><span class="toc-number">9.</span> <span class="toc-text">第 9 章 jQuery document element</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#复制元素"><span class="toc-number">9.1.</span> <span class="toc-text">复制元素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DOM-插入"><span class="toc-number">9.2.</span> <span class="toc-text">DOM 插入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DOM-插入并包裹现有内容"><span class="toc-number">9.3.</span> <span class="toc-text">DOM 插入并包裹现有内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DOM-插入现有元素内"><span class="toc-number">9.4.</span> <span class="toc-text">DOM 插入现有元素内</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DOM-插入现有元素外"><span class="toc-number">9.5.</span> <span class="toc-text">DOM 插入现有元素外</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DOM-移除"><span class="toc-number">9.6.</span> <span class="toc-text">DOM 移除</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DOM-替换"><span class="toc-number">9.7.</span> <span class="toc-text">DOM 替换</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-number">10.</span> <span class="toc-text"></span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -1253,10 +1334,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">npm</a>
               </li>
              
@@ -1265,11 +1342,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">html5</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
