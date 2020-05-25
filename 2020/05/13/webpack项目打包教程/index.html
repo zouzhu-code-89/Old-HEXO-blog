@@ -16,17 +16,17 @@
 <meta property="og:description" content="webpack 是一个现代 javascript 应用程序的 &quot;静态模块打包器 (module bundler)&quot; 下面这一副图片就基本上概述了 webpack 所以的功能，它是能将所有的基于JS、CSS、HTML 开发的所有文件，都打包成浏览器可识别的 HTML、CSS、JS 文件，我们不用考虑太多的兼容问题，可以放心把中心放在代码的逻辑上面，你也不用考虑 CSS3 的兼容问题啦，它会帮我们自">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://yoursite.com/images/webpack/webpack%E5%AE%98%E7%BD%91%E5%9B%BE%E7%89%87.gif">
-<meta property="og:image" content="http://yoursite.com/2020/05/13/webpack%E9%A1%B9%E7%9B%AE%E6%89%93%E5%8C%85%E6%95%99%E7%A8%8B/.%5Cimage%5C1.1.png">
-<meta property="og:image" content="http://yoursite.com/2020/05/13/webpack%E9%A1%B9%E7%9B%AE%E6%89%93%E5%8C%85%E6%95%99%E7%A8%8B/image/5.2.png">
-<meta property="og:image" content="http://yoursite.com/2020/05/13/webpack%E9%A1%B9%E7%9B%AE%E6%89%93%E5%8C%85%E6%95%99%E7%A8%8B/image/5.1.png">
-<meta property="og:image" content="http://yoursite.com/2020/05/13/webpack%E9%A1%B9%E7%9B%AE%E6%89%93%E5%8C%85%E6%95%99%E7%A8%8B/image/6.2.png">
-<meta property="og:image" content="http://yoursite.com/2020/05/13/webpack%E9%A1%B9%E7%9B%AE%E6%89%93%E5%8C%85%E6%95%99%E7%A8%8B/image/6.1.png">
-<meta property="og:image" content="http://yoursite.com/2020/05/13/webpack%E9%A1%B9%E7%9B%AE%E6%89%93%E5%8C%85%E6%95%99%E7%A8%8B/image/6.3.png">
-<meta property="og:image" content="http://yoursite.com/2020/05/13/webpack%E9%A1%B9%E7%9B%AE%E6%89%93%E5%8C%85%E6%95%99%E7%A8%8B/image/6.4.png">
-<meta property="og:image" content="http://yoursite.com/2020/05/13/webpack%E9%A1%B9%E7%9B%AE%E6%89%93%E5%8C%85%E6%95%99%E7%A8%8B/image/6.5.png">
-<meta property="og:image" content="http://yoursite.com/2020/05/13/webpack%E9%A1%B9%E7%9B%AE%E6%89%93%E5%8C%85%E6%95%99%E7%A8%8B/image/6.6.png">
+<meta property="og:image" content="http://yoursite.com/images/webpack/1.1.png">
+<meta property="og:image" content="http://yoursite.com/images/webpack/5.2.png">
+<meta property="og:image" content="http://yoursite.com/images/webpack/5.1.png">
+<meta property="og:image" content="http://yoursite.com/images/webpack/6.2.png">
+<meta property="og:image" content="http://yoursite.com/images/webpack/6.1.png">
+<meta property="og:image" content="http://yoursite.com/images/webpack/6.3.png">
+<meta property="og:image" content="http://yoursite.com/images/webpack/6.4.png">
+<meta property="og:image" content="http://yoursite.com/images/webpack/6.5.png">
+<meta property="og:image" content="http://yoursite.com/images/webpack/6.6.png">
 <meta property="article:published_time" content="2020-05-13T08:02:12.000Z">
-<meta property="article:modified_time" content="2020-05-14T00:13:58.890Z">
+<meta property="article:modified_time" content="2020-05-24T07:03:07.666Z">
 <meta property="article:author" content="彼岸世界">
 <meta property="article:tag" content="webpack">
 <meta name="twitter:card" content="summary">
@@ -268,7 +268,10 @@ webpack 是一个现代 javascript 应用程序的 "静态模块打包器 (modul
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">	entry: <span class="string">"./hello.js"</span>,</span><br><span class="line">	output: &#123;</span><br><span class="line">         <span class="comment">/*</span></span><br><span class="line"><span class="comment">         	output.path : 代表输出文件存放的路径, 这里的意思是 "./dist/filename.js".</span></span><br><span class="line"><span class="comment">         	</span></span><br><span class="line"><span class="comment">       		filename : 代表输出的文件名, 后缀 "bundle.js" 是固定格式.</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">		path: path.resolve(__dirname, <span class="string">'dist'</span>),</span><br><span class="line">		filename: <span class="string">'hello.bundle.js'</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>执行源代码后</p>
-<p><img src=".%5Cimage%5C1.1.png" alt="生成的出口文件"></p>
+<img src='\images\webpack\1.1.png'/>
+
+
+
 <h3 id="1-4-loader-加载"><a href="#1-4-loader-加载" class="headerlink" title="1.4  loader 加载"></a>1.4  loader 加载</h3><p>这个属性就是让 webpack 能够去处理那些非 JavaScript 文件(webpack 自身只理解 javascript)，loader 可以将所有类型的文件转化为 webpack 能够处理的有效模块，然后你就可以利用 webpack 的打包能力，对它们进行处理.</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">	entry: <span class="string">"./hello.js"</span>,</span><br><span class="line">	output: &#123;</span><br><span class="line">		path: path.resolve(__dirname, <span class="string">'dist'</span>),</span><br><span class="line">		filename: <span class="string">'hello.bundle.js'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">/* </span></span><br><span class="line"><span class="comment">   		module : 对象里面定义了 rules 属性, 里面包含两个必须属性 test 和 use, 它想告诉 webpack 什么呢 ?</span></span><br><span class="line"><span class="comment">   		</span></span><br><span class="line"><span class="comment">   		"嘿, webpack 编译器, 当你在 hello.js 中碰到 require() 和 import 语句中被导入解析为 .txt 的文件路		径时, 在你对它打包之前, 先使用 raw-loader 转换一下。”</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="built_in">module</span>: &#123;</span><br><span class="line">        rules: [</span><br><span class="line">            &#123; <span class="attr">test</span>: <span class="regexp">/\.txt$/</span>, <span class="attr">use</span>: <span class="string">'raw-loader'</span>&#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -387,7 +390,10 @@ webpack 是一个现代 javascript 应用程序的 "静态模块打包器 (modul
 <h1 id="WebPack-预处理【loader】"><a href="#WebPack-预处理【loader】" class="headerlink" title="WebPack 预处理【loader】"></a>WebPack 预处理【loader】</h1><blockquote>
 <p>loader 用于对模块源代码进行转换，loader 可以在你 “ import “ 或 “ 加载 “ 模块时预处理文件，loader 可以将文件从不同的语言(如 TypeScript ) 转化为 JavaScript，或将内联图和雪碧图转换为 data URL 等二进制文件，loader 甚至允许你直接在 JavaScript 模块中 import css 文件 .</p>
 </blockquote>
-<p><img src="./image/5.2.png" alt="webpack 打包原理"></p>
+<img src='/images/webpack/5.2.png'/>
+
+
+
 <h3 id="5-1-loader-安装"><a href="#5-1-loader-安装" class="headerlink" title="5.1 loader 安装"></a>5.1 loader 安装</h3><p>你可以使用 loader 告诉 webpack 加载 css 文件，或者将 TypeScript 转为 JavaScript ，为此，首先需要安装对应的 loader 插件 .</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="keyword">install</span> <span class="comment">--save-dev css-loader		css loader</span></span><br><span class="line"></span><br><span class="line">npm <span class="keyword">install</span> <span class="comment">--save-dev ts-loader		TypeScript loader</span></span><br></pre></td></tr></table></figure>
 
@@ -426,7 +432,12 @@ webpack 是一个现代 javascript 应用程序的 "静态模块打包器 (modul
 <p>执行打包命令，然后 html 调用 app.bundle.js</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span> <span class="attr">dir</span>=<span class="string">"ltr"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span> document title <span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line">      <span class="tag">&lt;<span class="name">h1</span>&gt;</span>document index<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">      <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"./dist/app.bundle.js"</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<p><img src="./image/5.1.png" alt="style-loader 渲染效果图"></p>
+<img src='/images/webpack/5.1.png'/>
+
+
+
+
+
 <h3 id="5-4-loader-常用"><a href="#5-4-loader-常用" class="headerlink" title="5.4  loader (  常用 )"></a>5.4  loader (  常用 )</h3><ul>
 <li>style-loader 将css添加到DOM的内联样式标签style里</li>
 <li>css-loader 允许将css文件通过require的方式引入，并返回css代码</li>
@@ -442,24 +453,24 @@ webpack 是一个现代 javascript 应用程序的 "静态模块打包器 (modul
 <h1 id="WebPack-插件【plugins】"><a href="#WebPack-插件【plugins】" class="headerlink" title="WebPack 插件【plugins】"></a>WebPack 插件【plugins】</h1><p> plugins 顾名思义，就是插件，它可以在 webpack 运行到某个时刻的时候，来做一些事情，插件是 webpack 的支柱功能，webpack 自身也是构建于插件，插件目的在于解决 loader 无法实现的其他事 .</p>
 <h3 id="6-1-html-webpack-plugin"><a href="#6-1-html-webpack-plugin" class="headerlink" title="6.1   html-webpack-plugin"></a>6.1   html-webpack-plugin</h3><p><code>HtmlWebpackPlugin</code> 做什么用的呢？ 文档解析：该插件将为你生成一个 <code>HTML5</code> 文件，现在通过例子进行演示.</p>
 <p>目录结构</p>
-<p><img src="./image/6.2.png" alt="6.2 目录结构"></p>
+<p><img src="/images/webpack/6.2.png" alt="6.2 目录结构"></p>
 <p>第 1 步 ：下载插件</p>
-<p><img src="./image/6.1.png" alt="下载 html-webpack-plugin 插件"></p>
+<p><img src="/images/webpack/6.1.png" alt="下载 html-webpack-plugin 插件"></p>
 <p>webpack.config.js</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">"path"</span>);</span><br><span class="line"><span class="keyword">var</span> HtmlWebpackPlugin = <span class="built_in">require</span>(<span class="string">'html-webpack-plugin'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> config = &#123;</span><br><span class="line">		entry: &#123;</span><br><span class="line">				app : <span class="string">"./app.js"</span></span><br><span class="line">		&#125;,</span><br><span class="line">		output: &#123;</span><br><span class="line">				path : path.resolve(__dirname, <span class="string">"dist"</span>),</span><br><span class="line">				filename : <span class="string">"[name].bundle.js"</span></span><br><span class="line">		&#125;,</span><br><span class="line">		<span class="built_in">module</span>: &#123;</span><br><span class="line"></span><br><span class="line">		&#125;,</span><br><span class="line"></span><br><span class="line">		<span class="comment">/*	实例化，引入插件 html-webpack-plugin	</span></span><br><span class="line"><span class="comment">			</span></span><br><span class="line"><span class="comment">			如果不添加 template 对象变量, 生成的 index body 将无内容, 如果我们想预先生成内容, 可以自己写一			 个 html 然后传入给变量, 就会在 dist 目录下生成一个一模一样的 html .</span></span><br><span class="line"><span class="comment">			</span></span><br><span class="line"><span class="comment">			plugins: [</span></span><br><span class="line"><span class="comment">    			new HtmlWebpackPlugin(</span></span><br><span class="line"><span class="comment">        			&#123;template: './index.html'&#125;</span></span><br><span class="line"><span class="comment">    			)</span></span><br><span class="line"><span class="comment">			]</span></span><br><span class="line"><span class="comment">		*/</span></span><br><span class="line">		plugins: [</span><br><span class="line">        	<span class="keyword">new</span> HtmlWebpackPlugin()</span><br><span class="line">    	],</span><br><span class="line"></span><br><span class="line">		mode: <span class="string">"development"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = config;</span><br></pre></td></tr></table></figure>
 
 <p>然后执行打包命令，插件会在 dist 目录生成一个 index.html 文件</p>
-<p><img src="./image/6.3.png" alt="生成了一个 index.html 文件"></p>
+<p><img src="/images/webpack/6.3.png" alt="生成了一个 index.html 文件"></p>
 <p>如果打包失败，则输出这一行命令，在执行一次打包，暂时没搞懂</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm link webpack <span class="comment">--save-dev</span></span><br></pre></td></tr></table></figure>
 
 <p>我们查看生成的 index.js 文件，并且插件自动的帮我们导入了 app.bundle.js 文件 .</p>
-<p><img src="./image/6.4.png" alt="生成的 index"></p>
+<p><img src="/images/webpack/6.4.png" alt="生成的 index"></p>
 <h3 id="6-2-clean-webpack-plugin"><a href="#6-2-clean-webpack-plugin" class="headerlink" title="6.2  clean-webpack-plugin"></a>6.2  clean-webpack-plugin</h3><p>修改一下配置文件中 output 配置，把输出的文件名从 [name].bundle.js 改为 main.js，然后执行打包命令 ! </p>
 <p>生成了 main.js ，但是上一次打包生成的 app.bundle.js 还依然存在，就显的多余了，而插件的作用就是在打包的时候帮我们删除 bundle.js 文件 .</p>
-<p><img src="./image/6.5.png" alt="6.5"></p>
+<p><img src="/images/webpack/6.5.png" alt="6.5"></p>
 <p>第 1 步 ：下载插件</p>
-<p><img src="./image/6.6.png" alt=""></p>
+<p><img src="/images/webpack/6.6.png" alt=""></p>
 <h3 id="6-2-插件定义"><a href="#6-2-插件定义" class="headerlink" title="6.2  插件定义"></a>6.2  插件定义</h3><p>webpack 插件是一个具有 apply 属性方法的 Javascript 对象，apply 属性会被 webpack compiler 调用，并且 compiler 对象可在整个编译生命周期访问 .</p>
 <p><strong>ConsoleLogOnBuildWebpackPlugin.js</strong></p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> pluginName = <span class="string">'ConsoleLogOnBuildWebpackPlugin'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* console-log-onbuild-webpack-plugin */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ConsoleLogOnBuildWebpackPlugin</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/* </span></span><br><span class="line"><span class="comment">    	apply 属性方法 : complier.hook.run.tap 方法的第一个参数是插件名称, 建议声明为一个常量, 方便复用</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    apply(compiler) &#123;</span><br><span class="line">        compiler.hooks.run.tap(pluginName, compilation =&gt; &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">"webpack 构建过程开始！"</span>);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -702,7 +713,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">CSS3</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -710,7 +721,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color5">CSS3</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -726,11 +737,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">http</a>
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
+                <a href="javascript:void(0)" class="js-tag color5">http</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -738,11 +749,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
+                <a href="javascript:void(0)" class="js-tag color1">Redis</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Redis</a>
+                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -750,11 +761,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">jQuery</a>
+                <a href="javascript:void(0)" class="js-tag color1">html5</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">html5</a>
+                <a href="javascript:void(0)" class="js-tag color2">jQuery</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -762,11 +773,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
+                <a href="javascript:void(0)" class="js-tag color5">node</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">node</a>
+                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
               </li>
              
               <li class="article-tag-list-item">
