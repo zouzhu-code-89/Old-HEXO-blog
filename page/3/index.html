@@ -99,7 +99,7 @@
 			</ul>
 		</nav>
 		<nav style="font-size: 12px;color:#7f7f7f">
-				总文章数 35
+				总文章数 36
 		</nav>
 		<nav class="header-smart-menu">
     		
@@ -206,6 +206,184 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="git-GIT教程" class="article article-type-git  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/12/GIT%E6%95%99%E7%A8%8B/">GIT教程</a>
+    </h1>
+  
+
+        
+        <a href="/2020/05/12/GIT%E6%95%99%E7%A8%8B/" class="archive-article-date">
+  	<time datetime="2020-05-12T12:38:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>
+
+<p>
+Git 代码托管中心，作为开源代码库以及版本控制系统，Github拥有超过900万开发者用户，随着越来越多的应用程序转移到了云上，Github已经成为了管理软件开发以及发现已有代码的首选方法 ，如前所述，作为一个分布式的版本控制系统，在 Git 中并不存在主库这样的概念，每一份复制出的库都可以独立使用，任何两个库之间的不一致之处都可以进行合并 
+
+<p>GitHub 可以托管各种 git 库，并提供一个web界面，但与其它像 SourceForge 或 Google Code 这样的服务不同，GitHub的独特卖点在于从另外一个项目进行分支的简易性 。为一个项目贡献代码非常简单：首先点击项目站点的“fork”的按钮，然后将代码检出并将修改加入到刚才分出的代码库中，最后通过内建的“pull request”机制向项目负责人申请代码合并 。已经有人将 GitHub 称为代码玩家的 MySpace</p>
+<p>Git 结构<br>我们的 git 中分为 3 块，分别为工作区，暂存区，本地库，我们的工作区就是平时写代码的地方</p>
+<p>Git 和代码托管中心<br>代码托管中心的任务，维护远程库 【局域网环境下 ：GitLab 服务器】  |    【外网环境下 ：GitHub，码云】<br>本地库和远程库，团队内部协作</p>
+<p>本地库和远程库，跨团队协作，找外人团队协作，小明就是外人，但是它掌握那门技术，所以它也可以写了代码，pull request 到公司的远程仓库</p>
+<p>Git 的基本原理<br>Git 底层采用的是 SHA-1 算法，哈希算法可以被用来验证文件，原理如下</p>
+<p>Git 文件管理机制细节<br>以文件变更列表的方式存储数据。这类系统将它们保存的信息看作是一组基本文件和每个文件随时间逐步累计的差异。</p>
+<p>每次的上传到服务器上文件，保存在服务器的部分都是这次和上次版本之间的差异。如果要从服务器更新到本地也是需要把原始文件的版本和每次的差异 都合并起来，组成一个版本，这样的版本我们可以看到，有点是节约服务器的存储空间，但缺点也很明显，速度慢<br>Git是把数据看作是对小型文件系统的一组快照。 每次你提交更新，或在 Git 中保存项目状态时，它主要对当时的全部文件制作一个快照并保存这个快照的索引。 为了高效，如果文件没有修改，Git 不再重新存储该文件，而是只保留一个链接指向之前存储的文件。 Git 对待数据更像是一个快照流</p>
+<p>快照的意思就是，每次都是直接保存这个版本的所有文件。当然，一般来说，我们每次更改不会更改一个项目的所有文件，对于没有更改的文件git在这里保存的起始是这个版本对于上一个版本的指针。上图的虚线部分圈起来的相对之前版本没改动，所以所在版本只保留这个文件的指针<br>git的提交对象，该提交对象还包含了作者的姓名和邮箱、提交时输入的信息以及指向它的父对象的指针。首次提交产生的提交对象没有父对象，普通提交操作产生的提交对象有一个父对象，而由多个分支合并产生的提交对象有多个父对象<br> 为了更加形象地说明，我们假设现在有一个工作目录，里面包含了三个将要被暂存和提交的文件。暂存操作会为每一个文件计算校验和，然后会把当前版本的文件快照保存到Git 仓库中（Git 使用 blob 对象来保存它们），最终将校验和加入到暂存区域等待提交：<br>$ git add README test.rb LICENSE<br>$ git commit -m ‘The initial commit of my project’<br>对我们来看就是上面的两条命令，当使用 git commit 进行提交操作时，Git 会先计算每一个子目录（本例中只有项目根目录）的校验和，然后在Git 仓库中这些校验和保存为树对象。 随后，Git 便会创建一个提交对象，它除了包含上面提到的那些信息外，还包含指向这个树对象（项目根目录）的指针。如此一来，Git 就可以在需要的时候重现此次保存的快照。<br>现在，Git 仓库中有五个对象：三个 blob 对象（保存着文件快照）、一个树对象（记录着目录结构和 blob 对象索引）以及一个提交对象(包含着指向前述树对象的指针和所有提交信息)<br>用图形表示为如下方式</p>
+<p>提交对象及其父福相形成的链表结构，对于B或C都是做些修改后再次提交，那么这次产生的提交对象会包含一个指向上次提交对象（父对象）的指针。</p>
+<p>Git 分支管理<br>—————————————————————- 待描述</p>
+<p>Git 命令行操作</p>
+<p>本地库初始化<br>$ git init<br>$ ls -a<br>​<br>lenovo@LAPTOP-DHOKAIOC MINGW64 /f/RuanJianInstall/workspaces (master)<br>​<br>$ ls -lah<br>total 4.0K<br>drwxr-xr-x 1 lenovo 197609 0  8月 22 18:42 ./<br>drwxr-xr-x 1 lenovo 197609 0  8月 22 18:40 ../<br>drwxr-xr-x 1 lenovo 197609 0  8月 22 18:42 .git/<br>注意：.git 目录中存放的是本地库相关的子目录和文件，不要删除，也不要胡乱修改<br>lenovo@LAPTOP-DHOKAIOC MINGW64 /f/RuanJianInstall/workspaces/.git (GIT_DIR!)<br>$ ls -lah<br>total 11K<br>drwxr-xr-x 1 lenovo 197609   0  8月 22 18:42 ./<br>drwxr-xr-x 1 lenovo 197609   0  8月 22 18:42 ../<br>-rw-r–r– 1 lenovo 197609 112  8月 22 18:42 config<br>-rw-r–r– 1 lenovo 197609  73  8月 22 18:42 description<br>-rw-r–r– 1 lenovo 197609  23  8月 22 18:42 HEAD<br>drwxr-xr-x 1 lenovo 197609   0  8月 22 18:42 hooks/<br>drwxr-xr-x 1 lenovo 197609   0  8月 22 18:42 info/<br>drwxr-xr-x 1 lenovo 197609   0  8月 22 18:42 objects/<br>drwxr-xr-x 1 lenovo 197609   0  8月 22 18:42 refs/</p>
+<p>设置签名<br>形式：【用户名 ：zouzhu 】 【Email 地址 ：<a href="mailto:2118224692@qq.com">2118224692@qq.com</a>】   作用：区分不同开发人员的身份      辨析 ：这里设置的签名和登录远程库存(代码托管中心)的账号，密码没有任何关系<br>命令：<br>项目级别 / 仓库级别：仅在当前本地库范围内生效<br>git  config user.name tom_pro<br>git  config user.email <a href="mailto:goodMoring_pro@atguigu.com">goodMoring_pro@atguigu.com</a><br>​<br>信息保存位置 ：./.git/config 文件<br>lenovo@LAPTOP-DHOKAIOC MINGW64 /f/RuanJianInstall/workspaces (master)<br>$ git config user.name zouzhu<br>​<br>lenovo@LAPTOP-DHOKAIOC MINGW64 /f/RuanJianInstall/workspaces (master)<br>$ git config user.email <a href="mailto:2118224692@qq.com">2118224692@qq.com</a><br>​<br>lenovo@LAPTOP-DHOKAIOC MINGW64 /f/RuanJianInstall/workspaces (master)<br>$ cat .git/config<br>​<br>[core]<br>        repositoryformatversion = 0<br>        filemode = false<br>        bare = false<br>        logallrefupdates = true<br>        ignorecase = true<br>[user]<br>        name = zouzhu<br>        email = <a href="mailto:2118224692@qq.com">2118224692@qq.com</a><br>系统用户级别 ：登录当前操作系统的用户范围<br>git config –global user.name tom_glb<br>git config –global user.email <a href="mailto:goodMoring_pro@atguigu.com">goodMoring_pro@atguigu.com</a><br>​<br>信息保存位置：~/.gitconfig 文件<br>【级别优先级】：一般情况下我们创建一个用户级别的就可以了，当需要的时候我们在按条件创建项目级别     【就近原则】：项目级别优先于系统用户级别，二者都有时采用项目级别的签名，如果只有系统级别的签名，就以系统用户级别的签名为准，二者都没有不允许<br>lenovo@LAPTOP-DHOKAIOC MINGW64 ~<br>$ cat ~/.gitconfig<br>​<br>[filter “lfs”]<br>        clean = git-lfs clean – %f<br>        smudge = git-lfs smudge – %f<br>        process = git-lfs filter-process<br>        required = true<br>[user]<br>        name = zouzhu_pro<br>        email = <a href="mailto:zouzhu@net.com.cn">zouzhu@net.com.cn</a></p>
+<p>提交到暂存区<br>我们在本地新建一个文件 touch hello.text，这个文件此时就在工作区，我们先来看看命令操作<br>命令 ：查看 git 状态，第一行显示我们当前在默认的 master 分支下，第二行显示我们的暂存区现在没有可提交的版本文件，第三行显示我们本地工作区有一个未知文件没有提交到暂存区，主要是查看工作区和暂存区的状态<br>$ ….. git status</p>
+<p>命令：将工作区的 “新建/修改” 添加到暂存区<br>$ ….. git add filename                // 添加到暂存区<br>​<br>$ ….. git rm –cached filename        // 移除到暂存区</p>
+<p>命令：将暂存区的临时版本提交到本地版本库, 当我们提交后，我们再来查看工作区状态，第一行：显示我们当前在 master 分支下，第二行：nothing to commit，working tree clean 显示暂存区没有可提交的文件，工作区文件相对于上一个版本很干净，没有被改变<br>$ ….. git commit hello.text                           // 添加到暂存区<br>​<br>$ ….. git commit -m “xiaoxi” hello.text               // 添加到暂存区</p>
+<p>本地库<br>我们怎么查看我们提交的版本，及历史版本，还有我们版本的前进和后退<br>命令：查看历史版本 git log，这里我们查看到我们只提交了一个版本到本地库，我们看到了 HEAD -&gt; master 是当前指向的版本<br>$ ….. git log             // 查看历史版本</p>
+<p>$ ….. git log –pretty=oneline            // 查看历史版本,以一行显示<br>​<br>$ ….. git log oneline                     // 查看历史版本,以一行显示</p>
+<p>$ ….. git reflog              // 可以查看我们需要后退多少布,再就是我们现在 cat 查看的正是当前版本 3</p>
+<p>注释：多屏显示控制方式，空格向下翻页，b 向上翻页，q 退出</p>
+<p>版本回退<br>任意版本操作命令，这里显示已经成功回退到版本二<br>git reset –hard version</p>
+<p>只能版本回退命令，回退到上一个版本，^ 是退几步<br>git reset –hard HEAD^^</p>
+<p>git reset –hard HEAD~3                 // 表示后退三步,只能后退<br>reset 命令的三个参数对比<br>        – soft 参数 ：仅仅在本地库移动 HEAD 指针<br>        – mixed 参数：在本地库移动 HEAD 指针，重置暂存区<br>        – hard 参数：在本地库移动 HEAD 指针，重置暂存区，重置工作区</p>
+<p>删除文件<br>删除文件并找回，前提：删除前，文件存在时的状态提交到了本地库，我们 rm filname 后可以将状态提交到暂存区，在提交到本地库，然后我们回退版本即可恢复删除的文件<br>命令还是 ：git reset –hard[指针位置] ：历史记录或当前位置，删除操作已经提交到本地库：指针位置指向历史记录，删除操作如果尚未提交到本地库，指针位置使用 HEAD</p>
+<p>文件比较<br>git diff filename                       // 将工作区中的文件和暂存区进行比较<br>​<br>git diff [本地库中历史版本][文件名]       // 将工作区中的文件和本地库历史记录比较<br>​<br>不带文件名比较多个文件</p>
+<p>分支操作<br>git branch -v</p>
+<p>创建分支<br>git branch springboot</p>
+<p>切换分支<br>git checkout springboot</p>
+<p>分支合并<br>第一步：切换到接受修改的分支上（被合并，增加新内容）上    git  checkout[被合并分支名]<br>第二布：执行 merge 命令 + 分支名,   git merge[有新内容分支名]</p>
+<p>分支冲突<br>当我们在每一个分支都修改 data.text 时，进行分支数据合并就会报错，产生分支冲突，我们合并后发现文件中同时出现了两个分支修改的内容，我们现在逐步解决分支冲突</p>
+<p>1，编辑文件，删除特殊符号，把文件修改到满意的程度，保存退出</p>
+<p>2，git add 【文件名】</p>
+<p>3，git  commit -m “日志消息”，这里千万不能加文件名，会报错，因为我们还在处于分支合并状态 MERGING</p>
+<p>4，完成操作</p>
+<h1 id="第-3-章-Git-Hub-远程仓库"><a href="#第-3-章-Git-Hub-远程仓库" class="headerlink" title="第 3 章 Git Hub 远程仓库"></a>第 3 章 Git Hub 远程仓库</h1><p>向远程库推送<br>1，我们创建一个远程仓库，最好与我们新建的本地仓库同命，让我们好辨认具体是哪一个项目</p>
+<p>2，将地址保存在本地命令如下，fetch 代表取回地址，push 代表推送地址，push 开始推送到我们的远程仓库</p>
+<p>3，我们来到团队远程仓库，发现springboot date.text 成功被推送，我们能查看到文件和与之对应的内容</p>
+<p>向本地库克隆<br>命令：git springboot_adder【远程地址】 效果：完整的把远程库下载到本地，替我们创建 springboot 远程地址别名，已经初始化好了本地库，不需要我们自己初始化</p>
+<p>我们现在能克隆到分支，但是我们不能将我们的修改的分支上传到团队，因为我们还不是团队里的成员，我们需要团队管理员给我们一个拉去我们成团队人员的链接，如果我们要让别人加入我们的团队必须生成一个团队邀请链接 <a href="https://github.com/zouzhu/springboot/invitations" target="_blank" rel="noopener">https://github.com/zouzhu/springboot/invitations</a><br>我们在这里需要搜索即将被拉取成为团队人员的 GitHub 账号，它会帮我们生成一个链接如上所示</p>
+<p>我们将这个链接发给即将成为团队人，他登录自己的 GitHub 账号后，将链接复制到地址栏，就会显示 Accept invitation 同意加入团队</p>
+<p>远程库修改的拉取<br>比如说小明和小王同时克隆了远程库的分支，这时候小明对分支做了新的修改，并推送到了远程 GitHub 仓库，但小王在本地仓库还没有任何内容变化，小王说那我和你同步一下吧 ！然后就进行了远程库修改的拉取<br>命令 ：<br>$ …. git pull 远程仓库地址 分支名<br>命令 ：在数据简单的时候我们可以直接 pull ，但是在数据复杂的情况下我们可以分步进行拉取，合并<br>git  fetch  【远程库地址别名】 【远程分支名】抓取<br>git  merget 【远程库地址别名/远程分支名】合并<br>​<br>pull = fetch + merge</p>
+<p>协同开发时冲突的解决<br>比如说小明和小王同时克隆了远程库的分支，这时候小明对分支做了新的修改，并推送到了远程 GitHub 仓库，但小王在本地仓库还没有任何内容变化，小王还不知道小明对内容进行了更新，所以没拉取合并操作，当小王同时也对内容进行修改，推送到远程仓库的时候，却报错了，显示当前不是最新版本不能进行推送，因为小明已经推送了一个版本后，小王的版本自然不是最新的版本，现在就发生了协同开发时的冲突，解决的方式和之前的分支冲突解决方案是相同的，最后在 pull 分支<br>要点：如果不是基于 GitHub 远程库的最新版所做的修改，不能推送，必须先拉取 。拉取下来后如果进入冲突状态，则按照 “分支冲突解决“ 操作解决即可</p>
+<h2 id="SSH-免密登录"><a href="#SSH-免密登录" class="headerlink" title="SSH 免密登录"></a>SSH 免密登录</h2><p style='font-size:14px'>
+SSH 免密登录的原理就是在本地 git 仓库通过命令生成一个密钥，然后保存到 github 的密钥管理器上，用户就可以通过 ssh 链接，在不使用密码的情况下对代码进行上传 。这个操作一般用于个人项目，在团队项目的时候，这样的操作时不可行的，代码肯定是需要经过审核通过的.<br>
+<strong style='font-size:14px;color:#009688'>
+1.首先在本地 git 仓库，通过命令生成一串密钥 $ ssh-keygen
+</strong>
+<img src='/images/git/ssh-密钥生成过程截图.png'/>
+</p>
+<p style='font-size:14px'>
+    <strong style='font-size:14px;color:#009688'>
+        2.生成的密钥保存在用户目录下的 .ssh 文件夹中，一个为私钥、另一个为公钥、我们要做的就是将公钥保存到 GitHub 配置里面.
+        <img src='/images/git/git-id-rsa.pub公钥.png'/>
+    </strong>
+</p>
+<p style='font-size:14px'>
+    <strong style='font-size:14px;color:#009688'>
+        2.回到 github 网站，进入 Account Settings，左边选择SSH Keys，Add SSH Key，title 随便输入一个就好了
+        <img src='/images/git/github-ssh-keys.png'/>
+    </strong>
+</p>
+<p style='font-size:14px'>
+    <strong style='font-size:14px;color:#009688'>
+        3.回到 github 网站，进入 Account Settings，左边选择SSH Keys，Add SSH Key，title 随便输入一个就好了
+        <img src='/images/git/github-ssh-keys.png'/>
+    </strong>
+</p>
+
+
+
+
+<p>title随便填，粘贴key。</p>
+<p>1，我们先进入我们远程仓库，获取 SSH 免密登录链接</p>
+<p>2，然后再本地通过命令生成一个密钥，由下面代码我们看到了一连串的密文<br>lenovo@LAPTOP-DHOKAIOC MINGW64 ~<br>$ ssh-keygen -t rsa -C <a href="mailto:2118224692@qq.com">2118224692@qq.com</a></p>
+<p>Generating public/private rsa key pair.<br>Enter file in which to save the key (/c/Users/lenovo/.ssh/id_rsa):<br>Created directory ‘/c/Users/lenovo/.ssh’.<br>Enter passphrase (empty for no passphrase):<br>Enter same passphrase again:<br>Your identification has been saved in /c/Users/lenovo/.ssh/id_rsa.<br>Your public key has been saved in /c/Users/lenovo/.ssh/id_rsa.pub.<br>The key fingerprint is:<br>SHA256:A3rsOZGAqGBZTCD5dBRgoOHDQ/VjKaQHtsVJ2RKWqig <a href="mailto:2118224692@qq.com">2118224692@qq.com</a><br>The key’s randomart image is:<br>+—[RSA 3072]—-+<br>|+BX%O.           |<br>|O+@Oo..          |<br>|+%o+o=.          |<br>|+.= o+.o         |<br>|+   . = S        |<br>|E    o o .       |<br>|.     +          |<br>|       .         |<br>|                 |<br>+—-[SHA256]—–+<br>​<br>​<br>lenovo@LAPTOP-DHOKAIOC MINGW64 ~<br>$ cd .ssh/<br>​<br>lenovo@LAPTOP-DHOKAIOC MINGW64 ~/.ssh<br>$ ll<br>total 5<br>-rw-r–r– 1 lenovo 197609 2602  8月 23 21:50 id_rsa<br>-rw-r–r– 1 lenovo 197609  571  8月 23 21:50 id_rsa.pub<br>​<br>lenovo@LAPTOP-DHOKAIOC MINGW64 ~/.ssh<br>$ cat id_rsa.pub<br>ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDKuoERyiNJ1H93YmZYCRyAN5fGcVadM91Qq9AZxEWtkS69cCoRS4c5PmykITGrgI+oMybLLx9ApkfgbpZb9N5FsYkgFDnG2Z/<br>LOZsAPB12sHl80t/+LUBe3DIONzXi/+KRO13XzW/DYOuSL6zpoLH0nJyhDuublMM5GkcUWqmYj0xB6dTpJ10cJHj3rB0VRkGeMQHRSO3KBHsqF24SWro3AeHcqdciiO/x86Wlj<br>SGNecTf1lFQcpzQ9HMR/zoQhmZRW0bD6Iuw77x7haZlzmgUnFI1ke9JRcKVofAv60d4A9aAIeqmENXsiTEdfcawDq2CbFgFQqOrpqKaa+YgvurIk0mNfxZaYGXfIgj+tjSla1r<br>zQSHhbzE+BOaADo5TpW/TUd1Vw+PvAa7FqsAB9JucvvnOeynYuGjI+Lu7MItot/zU13I9h1qYrskib0jlIHEnPIkguJNjYf08CIXpT/tI8tr+HHiDeeBR9RoxytOEF7R8pVLC6/J<br>8ZPTgs9LOHT8= <a href="mailto:2118224692@qq.com">2118224692@qq.com</a><br>​<br>lenovo@LAPTOP-DHOKAIOC MINGW64 ~/.ssh<br>​</p>
+<p>3，我们在进入到我们的远程仓库，将我们生成的密钥添加到 Git Hub 上 ，点击 New SSH key</p>
+<p>4，我们在本地保存我们的 SSH 免密地址，最后就可以免密码 pull 了<br>lenovo@LAPTOP-DHOKAIOC MINGW64 /f/RuanJianInstall/workspaces/GitWork/springboot (master)<br>$ git remote add springboot_ssh <a href="mailto:git@github.com">git@github.com</a>:zouzhu/springboot.git<br>​<br>​<br>lenovo@LAPTOP-DHOKAIOC MINGW64 /f/RuanJianInstall/workspaces/GitWork/springboot (master)<br>$ git remote -v<br>springboot_adder        <a href="https://github.com/zouzhu/springboot.git" target="_blank" rel="noopener">https://github.com/zouzhu/springboot.git</a> (fetch)<br>springboot_adder        <a href="https://github.com/zouzhu/springboot.git" target="_blank" rel="noopener">https://github.com/zouzhu/springboot.git</a> (push)<br>springboot_ssh  <a href="mailto:git@github.com">git@github.com</a>:zouzhu/springboot.git (fetch)<br>springboot_ssh  <a href="mailto:git@github.com">git@github.com</a>:zouzhu/springboot.git (push)<br>​<br>​<br>lenovo@LAPTOP-DHOKAIOC MINGW64 /f/RuanJianInstall/workspaces/GitWork/springboot (master)<br>$ git pull springboot_ssh master<br>​<br>The authenticity of host ‘github.com (13.229.188.59)’ can’t be established.<br>RSA key fingerprint is SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.<br>Are you sure you want to continue connecting (yes/no/[fingerprint])? yes<br>Warning: Permanently added ‘github.com,13.229.188.59’ (RSA) to the list of known hosts.<br>remote: Enumerating objects: 5, done.<br>remote: Counting objects: 100% (5/5), done.<br>remote: Compressing objects: 100% (2/2), done.<br>remote: Total 3 (delta 0), reused 3 (delta 0), pack-reused 0<br>Unpacking objects: 100% (3/3), done.<br>From github.com:zouzhu/springboot</p>
+<ul>
+<li>branch            master     -&gt; FETCH_HEAD</li>
+<li>[new branch]      master     -&gt; springboot_ssh/master<br>error: Your local changes to the following files would be overwritten by merge:<pre><code>date.text</code></pre>Please commit your changes or stash them before you merge.<br>Aborting<br>Updating 2052f6b..c316d2f</li>
+</ul>
+<p>跨团队协作操作演示<br>1，这里的 Fork 我们不能点，只能帮助我们协作的人员来到团队的远程仓库才能点 Fork，复制一份项目</p>
+<p>2，点了 fork 后，说明当前库的所有人是 ：<a href="mailto:1072061479@qq.com">1072061479@qq.com</a> ，也说明了 fork 的来源是 <a href="mailto:2118224692@qq.com">2118224692@qq.com</a>,克隆到自己的本地，我们协作人员就可以操作了</p>
+<p>3，然后克隆到本地<br>4，vim  date.text<br>5，推送到远程库<br>6，来到协作人员的远程仓库，点击 Pull request ，然后点击 New pull request</p>
+<p>7，创建一个 Create pull request 请求，将我们修改的代码发给团队的远程仓库交给他审核，下面绿色的代码行是我们代码做出来的修改</p>
+<p>8，这里我们可以给团队说明下，这里是：团队你叫我改的代码我已经改好了，你审核一下就合并代码吧！我已经确认好了，万无一失</p>
+<p>9，这里我们登录到团队的远程仓库，点击 Pull request 我们就发现我们收到了来自协作者的消息和协作者提交的代码</p>
+<p>10，我们点击消息就可以查看到代码消息和帮助我们更改的代码具体的修改，我们这里也可以继续与他进行项目交流，最后我们代码审核通过，就可以 merge  pull  request 合并代码了</p>
+<p>11，类似 -m 信息，confire merge 提交合并代码，最后将远程库拉去到本地，我们的团队就可以启动项目，美滋滋 ~~ 团队协作真棒</p>
+<p><br><br><br><br><br><br><br><br><br><br></p>
+<h1 style='color:#000;'>第 9 章 Git 钩子</h1>
+<p style='font-size:14px'>
+Git 钩子是在 Git 仓库中特定事件发生时自动运行的脚本，可以定制一些钩子，这些钩子可以在特定的情况下被执行，分为 Client(客户端) 的钩子和 Server(服务端) 的钩子，Client 端钩子被 operation 触发，比如 commit、merge 等，Server 端钩子被网络动作触发 。<br>
+Git 内置的钩子都一般保存在当前项目的 .git/hooks/ 目录下，钩子脚本都是以 .sample 文件名结尾的，每个钩子脚本都有不同的作用 。
+<div align='center'>
+    <img src='/images/git/GitHook.png'/>
+</div>
+</p>
+        
+          <a class="article-more-a" href="/2020/05/12/GIT%E6%95%99%E7%A8%8B/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">git</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/12/GIT%E6%95%99%E7%A8%8B/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="node-node服务端教程" class="article article-type-node  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -942,87 +1120,6 @@ mongoose 是在 node.js 异步环境下对 mongodb 进行便捷操作的对象�
 
 
   
-    <article id="git-GitHub怎么获取好用的开源项目" class="article article-type-git  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/06/GitHub%E6%80%8E%E4%B9%88%E8%8E%B7%E5%8F%96%E5%A5%BD%E7%94%A8%E7%9A%84%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/">GitHub代码托管教程</a>
-    </h1>
-  
-
-        
-        <a href="/2020/05/06/GitHub%E6%80%8E%E4%B9%88%E8%8E%B7%E5%8F%96%E5%A5%BD%E7%94%A8%E7%9A%84%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/" class="archive-article-date">
-  	<time datetime="2020-05-06T14:24:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="GitHub-怎么获取好用的开源项目"><a href="#GitHub-怎么获取好用的开源项目" class="headerlink" title="GitHub 怎么获取好用的开源项目?"></a>GitHub 怎么获取好用的开源项目?</h1><p style="font-size:14px;">
-GitHub 是一个非常大的开源宝库，里面有非常多的开源项目，因为不会用不会找，而错失了使用这个宝库的机会，这一片文章就是告诉大家，我平时是怎么去找这些开源项目的 。<br>
-下面这个项目分为 4 个部分，分别是(项目名、项目描述、项目文档、项目的活跃度[关注、点赞、拉取])，我们可以通过这4个描述来寻找我们需要的开源项目，如果我们需要找当下比较火热的开源项目，可以搜索时增加条件，只显示活跃度高的开源项目 。
-</p>
-<img src="/images/github/github查找项目-1.png" />
-<br/><br/><br/><br/>
-        
-          <a class="article-more-a" href="/2020/05/06/GitHub%E6%80%8E%E4%B9%88%E8%8E%B7%E5%8F%96%E5%A5%BD%E7%94%A8%E7%9A%84%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">git</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/06/GitHub%E6%80%8E%E4%B9%88%E8%8E%B7%E5%8F%96%E5%A5%BD%E7%94%A8%E7%9A%84%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Next &amp;raquo;</a>
@@ -1124,11 +1221,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Babel</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color1">Babel</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1180,11 +1277,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">小程序</a>
+                <a href="javascript:void(0)" class="js-tag color3">vs-code</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">vs-code</a>
+                <a href="javascript:void(0)" class="js-tag color4">小程序</a>
               </li>
              
               <li class="article-tag-list-item">
