@@ -99,7 +99,7 @@
 			</ul>
 		</nav>
 		<nav style="font-size: 12px;color:#7f7f7f">
-				总文章数 37
+				总文章数 38
 		</nav>
 		<nav class="header-smart-menu">
     		
@@ -207,6 +207,90 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-微信小程序开发" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/25/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91/">微信小程序开发</a>
+    </h1>
+  
+
+        
+        <a href="/2020/06/25/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91/" class="archive-article-date">
+  	<time datetime="2020-06-25T15:47:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <style>
+    *{
+        margin: 0px;
+        padding: 0px;
+    }
+    .fs15{
+        font-size: 14px
+    }
+</style>
+
+<h1 id="1-微信小程序构架"><a href="#1-微信小程序构架" class="headerlink" title="1.微信小程序构架"></a>1.微信小程序构架</h1><h2 id="1-1-场景值"><a href="#1-1-场景值" class="headerlink" title="1.1 场景值"></a>1.1 场景值</h2><h2 id="1-2-逻辑层"><a href="#1-2-逻辑层" class="headerlink" title="1.2 逻辑层"></a>1.2 逻辑层</h2><p>小程序开发框架的逻辑层是使用 JavaScript 引擎，为开发者提供 JavaScript 代码的运行环境，以及微信小程序的特有功能 。逻辑层将数据进行处理后发送给视图层，同时接受视图层的事件反馈 。开发者写的所有代码最终将会打包成一份 JavaScript 文件，并在小程序启动的时候运行，直到小程序销毁，这一行为类似 ServiceWorker，所以逻辑层也称之为 App Service。在 JavaScript 的基础上，我们增加了一些功能，以方便小程序的开发 ：<br>1.增加 App 和 Page 方法，进行程序注册和页面注册。<br>2.增加 getApp 和 getCurrentPages 方法，分别用来获取 App 实例和当前页面栈。<br>3.提供丰富的 API，如微信用户数据，扫一扫，支付等微信特有能力。<br>4.提供模块化能力，每个页面有独立的作用域。<br>注意：小程序框架的逻辑层并非运行在浏览器中，因此 JavaScript 在 web 中一些能力都无法使用，如 window，document 等。</p></p>
+<h2 id="1-3-视图层"><a href="#1-3-视图层" class="headerlink" title="1.3 视图层"></a>1.3 视图层</h2>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">微信开发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/06/25/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Vue框架开发指南" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -227,7 +311,54 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <style>
+    .none_m{
+      margin:0px;
+    }
+</style>
+
+
+
+
+
+<h2 id="Vue-中的事件处理"><a href="#Vue-中的事件处理" class="headerlink" title="Vue 中的事件处理"></a>Vue 中的事件处理</h2><p>框架中使用 v-on 绑定 DOM 事件，并在触发的时候执行 JavaScript 代码，</p>
+<h3 id="事件修饰符"><a href="#事件修饰符" class="headerlink" title="事件修饰符"></a>事件修饰符</h3><p>访问原生的 DOM 事件，需要传递一个 $event 参数，事件处理程序中调用 event.preventDefault() 或 event.stopPropagation() 是非常常见的需求，尽管我们可以在方法函数中轻松实现这点，但更优的方式是让方法函数只负责纯粹的数据逻辑，而不用考虑处理 DOM 事件细节 。为了解决这个问题，Vue.js 为 v-on 提供了事件修饰符，它可以顶替 event.preventDefault 等相关方法的一些功能，先将几个修饰符罗列出来 ：<br><span style='color:#81c784'>.stop  .prevent  .capture  .self  .once  .passive</span></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 阻止了表单 submit 类型的默认提交行为，提交事件不再重载页面，而是去执行相关函数 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">""</span> <span class="attr">method</span>=<span class="string">"POST"</span> <span class="attr">v-on:submit.prevent</span>=<span class="string">'onSubmit'</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 注册按钮 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">style</span>=<span class="string">"submit"</span>&gt;</span>注册<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<h2 id="1-1-组件间数据的上下传递"><a href="#1-1-组件间数据的上下传递" class="headerlink" title="1.1 组件间数据的上下传递"></a>1.1 组件间数据的上下传递</h2><p>组件间数据传递的方向不一样，使用的数据传递方案也是不一样的，如果是页面或父组件中调用子组件，需要将数据传递到子组件组件中，一般使用的方法是 props 。<br>而如果是子组件的数据需要向上传递，也就是传递到页面或者父亲组件一般使用的方式是事件触发和子组件的事件监听来进行参数传递，下面将两种方法总结在下面作为参考 。</p>
+<h3 id="1-1-1-事件监听触发-实现数据的向上传递"><a href="#1-1-1-事件监听触发-实现数据的向上传递" class="headerlink" title="1.1.1 事件监听触发(实现数据的向上传递)"></a>1.1.1 事件监听触发(实现数据的向上传递)</h3><p>该例子就是子组件中设置点击事件，当用户点击它的时候，就执行 sendDataFather 函数体</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 子组件 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">'childPhoneComponent'</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">h1</span>&gt;</span>&#123;&#123; titleName &#125;&#125;<span class="tag">&lt;<span class="name">h1</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span> <span class="attr">v-model</span>=<span class="string">'phone'</span>/&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">botton</span> @<span class="attr">click</span>=<span class="string">'sendDataFather'</span>&gt;</span>send father<span class="tag">&lt;/<span class="name">botton</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript"><span class="keyword">export</span> <span class="keyword">default</span> = &#123;</span></span><br><span class="line"><span class="actionscript">	name: <span class="string">'childPhoneComponent'</span>,</span></span><br><span class="line">	props: [titleName],</span><br><span class="line"><span class="actionscript">	data: <span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span></span><br><span class="line"><span class="actionscript">		<span class="keyword">return</span> &#123;</span></span><br><span class="line"><span class="actionscript">			phone: <span class="string">'123'</span></span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;,</span><br><span class="line">	methods: &#123;</span><br><span class="line">		sendDataFather()&#123;</span><br><span class="line"><span class="javascript">			<span class="keyword">let</span> user = &#123;</span></span><br><span class="line"><span class="actionscript">				phoneClone = <span class="keyword">this</span>.phone</span></span><br><span class="line">			&#125;;</span><br><span class="line"><span class="actionscript">			<span class="keyword">this</span>.$emit(<span class="string">'updataPhoneMessge'</span>, user);</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--父组件或页面--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">'login'</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">h1</span>&gt;</span>欢迎来到用户登录系统<span class="tag">&lt;<span class="name">h1</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">InputPhoneComponent</span> <span class="attr">:titleName</span>=<span class="string">'你就负责手机用户电话号码，收集好了通知我'</span></span></span><br><span class="line"><span class="tag">							 @<span class="attr">updataPhoneMessge</span>=<span class="string">‘updataPhoneMessgeMethod’</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">InputPhoneComponent</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">span</span>&gt;</span>用户的手机号为 : &#123;&#123; userData.phone &#125;&#125;<span class="tag">&lt;<span class="name">span</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript"><span class="keyword">import</span> inputPhoneComponent <span class="keyword">from</span> <span class="string">'@/component/childPhoneComponent.vue'</span></span></span><br><span class="line"><span class="javascript"><span class="keyword">export</span> <span class="keyword">default</span> = &#123;</span></span><br><span class="line"><span class="actionscript">	name: <span class="string">'loginModel'</span>,</span></span><br><span class="line"><span class="actionscript">	data: <span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span></span><br><span class="line"><span class="actionscript">		<span class="keyword">return</span> &#123;</span></span><br><span class="line">			userData: &#123;</span><br><span class="line"><span class="actionscript">				username: <span class="string">''</span>,</span></span><br><span class="line"><span class="actionscript">				password: <span class="string">''</span>,</span></span><br><span class="line"><span class="actionscript">				phone: <span class="string">''</span></span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;,</span><br><span class="line">	components: &#123;</span><br><span class="line">		InputPhoneComponent: inputPhoneComponent</span><br><span class="line">	&#125;,</span><br><span class="line">	methods: &#123;</span><br><span class="line">		updataPhoneMessgeMethod(user)&#123;</span><br><span class="line"><span class="actionscript">			<span class="keyword">this</span>.userData.phone = user.phoneClone;</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="1-1-2-Props-实现数据向下传递"><a href="#1-1-2-Props-实现数据向下传递" class="headerlink" title="1.1.2 Props (实现数据向下传递)"></a>1.1.2 Props (实现数据向下传递)</h3><p>2.组件数据向下传递的通常方式是使用 Props ，Props 是单向数据流，为什么要设置成单向呢 ？因为如果是双向的子组件就可以任意改变父组件中的数据，未免会造成数据的混乱，所以我们在子组件中改变 String，Number，Boolean 。。。是不会影响到父组件的状态的，但 Array，Object 例外，因为它们是通过引用传入的，所以在子组件中改变它们的值也会影响到父组件的状态 ，所以还是不要改变 Props 的值 。a. 如果我们希望将这个 Props 作为本地数据访问，可以赋值给 data:props 。b. 如果需要将 Props 传入并进行转换，可以设置成计算属性</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">props: &#123;</span><br><span class="line">    priceProps: &#123;</span><br><span class="line">        type: number,</span><br><span class="line">        required: <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;,</span><br><span class="line">data: &#123;</span><br><span class="line">    price: <span class="keyword">this</span>.priceProps</span><br><span class="line">&#125;,</span><br><span class="line">computed: &#123;</span><br><span class="line">    priceDataView: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.priceProps * <span class="number">2</span> + <span class="string">'$ yuan'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>3.Props 可以设置数据类型验证，这在开发中是非常友好的，规定需要传入什么类型的数据，防止数据类型的混乱，可以让我们的代码运行起来更加的通畅，如果传入与之类型不符合的数据类型，控制台是会直接抛出错误的，所以相对开发来说是比较友好的一种方式</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">props: &#123;</span><br><span class="line">    title: &#123;</span><br><span class="line">        type: <span class="built_in">String</span>,			<span class="comment">// [String, Number]</span></span><br><span class="line">        required: <span class="literal">true</span>,</span><br><span class="line">        <span class="keyword">default</span>: <span class="string">'Hello Vue'</span>,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里需要注意的是，如果想给数组和对象类型的 props 提供默认的值，必须是通过 default: function{return vlue} 返回的值 。我们可以自定义验证规则 ：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">props: &#123;</span><br><span class="line">    title: &#123;</span><br><span class="line">        validator: <span class="function"><span class="keyword">function</span>(<span class="params">value</span>)</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">typeof</span>(vlue) == <span class="string">'Number'</span> &amp;&amp; value &gt; <span class="number">10</span>;</span><br><span class="line">        &#125; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
       
 
       
@@ -235,6 +366,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vue</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -289,10 +431,21 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        Here's something encrypted, password is required to continue reading.
-        
-          <a class="article-more-a" href="/2020/06/18/JavaScriptt%E9%9D%A2%E5%90%91%E6%B5%8F%E8%A7%88%E5%99%A8%E5%BC%80%E5%8F%91%E6%95%99%E7%A8%8B/#more">more >></a>
-        
+        <p><br><br></p>
+<br>
+
+<br>
+
+<h1 id="1-表单的提交和状态获取"><a href="#1-表单的提交和状态获取" class="headerlink" title="1.表单的提交和状态获取"></a>1.表单的提交和状态获取</h1><p>前端开发中遇到最多的就是用户操作表单的问题，所以我们需要去跟踪表单的一个状态，表单控件有 text、password、checkbox，radio，select-option 我将对它的技术问题做一些归纳性的总结 。</p>
+<br>
+
+<h3 id="1-1-Checkbox-复选框相关技术问题"><a href="#1-1-Checkbox-复选框相关技术问题" class="headerlink" title="1.1 Checkbox 复选框相关技术问题"></a>1.1 Checkbox 复选框相关技术问题</h3><p>checkbox 有三个属性分别是 name 、value、checked，它们的作用分别为 如下所示 ：</p>
+<ul>
+<li>name 表示为控件命名 。</li>
+<li>value 提交数据到服务器上的值 。</li>
+<li>checked 代表复选框勾选的状态，如果勾选了 checked ，window.document.getElementById(‘’).checked 返回 true，如果未勾选则返回 false 。当我们设置 checked = ‘checked’  复选框是默认被勾选的 。</li>
+</ul>
+
       
 
       
@@ -918,84 +1071,6 @@ webpack 是一个现代 javascript 应用程序的 "静态模块打包器 (modul
 
 
   
-    <article id="node-项目中一些好用的插件管理" class="article article-type-node  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/13/%E9%A1%B9%E7%9B%AE%E4%B8%AD%E4%B8%80%E4%BA%9B%E5%A5%BD%E7%94%A8%E7%9A%84%E6%8F%92%E4%BB%B6%E7%AE%A1%E7%90%86/">项目中一些好用的插件管理</a>
-    </h1>
-  
-
-        
-        <a href="/2020/05/13/%E9%A1%B9%E7%9B%AE%E4%B8%AD%E4%B8%80%E4%BA%9B%E5%A5%BD%E7%94%A8%E7%9A%84%E6%8F%92%E4%BB%B6%E7%AE%A1%E7%90%86/" class="archive-article-date">
-  	<time datetime="2020-05-13T07:55:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p style='font-size:14px'>
-这一篇文章中我主要是记录项目开发中一些好用的插件、比如说热部署等等、现在暂时只使用到了热部署........
-</p>
-        
-          <a class="article-more-a" href="/2020/05/13/%E9%A1%B9%E7%9B%AE%E4%B8%AD%E4%B8%80%E4%BA%9B%E5%A5%BD%E7%94%A8%E7%9A%84%E6%8F%92%E4%BB%B6%E7%AE%A1%E7%90%86/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">node</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/13/%E9%A1%B9%E7%9B%AE%E4%B8%AD%E4%B8%80%E4%BA%9B%E5%A5%BD%E7%94%A8%E7%9A%84%E6%8F%92%E4%BB%B6%E7%AE%A1%E7%90%86/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
@@ -1101,11 +1176,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color5">CSS3</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">CSS3</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1145,6 +1220,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
@@ -1161,10 +1240,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">小程序</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">vs-code</a>
               </li>
              
@@ -1173,7 +1248,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">小程序</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">html</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">微信开发</a>
               </li>
              
               <li class="article-tag-list-item">

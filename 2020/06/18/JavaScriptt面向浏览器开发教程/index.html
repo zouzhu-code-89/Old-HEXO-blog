@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>JavaScript 面向浏览器开发教程 | zouzhu@blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Here&#39;s something encrypted, password is required to continue reading.">
+  <meta name="description" content="1.表单的提交和状态获取前端开发中遇到最多的就是用户操作表单的问题，所以我们需要去跟踪表单的一个状态，表单控件有 text、password、checkbox，radio，select-option 我将对它的技术问题做一些归纳性的总结 。   1.1 Checkbox 复选框相关技术问题checkbox 有三个属性分别是 name 、value、checked，它们的作用分别为 如下所">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript 面向浏览器开发教程">
 <meta property="og:url" content="http://yoursite.com/2020/06/18/JavaScriptt%E9%9D%A2%E5%90%91%E6%B5%8F%E8%A7%88%E5%99%A8%E5%BC%80%E5%8F%91%E6%95%99%E7%A8%8B/index.html">
 <meta property="og:site_name" content="zouzhu@blog">
-<meta property="og:description" content="Here&#39;s something encrypted, password is required to continue reading.">
+<meta property="og:description" content="1.表单的提交和状态获取前端开发中遇到最多的就是用户操作表单的问题，所以我们需要去跟踪表单的一个状态，表单控件有 text、password、checkbox，radio，select-option 我将对它的技术问题做一些归纳性的总结 。   1.1 Checkbox 复选框相关技术问题checkbox 有三个属性分别是 name 、value、checked，它们的作用分别为 如下所">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-06-18T13:55:54.000Z">
-<meta property="article:modified_time" content="2020-06-21T06:55:34.022Z">
+<meta property="article:modified_time" content="2020-06-21T07:07:28.066Z">
 <meta property="article:author" content="彼岸世界">
 <meta property="article:tag" content="javascript">
 <meta name="twitter:card" content="summary">
@@ -102,7 +102,7 @@
 			</ul>
 		</nav>
 		<nav style="font-size: 12px;color:#7f7f7f">
-				总文章数 37
+				总文章数 38
 		</nav>
 		<nav class="header-smart-menu">
     		
@@ -230,15 +230,21 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <div id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
-  <div class="hbe-input-container">
-  <input type="password" id="hbePass" placeholder="" />
-    <label for="hbePass">Hey, password is required here.</label>
-    <div class="bottom-line"></div>
-  </div>
-  <script id="hbeData" type="hbeData" data-hmacdigest="4e893c8e874de165a33749998cb35c7f5b73eafc1a6bc8721f4f5bf227435b4a">5c9848956c910a1da82764244d3a4cdae34e43384058f4fba1d22586a2d4a605f7d513470992b03699e501bb47bd825a681716a618976bb91e6deaa5ea07ee0a4d8a3d43c1bda1ac09500649730af46974eec5cc473a7f00512b1468ff8cc78c954bd50e387e97e0f79dad223c3bf9e1f4b4b4262356d818bfdd3a5a1c9bb5c4bb03cfb93c039b9847a162bb2539fb1eaafa983392a1f1ba5dc5cd4156506f68af792c6e66c4fbddd9b0cd60d68be176292953aa51e52a135e189e1b1d44e51f7aa713584be4e45bf1941824cb8800197722932f1da41ab804142e9c20f73ce8a1a223b2c2baba9a589e89b92dcbfb6f37e4ef2b8dd30c059b995c20576d169abb25efad37d10ab3a3414de511450b2f15bd320333e69fa358e657d3c0788ca3f30f207575460c21b87218594f6316d3c31e48b271cdba664199b34118cfe258604e0152f3a6aac5c2578b0592d116886b44806dd7ce1f062532fe9e9e8491d1750313dbfb1a51f86313fa0e242394603634aed338aec9e447e0491f54d50f317528209c79780d4e112c15e3f577c73019fc3146fd02db744a4e0a57de821078eabe9e15e50f40762b3330ab7f40f8432b40075e733d9239420966f5f31237915fa1519f7bc124d8eb04ec4c5924307c4f4128fb5a94468c2668d92772fa7234478694b765e1f5709639e1309eeafa54376a368aaa7e1190e32b18b8f463b868bf39dbb4feb67217fed477addf9aefebeb2baa3cb621591615ac474f890fd27668db10e1616c22fa2b7217c1ab297081603451dc76583f4a0ec90a63eb724ef588b4f4ce9dda33636ba78d07b17999614df6394c48e8e2732f5949823abda9357455027fe251a8059673fd40250928bec2d3ccd8b0c4e38419d2b8491ec8fa9d4c4a10c14706e66fd606c91e8f259353140493cf3a2d8988a792a366fc69e2c232c3c654f88c748dfe6f8072945f42c693b970f3e07e7bf1766edea6403be27f852a103be4b64030a962319ff9e0f5e9840d21fc50be7f3b166235969f770836e437568b16415bab9c767b7ce8bd43a18a7eddbf0c3de5e80685690f352cd52f32cbe8492430cdd401a814d63971ab9c998a04d60a13e29ba9d0a55a461196940144d53a355a07b945cad35042114db9a887151ae139a1f16be449bd3bf5ca724ec438f24d781d667ecc978ff76c39cbb7f7c0234970f413f85b0ce4490ea86b9d988a8b2c47d164c3e7c85398022b183e81d53e60949b933bc23f9fb13a10c19054491c307440a14105dcee4ddeba6b37e30d960c20629a4f5abefd9227d3f766dbfbf93a936b6a3f860533a3fdc9402664d1765807645dbba7c84448742d29d920103381ebca69d0970568a1529081cd4f55c65d1ddb306b55945fbd6247a9aad9dbfc42c7dad2930f25950f9808f71060a2c0ee8e991dfb5885e145f535b13b55075e575ec7943db2d3216719f3bedff36904df170646a00d3a3f85e5e5a291012c8fe51601df2b9b0e405239f2ffc85974c2363df675b8ec4683253a0610905e38e1ad1cb51db970c7e4801f54778bc00a0347aa9be8b911fdb5de7eb0d9550b8483bb5aa6f3d73f1a8f8e5edda9fb2ee1bc05469313ea4679a5a96dd7aa</script>
-</div>
-<script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">
+        <p><br><br></p>
+<br>
+
+<br>
+
+<h1 id="1-表单的提交和状态获取"><a href="#1-表单的提交和状态获取" class="headerlink" title="1.表单的提交和状态获取"></a>1.表单的提交和状态获取</h1><p>前端开发中遇到最多的就是用户操作表单的问题，所以我们需要去跟踪表单的一个状态，表单控件有 text、password、checkbox，radio，select-option 我将对它的技术问题做一些归纳性的总结 。</p>
+<br>
+
+<h3 id="1-1-Checkbox-复选框相关技术问题"><a href="#1-1-Checkbox-复选框相关技术问题" class="headerlink" title="1.1 Checkbox 复选框相关技术问题"></a>1.1 Checkbox 复选框相关技术问题</h3><p>checkbox 有三个属性分别是 name 、value、checked，它们的作用分别为 如下所示 ：</p>
+<ul>
+<li>name 表示为控件命名 。</li>
+<li>value 提交数据到服务器上的值 。</li>
+<li>checked 代表复选框勾选的状态，如果勾选了 checked ，window.document.getElementById(‘’).checked 返回 true，如果未勾选则返回 false 。当我们设置 checked = ‘checked’  复选框是默认被勾选的 。</li>
+</ul>
+
       
 
       
@@ -359,7 +365,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-表单的提交和状态获取"><span class="toc-number">1.</span> <span class="toc-text">1.表单的提交和状态获取</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-Checkbox-复选框相关技术问题"><span class="toc-number">1.0.1.</span> <span class="toc-text">1.1 Checkbox 复选框相关技术问题</span></a></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -479,11 +485,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color5">CSS3</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">CSS3</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -523,6 +529,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
@@ -539,10 +549,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">小程序</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">vs-code</a>
               </li>
              
@@ -551,7 +557,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">小程序</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">html</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">微信开发</a>
               </li>
              
               <li class="article-tag-list-item">
