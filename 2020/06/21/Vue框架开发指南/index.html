@@ -18,7 +18,7 @@
 <meta property="og:image" content="http://yoursite.com/images/vue/%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97/23_%E5%8A%A8%E6%80%81%E7%BB%84%E4%BB%B6_1.gif">
 <meta property="og:image" content="http://yoursite.com/images/vue/%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97/23_%E5%8A%A8%E6%80%81%E7%BB%84%E4%BB%B6_2.gif">
 <meta property="article:published_time" content="2020-06-21T06:49:52.000Z">
-<meta property="article:modified_time" content="2020-06-28T23:12:44.512Z">
+<meta property="article:modified_time" content="2020-06-29T23:12:14.953Z">
 <meta property="article:author" content="彼岸世界">
 <meta property="article:tag" content="vue">
 <meta name="twitter:card" content="summary">
@@ -284,11 +284,23 @@
 
 
 
+
+
+
 <h2 id="2-2-组件之插槽"><a href="#2-2-组件之插槽" class="headerlink" title="2.2 组件之插槽"></a>2.2 组件之插槽</h2><p><br><br></p>
-<h2 id="2-3-动态组件和异步组件"><a href="#2-3-动态组件和异步组件" class="headerlink" title="2.3 动态组件和异步组件"></a>2.3 动态组件和异步组件</h2><p>我们之前曾经在一个多标签中使用 is a attribute 来切换不同的组件 ：当这些组件之间切换的时候，你有时会想保持这些组件的状态，以避免反复重复渲染导致的性能问题，例如我们展开来说这个多标签界面，你会注意到，如果你选择了一篇文章，切换到 Archive 标签，然后再切换回 Posts，是不会继续展示你之前选择的文章的。<br><img src='/images/vue/开发指南/23_动态组件_1.gif'/><br>这是因为你每次切换新标签的时候，Vue 都创建了一个新的 currentTabComponent 实例。重新创建动态组件的行为通常是非常有用的，但是在这个案例中，我们更希望那些标签的组件实例能够被在它们第一次被创建的时候缓存下来。为了解决这个问题，我们可以用一个 keep-alive 元素将其动态组件包裹起来。</p>
+<h2 id="2-3-动态组件和异步组件"><a href="#2-3-动态组件和异步组件" class="headerlink" title="2.3 动态组件和异步组件"></a>2.3 动态组件和异步组件</h2><h3 id="2-3-1-动态组件"><a href="#2-3-1-动态组件" class="headerlink" title="2.3.1 动态组件"></a>2.3.1 动态组件</h3><p>我们之前曾经在一个多标签中使用 is a attribute 来切换不同的组件 ：当这些组件之间切换的时候，你有时会想保持这些组件的状态，以避免反复重复渲染导致的性能问题，例如我们展开来说这个多标签界面，你会注意到，如果你选择了一篇文章，切换到 Archive 标签，然后再切换回 Posts，是不会继续展示你之前选择的文章的。<br><img src='/images/vue/开发指南/23_动态组件_1.gif'/><br>这是因为你每次切换新标签的时候，Vue 都创建了一个新的 currentTabComponent 实例。重新创建动态组件的行为通常是非常有用的，但是在这个案例中，我们更希望那些标签的组件实例能够被在它们第一次被创建的时候缓存下来。为了解决这个问题，我们可以用一个 keep-alive 元素将其动态组件包裹起来。</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 失活的组件将会被缓存！--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">keep-alive</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">component</span> <span class="attr">v-bind:is</span>=<span class="string">"currentTabComponent"</span>&gt;</span><span class="tag">&lt;/<span class="name">component</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">keep-alive</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>来看看修改后的结果：<br><img src='/images/vue/开发指南/23_动态组件_2.gif'/></p>
 <p>现在这个 Posts 标签保持了它的状态 (被选中的文章) 甚至当它未被渲染时也是如此。你可以在这个示例查阅到完整的代码。注意这个 keep-alive 要求被切换到的组件都有自己的名字，不论是通过组件的 name 选项还是局部/全局注册,你可以在 API 参考文档查阅更多关于 keep-alive 的细节。</p>
+<br>
+
+<h3 id="2-3-2-异步组件"><a href="#2-3-2-异步组件" class="headerlink" title="2.3.2 异步组件"></a>2.3.2 异步组件</h3><p>可能你还不知道异步组件的必要性，项目上线时所有项目文件是要全部打包到一个 JS 文件，当你项目足够大时，试想一下如果用户发起一次请求，需要几秒去下载资源，那你心态岂不是爆炸，Vue 中提出了一种规范，使用特定方法导入和设置组件，就视它为异步组件，异步组件就是项目打包上线时，单独将这个组件打包成一个 JS 文件，当用户需要这个组件的时候，在通过 ajax 请求去获取这个资源，这样的方式就很友好，还提高了网站的性能 。</p>
+<p><br><br><br></p>
+<h2 id="2-4-组件数据边界问题"><a href="#2-4-组件数据边界问题" class="headerlink" title="2.4 组件数据边界问题"></a>2.4 组件数据边界问题</h2><h3 id="2-4-1-访问元素或组件"><a href="#2-4-1-访问元素或组件" class="headerlink" title="2.4.1 访问元素或组件"></a>2.4.1 访问元素或组件</h3><p>有时候我们在项目开发中，可能访问任何组件，但不同的组件关系访问起来的方式也是不一样的，大致分为下面这四种情况 。<br>1、比如访问根实例<br>2、访问父组件实例<br>3、在页面中的 JS 逻辑代码中，访问组件和组件中的数据<br>4、依赖注入</p>
+<hr>
+<p>1.我们可以通过 (this.$root) 访问根实例中的 data，methods，computed …. 甚至是修改它的 data 数据，但是我们推荐全局状态管理还是使用 Vuex 。<br>2.访问父组件实例<br>3.在页面中的 JS 逻辑代码中，访问组件和组件中的数据，这里的一种方案就是使用 ref，你可以通过 ref 这个 attribute 为子组件赋予一个 ID 引用，然后通过 $ref 来访问子组件实例中的数据，甚至还可以访问子组件输入框的聚焦状态，这是常见的应用场景了·<br>注意 : 当 ref 和 v-for 一起使用的时候，你得到的 ref 将会是一个包含了对应数据源的这些子组件的数组。$refs 只会在组件渲染完成之后生效，并且它们不是响应式的，这仅作为一个用于直接操作子组件的“逃生舱”——你应该避免在模板或计算属性中访问 $refs 。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">base-input</span> <span class="attr">ref</span>=<span class="string">"usernameInput"</span>&gt;</span><span class="tag">&lt;/<span class="name">base-input</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="actionscript">	expore <span class="keyword">default</span> = &#123;</span></span><br><span class="line">		...</span><br><span class="line">		methods: &#123;</span><br><span class="line"><span class="actionscript">			getInputName: <span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span></span><br><span class="line"><span class="actionscript">				<span class="keyword">this</span>.$refs.usernameInput;</span></span><br><span class="line">			&#125;,</span><br><span class="line"><span class="actionscript">			<span class="comment">// 用来从父级组件聚焦输入框</span></span></span><br><span class="line"><span class="actionscript">			focus: <span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span></span><br><span class="line"><span class="actionscript">				<span class="keyword">this</span>.$refs.usernameInput.focus();</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>4.依赖注入</p>
 
       
 
@@ -410,7 +422,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Vue-中的事件处理"><span class="toc-number">1.</span> <span class="toc-text">Vue 中的事件处理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#事件修饰符"><span class="toc-number">1.1.</span> <span class="toc-text">事件修饰符</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-深入了解组件"><span class="toc-number"></span> <span class="toc-text">2.深入了解组件</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-组件间数据的上下传递"><span class="toc-number">1.</span> <span class="toc-text">2.1 组件间数据的上下传递</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-1-事件监听触发-实现数据的向上传递"><span class="toc-number">1.1.</span> <span class="toc-text">2.1.1 事件监听触发(实现数据的向上传递)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-2-Props-实现数据向下传递"><span class="toc-number">1.2.</span> <span class="toc-text">2.1.2 Props (实现数据向下传递)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-组件之插槽"><span class="toc-number">2.</span> <span class="toc-text">2.2 组件之插槽</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-动态组件和异步组件"><span class="toc-number">3.</span> <span class="toc-text">2.3 动态组件和异步组件</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Vue-中的事件处理"><span class="toc-number">1.</span> <span class="toc-text">Vue 中的事件处理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#事件修饰符"><span class="toc-number">1.1.</span> <span class="toc-text">事件修饰符</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-深入了解组件"><span class="toc-number"></span> <span class="toc-text">2.深入了解组件</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-组件间数据的上下传递"><span class="toc-number">1.</span> <span class="toc-text">2.1 组件间数据的上下传递</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-1-事件监听触发-实现数据的向上传递"><span class="toc-number">1.1.</span> <span class="toc-text">2.1.1 事件监听触发(实现数据的向上传递)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-2-Props-实现数据向下传递"><span class="toc-number">1.2.</span> <span class="toc-text">2.1.2 Props (实现数据向下传递)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-组件之插槽"><span class="toc-number">2.</span> <span class="toc-text">2.2 组件之插槽</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-动态组件和异步组件"><span class="toc-number">3.</span> <span class="toc-text">2.3 动态组件和异步组件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-1-动态组件"><span class="toc-number">3.1.</span> <span class="toc-text">2.3.1 动态组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-2-异步组件"><span class="toc-number">3.2.</span> <span class="toc-text">2.3.2 异步组件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-4-组件数据边界问题"><span class="toc-number">4.</span> <span class="toc-text">2.4 组件数据边界问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-1-访问元素或组件"><span class="toc-number">4.1.</span> <span class="toc-text">2.4.1 访问元素或组件</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -538,11 +550,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ES6</a>
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
+                <a href="javascript:void(0)" class="js-tag color4">ES6</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -590,10 +602,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">vs-code</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">小程序</a>
               </li>
              
@@ -602,15 +610,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">vs-code</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">html</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">webpack</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">微信开发</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">html</a>
               </li>
              
               <li class="article-tag-list-item">
