@@ -23,8 +23,12 @@
 <meta property="og:image" content="http://yoursite.com/images/xiaochengxu/weixing_xiaochengxu/%E7%BB%84%E4%BB%B6%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8-%E7%BB%84%E4%BB%B6%E7%9A%84%E5%AE%9A%E4%B9%89.png">
 <meta property="og:image" content="http://yoursite.com/images/xiaochengxu/weixing_xiaochengxu/%E7%BB%84%E4%BB%B6%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8-%E7%BB%84%E4%BB%B6%E7%9A%84%E6%B3%A8%E5%86%8C.png">
 <meta property="og:image" content="http://yoursite.com/images/xiaochengxu/weixing_xiaochengxu/%E7%BB%84%E4%BB%B6%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8-%E7%BB%84%E4%BB%B6%E7%9A%84%E4%BD%BF%E7%94%A8.png">
+<meta property="og:image" content="http://yoursite.com/images/xiaochengxu/weixing_xiaochengxu/%E7%BB%84%E4%BB%B6%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8-%E7%BB%84%E4%BB%B6%E7%9A%84%E9%BB%98%E8%AE%A4%E6%A0%B7%E5%BC%8F.png">
+<meta property="og:image" content="http://yoursite.com/images/xiaochengxu/weixing_xiaochengxu/%E7%BB%84%E4%BB%B6%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8-%E7%BB%84%E4%BB%B6%E6%A0%B7%E5%BC%8F%E9%9A%94%E7%A6%BB-1.png">
+<meta property="og:image" content="http://yoursite.com/images/xiaochengxu/weixing_xiaochengxu/%E7%BB%84%E4%BB%B6%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8-%E7%BB%84%E4%BB%B6%E5%BC%95%E7%94%A8%E6%A0%B7%E5%BC%8F.png">
+<meta property="og:image" content="http://yoursite.com/images/xiaochengxu/weixing_xiaochengxu/%E7%BB%84%E4%BB%B6%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8-solt%E5%91%BD%E5%90%8D%E6%8F%92%E6%A7%BD.png">
 <meta property="article:published_time" content="2020-06-25T15:47:22.000Z">
-<meta property="article:modified_time" content="2020-08-01T11:51:18.392Z">
+<meta property="article:modified_time" content="2020-08-04T16:48:26.251Z">
 <meta property="article:author" content="彼岸世界">
 <meta property="article:tag" content="微信开发">
 <meta name="twitter:card" content="summary">
@@ -326,6 +330,35 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <p><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></p>
 <h1 id="微信组件的使用"><a href="#微信组件的使用" class="headerlink" title="微信组件的使用"></a>微信组件的使用</h1><p style="font-size:14px">
 <img src='/images/xiaochengxu/weixing_xiaochengxu/weixing.png'/><br>
@@ -345,8 +378,66 @@
 <img src='/images/xiaochengxu/weixing_xiaochengxu/组件的基本使用-组件的使用.png'/>
 
 
-<p><br><br><br></p>
-<h2 id="1-1-Solt-组件插槽"><a href="#1-1-Solt-组件插槽" class="headerlink" title="1.1 Solt 组件插槽"></a>1.1 Solt 组件插槽</h2><p style="font-size:14px">
+
+
+
+<p><br><br></p>
+<h2 id="1-1-组件中样式使用注意事项"><a href="#1-1-组件中样式使用注意事项" class="headerlink" title="1.1 组件中样式使用注意事项"></a>1.1 组件中样式使用注意事项</h2><p style="font-size:14px;">
+组件中和我们平时 html 样式中写法还是有一些区别，有一些选择器在组件中是不会生效的。
+</p>
+
+
+
+<h3 id="1-1-1-样式的注意事项"><a href="#1-1-1-样式的注意事项" class="headerlink" title="1.1.1 样式的注意事项"></a>1.1.1 样式的注意事项</h3><p style="font-size:14px;">
+组件对应 wxss 文件的样式，只对组件wxml内的节点生效。编写组件样式时，需要注意以下几点：<br>
+1.组件和引用组件的页面不能使用id选择器（#a）、属性选择器（[a]）和标签名选择器，请改用class选择器。<br>
+2.组件和引用组件的页面中使用后代选择器（.a .b）在一些极端情况下会有非预期的表现，如遇请避免使用。<br>
+3.子元素选择器（.a>.b）只能用于 view 组件与其子节点之间，用于其他组件可能导致非预期的情况。<br>
+4.继承样式，如 font 、 color ，会从组件外继承到组件内。<br>
+5.除继承样式外， app.wxss 中的样式、组件所在页面的的样式对自定义组件无效（除非更改组件样式隔离选项）。<br>
+</p>
+<p style="font-size:14px;font-weight:bold;color:brown">
+除此以外，组件可以指定它所在节点的默认样式，使用 :host 选择器（需要包含基础库 1.7.2 或更高版本的开发者工具支持）。此时当你不指定它的特定样式的时候，它就会使用默认的样式 。
+</p>
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">/* 组件 custom-component.wxss */</span><br><span class="line">:host &#123;</span><br><span class="line">  color: yellow;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 页面的 WXML --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">custom-component</span>&gt;</span>这段文本是黄色的<span class="tag">&lt;/<span class="name">custom-component</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<img src='/images/xiaochengxu/weixing_xiaochengxu/组件的基本使用-组件的默认样式.png'/>
+
+
+
+<p><br><br></p>
+<h3 id="1-1-2-组件样式隔离"><a href="#1-1-2-组件样式隔离" class="headerlink" title="1.1.2 组件样式隔离"></a>1.1.2 组件样式隔离</h3><p style="font-size:14px">
+默认情况下，自定义组件的样式只受到自定义组件 wxss 的影响，除非以下两种情况 ：<br>
+1.app.wxss 和页面的中的 wxss 使用了标签名选择器（或一些其他特殊类型的选择器）来直接定义样式，这样选择器会影响到页面和全部组件，通常情况下这是不推荐这样去做的 。混入效果如下，我们仅仅只是在组件 wxss 中声明了 text 标签中文字的颜色，但是页面中 text 标签中的文字颜色也同时发生改变。这样就混乱了，还是推荐使用 .class 不会受到什么影响。<br>
+</p>
+<img src='/images/xiaochengxu/weixing_xiaochengxu/组件的基本使用-组件样式隔离-1.png'/>
+<p style="font-size:14px">
+2.第二种情况就是我们主动配置了组件对外界有影响，使用的是 Component({option:{styleIsolation:'isolated'}})<br>
+</p>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Component(&#123;</span><br><span class="line">  options: &#123;</span><br><span class="line">    styleIsolation: <span class="string">'isolated'</span>        <span class="comment">// 表示启用样式隔离，使用 class 不会影响到页面</span></span><br><span class="line">                    | <span class="string">'apply-shared'</span>  <span class="comment">// 表示页面样式会影响到组件，但组件不会影响页面</span></span><br><span class="line">                    | <span class="string">'shared'</span>        <span class="comment">// 表示会相互影响，且还会影响到其他设置了 'apply-shared'、'shared'属性的组件 </span></span><br><span class="line">                                      <span class="comment">// (最后一个不可用)</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h3 id="1-1-3-外部样式类"><a href="#1-1-3-外部样式类" class="headerlink" title="1.1.3 外部样式类"></a>1.1.3 外部样式类</h3><p style="font-size:14px">
+有时组件希望接受外部传入的样式类，此时可以在 Component 中用 externalClasses 定义诺干个外部样式类
+</p>
+
+
+<br>
+
+<h3 id="1-1-4-引用页面或父组件的样式"><a href="#1-1-4-引用页面或父组件的样式" class="headerlink" title="1.1.4 引用页面或父组件的样式"></a>1.1.4 引用页面或父组件的样式</h3><p style="font-size:14px">
+即使启用了样式隔离 isolated，组件仍然可以在局部引用所在页面的样式或父组件的样式，例如在页面 wxss 中定义了 .blue-text 类，在组件中可以使用 class="~blue-text" 来引用这个类的样式 。<br>
+如果在一个组件的父组件 wxss 中定义了 .red-text ,在这个组件中可以使用 class="^red-text" 来引用这个类的样式,
+也可以连续使用多个 ^ 来引用祖先组件中的样式。<br>
+注意：如果组件是比较独立、通用的组件、请优先使用外部样式类的方式，而非页面和父组件的样式。
+</p>
+<img src='/images/xiaochengxu/weixing_xiaochengxu/组件的基本使用-组件引用样式.png'/>
+
+
+
+<p><br><br></p>
+<h3 id="1-1-6-Solt-组件插槽"><a href="#1-1-6-Solt-组件插槽" class="headerlink" title="1.1.6 Solt 组件插槽"></a>1.1.6 Solt 组件插槽</h3><p style="font-size:14px">
 组件的 wxml 中可以包含 slot 节点，跟 Vue 中的 Solt 基本相似，默认情况下一个组件的 wxml 中只能有一个 slot，需要使用多 slot 时，可以在组件 js 中声明启用。靠，这玩意还需要声明才能支持多个 solt，下面的 Component 方法函数，相当于 Vue 组件定义在实例中的 export default = {...}，里面能定义数据，方法函数 。支持多个 solt 节点需要将 multipleSlots : true .
 </p>
 
@@ -354,7 +445,8 @@
 <p style="font-size:14px">
 当组件中有多个 Solt 时，也可以使用插槽命名的方式，来区分插入到哪一个 solt，这里定义了一个简单的商品组件
 </p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"># ShopComponent.wxml</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">"zhangdan-component"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">slot</span> <span class="attr">name</span>=<span class="string">"shop-money"</span>&gt;</span><span class="tag">&lt;/<span class="name">slot</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">view</span>&gt;</span>这里是组件的内部细节<span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">solt</span> <span class="attr">name</span>=<span class="string">"shop-name"</span>&gt;</span><span class="tag">&lt;/<span class="name">slot</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># index.wxml</span><br><span class="line"><span class="tag">&lt;<span class="name">view</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">ShopComponent</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 这部分内容将被放置在组件 &lt;slot name="before"&gt; 的位置上 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">view</span> <span class="attr">slot</span>=<span class="string">"before"</span>&gt;</span>这里是插入到组件slot name="before"中的内容<span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 这部分内容将被放置在组件 &lt;slot name="after"&gt; 的位置上 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">view</span> <span class="attr">slot</span>=<span class="string">"after"</span>&gt;</span>这里是插入到组件slot name="after"中的内容<span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">ShopComponent</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"># ShopComponent.wxml</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">"zhangdan-component"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">slot</span> <span class="attr">name</span>=<span class="string">"shop-money"</span>&gt;</span><span class="tag">&lt;/<span class="name">slot</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">view</span>&gt;</span>这里是组件的内部细节<span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">solt</span> <span class="attr">name</span>=<span class="string">"shop-name"</span>&gt;</span><span class="tag">&lt;/<span class="name">slot</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># index.wxml</span><br><span class="line"><span class="tag">&lt;<span class="name">view</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">ShopComponent</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 这部分内容将被放置在组件 &lt;slot name="before"&gt; 的位置上 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">view</span> <span class="attr">slot</span>=<span class="string">"shop-money"</span>&gt;</span>12.58<span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 这部分内容将被放置在组件 &lt;slot name="after"&gt; 的位置上 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">view</span> <span class="attr">slot</span>=<span class="string">"shop-name"</span>&gt;</span>香辣花甲<span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">ShopComponent</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<img src='/images/xiaochengxu/weixing_xiaochengxu/组件的基本使用-solt命名插槽.png'/>
 
 
       
@@ -477,7 +569,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-微信的全局配置文件-app-json"><span class="toc-number">1.</span> <span class="toc-text">1.微信的全局配置文件 app.json</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-app-js"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 app.js</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-app-json"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 app.json</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-1-创建菜单项"><span class="toc-number">1.2.1.</span> <span class="toc-text">1.2.1 创建菜单项</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-微信小程序目录架构的基本使用规则"><span class="toc-number">2.</span> <span class="toc-text">2.微信小程序目录架构的基本使用规则</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-Create-Page-创建页面包"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 Create Page(创建页面包)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#。。。。。。"><span class="toc-number">3.</span> <span class="toc-text">。。。。。。</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#视图层的列表循环"><span class="toc-number">3.1.</span> <span class="toc-text">视图层的列表循环</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#视图层的事件处理规范"><span class="toc-number">3.2.</span> <span class="toc-text">视图层的事件处理规范</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#构造数据的双向绑定"><span class="toc-number">3.3.</span> <span class="toc-text">构造数据的双向绑定</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#微信组件的使用"><span class="toc-number">4.</span> <span class="toc-text">微信组件的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-Solt-组件插槽"><span class="toc-number">4.1.</span> <span class="toc-text">1.1 Solt 组件插槽</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-微信的全局配置文件-app-json"><span class="toc-number">1.</span> <span class="toc-text">1.微信的全局配置文件 app.json</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-app-js"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 app.js</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-app-json"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 app.json</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-1-创建菜单项"><span class="toc-number">1.2.1.</span> <span class="toc-text">1.2.1 创建菜单项</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-微信小程序目录架构的基本使用规则"><span class="toc-number">2.</span> <span class="toc-text">2.微信小程序目录架构的基本使用规则</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-Create-Page-创建页面包"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 Create Page(创建页面包)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#。。。。。。"><span class="toc-number">3.</span> <span class="toc-text">。。。。。。</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#视图层的列表循环"><span class="toc-number">3.1.</span> <span class="toc-text">视图层的列表循环</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#视图层的事件处理规范"><span class="toc-number">3.2.</span> <span class="toc-text">视图层的事件处理规范</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#构造数据的双向绑定"><span class="toc-number">3.3.</span> <span class="toc-text">构造数据的双向绑定</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#微信组件的使用"><span class="toc-number">4.</span> <span class="toc-text">微信组件的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-组件中样式使用注意事项"><span class="toc-number">4.1.</span> <span class="toc-text">1.1 组件中样式使用注意事项</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-1-样式的注意事项"><span class="toc-number">4.1.1.</span> <span class="toc-text">1.1.1 样式的注意事项</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-2-组件样式隔离"><span class="toc-number">4.1.2.</span> <span class="toc-text">1.1.2 组件样式隔离</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-3-外部样式类"><span class="toc-number">4.1.3.</span> <span class="toc-text">1.1.3 外部样式类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-4-引用页面或父组件的样式"><span class="toc-number">4.1.4.</span> <span class="toc-text">1.1.4 引用页面或父组件的样式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-6-Solt-组件插槽"><span class="toc-number">4.1.5.</span> <span class="toc-text">1.1.6 Solt 组件插槽</span></a></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -593,11 +685,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Babel</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">CSS3</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Babel</a>
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -609,19 +705,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
+                <a href="javascript:void(0)" class="js-tag color5">http</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">http</a>
+                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -653,19 +745,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">jQuery</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">html component</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">小程序</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">vs-code</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -673,7 +753,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">小程序</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">webpack</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">vs-code</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">jQuery</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -681,11 +773,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">腾讯地图 api</a>
+                <a href="javascript:void(0)" class="js-tag color5">微信开发</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">微信开发</a>
+                <a href="javascript:void(0)" class="js-tag color4">腾讯地图 api</a>
               </li>
              
               <li class="article-tag-list-item">
