@@ -30,7 +30,7 @@
 <meta property="og:image" content="http://yoursite.com/images/vue/%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97/24_%E5%8A%A8%E7%94%BB%E8%BF%87%E6%B8%A1%E7%BB%84%E4%BB%B6_%E5%A4%9A%E5%85%83%E7%B4%A0%E9%97%B4%E7%9A%84%E8%BF%87%E6%B8%A1_else_if_key.gif">
 <meta property="og:image" content="http://yoursite.com/images/vue/%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97/config-%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86-1.png">
 <meta property="article:published_time" content="2020-06-21T06:49:52.000Z">
-<meta property="article:modified_time" content="2020-08-13T00:17:35.891Z">
+<meta property="article:modified_time" content="2020-08-17T14:25:28.457Z">
 <meta property="article:author" content="彼岸世界">
 <meta property="article:tag" content="vue">
 <meta name="twitter:card" content="summary">
@@ -117,7 +117,7 @@
 			</ul>
 		</nav>
 		<nav style="font-size: 12px;color:#7f7f7f">
-				总文章数 40
+				总文章数 41
 		</nav>
 		<nav class="header-smart-menu">
     		
@@ -387,6 +387,20 @@ Vue 项目中基本上全部都是大大小小的组件，小组件嵌套在大�
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">props: &#123;</span><br><span class="line">    title: &#123;</span><br><span class="line">        validator: <span class="function"><span class="keyword">function</span>(<span class="params">value</span>)</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">typeof</span>(vlue) == <span class="string">'Number'</span> &amp;&amp; value &gt; <span class="number">10</span>;</span><br><span class="line">        &#125; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
+
+<br>
+
+<h3 id="2-1-3-中央总线-兄弟之间传参"><a href="#2-1-3-中央总线-兄弟之间传参" class="headerlink" title="2.1.3 中央总线 (兄弟之间传参)"></a>2.1.3 中央总线 (兄弟之间传参)</h3><p style='font-size:14px'>
+2020年8月17，兄弟组件之间传递参数使用的方式是中央总线，就是在外部定义一个 new Vue 实例，然后通过这个实例的 vue.$emit() 和 vue.$on() 方法在兄弟组件中进行数据交互和消息通知。<span style='font-size:14px;font-weight:bold;color:green;'>父组件 Father.vue 中 ：这里的 Bus 相当于一个中央总线的对象</span>
+</p>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        &lt;ChildNav1&gt;&lt;<span class="regexp">/ChildNav1&gt;</span></span><br><span class="line"><span class="regexp">        &lt;ChildNav2&gt;&lt;/</span>ChildNav2&gt;</span><br><span class="line">    &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">"vue"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">    name: <span class="string">"Father"</span>,</span><br><span class="line">    components: &#123;</span><br><span class="line">        ChildNav1,</span><br><span class="line">        ChildNav2</span><br><span class="line">    &#125;,</span><br><span class="line">    data: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            Bus: <span class="keyword">new</span> Vue()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+<p style='font-size:14px;font-weight:bold;color:green;'>子组件中 ChildNav1.vue 调用了 Bus 中间件 Vue 实例里的 $emit 方法触发事件 .</p>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">    name: <span class="string">"ChildNav1"</span>,</span><br><span class="line">    data: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            params: &#123;</span><br><span class="line">                email: <span class="string">"zouzhuQcom@163.com"</span>,</span><br><span class="line">                age: <span class="number">22</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    methods: &#123;</span><br><span class="line">        clickButton: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="comment">/* 这里做地案例就是如果 ChildNav1 是表单，ChildNav2 是表格，当表单提交的时候，就要通知表格去刷新一遍数据.</span></span><br><span class="line"><span class="comment">               第一个参数 ：为触发的事件类型为 updateComponentData</span></span><br><span class="line"><span class="comment">               第一个参数 ：为携带的数据，也就是参数</span></span><br><span class="line"><span class="comment">            */</span></span><br><span class="line">            <span class="keyword">this</span>.$parent.Bus.$emit(<span class="string">"updateComponentData"</span>, <span class="keyword">this</span>.params);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p style='font-size:14px;font-weight:bold;color:green;'>子组件中 ChildNav2.vue 调用了 Bus 中间件 Vue 实例里的 $on 监听事件 .</p>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">    name: <span class="string">"ChildNav2"</span>,</span><br><span class="line">    created: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.$parent.Bus.$on(<span class="string">"updateComponentData"</span>, (param) =&gt; &#123;</span><br><span class="line">            <span class="comment">/* 只要监听到 Bus 实例触发的 updateComponentData 类型事件，将执行后面的函数操作，进而刷新数据 */</span></span><br><span class="line">            <span class="keyword">this</span>.getData()</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;,</span><br><span class="line">    methods: &#123;</span><br><span class="line">        getData: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            .....</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 
@@ -715,7 +729,7 @@ leave-to-class (2.1.8+)<br>
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Vue-组件生命周期钩子"><span class="toc-number">1.</span> <span class="toc-text">Vue 组件生命周期钩子</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-beforeCreate-初始化实例"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 beforeCreate 初始化实例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-create-挂载数据-data、computed"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 create 挂载数据(data、computed)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-beforeMount-编译模板-template-数据未挂载到页面"><span class="toc-number">1.3.</span> <span class="toc-text">1.3 beforeMount 编译模板 template(数据未挂载到页面)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-4-mount-编译模板完成-template-数据挂载到页面"><span class="toc-number">1.4.</span> <span class="toc-text">1.4 mount 编译模板完成 template(数据挂载到页面)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-5-beforeUpdate-数据更新之前"><span class="toc-number">1.5.</span> <span class="toc-text">1.5 beforeUpdate 数据更新之前</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-6-update-数据更新之后"><span class="toc-number">1.6.</span> <span class="toc-text">1.6 update 数据更新之后</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-7-beforeDestroy-组件销毁之前"><span class="toc-number">1.7.</span> <span class="toc-text">1.7 beforeDestroy 组件销毁之前</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-8-destroy-组件销毁完成"><span class="toc-number">1.8.</span> <span class="toc-text">1.8 destroy 组件销毁完成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Vue-中的事件处理"><span class="toc-number">1.9.</span> <span class="toc-text">Vue 中的事件处理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#事件修饰符"><span class="toc-number">1.9.1.</span> <span class="toc-text">事件修饰符</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#深入了解组件的学习"><span class="toc-number">2.</span> <span class="toc-text">深入了解组件的学习</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-组件间数据的上下传递"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 组件间数据的上下传递</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-1-事件监听触发-实现数据的向上传递"><span class="toc-number">2.1.1.</span> <span class="toc-text">2.1.1 事件监听触发(实现数据的向上传递)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-2-Props-实现数据向下传递"><span class="toc-number">2.1.2.</span> <span class="toc-text">2.1.2 Props (实现数据向下传递)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-组件之插槽"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 组件之插槽</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-1-通过插槽访问子组件中的数据-插槽Props"><span class="toc-number">2.2.1.</span> <span class="toc-text">2.2.1 通过插槽访问子组件中的数据(插槽Props)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-动态组件和异步组件"><span class="toc-number">2.3.</span> <span class="toc-text">2.3 动态组件和异步组件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-1-动态组件"><span class="toc-number">2.3.1.</span> <span class="toc-text">2.3.1 动态组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-2-异步组件"><span class="toc-number">2.3.2.</span> <span class="toc-text">2.3.2 异步组件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-4-组件数据边界问题"><span class="toc-number">2.4.</span> <span class="toc-text">2.4 组件数据边界问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-1-访问元素或组件数据"><span class="toc-number">2.4.1.</span> <span class="toc-text">2.4.1 访问元素或组件数据</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Vue-内置过渡动画组件"><span class="toc-number">3.</span> <span class="toc-text">Vue 内置过渡动画组件</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-单元素-组件的过渡"><span class="toc-number">3.1.</span> <span class="toc-text">3.1 单元素&#x2F;组件的过渡</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-1-自定义过渡类名"><span class="toc-number">3.1.1.</span> <span class="toc-text">3.1.1 自定义过渡类名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-2-过渡的时间"><span class="toc-number">3.1.2.</span> <span class="toc-text">3.1.2 过渡的时间</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-3-JavaScript-钩子"><span class="toc-number">3.1.3.</span> <span class="toc-text">3.1.3 JavaScript 钩子</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-4-初始渲染的过渡"><span class="toc-number">3.1.4.</span> <span class="toc-text">3.1.4 初始渲染的过渡</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-多元素-组件过渡"><span class="toc-number">3.2.</span> <span class="toc-text">3.2 多元素&#x2F;组件过渡</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-1-多个元素的过渡"><span class="toc-number">3.2.1.</span> <span class="toc-text">3.2.1 多个元素的过渡</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-2-多个组件的过渡"><span class="toc-number">3.2.2.</span> <span class="toc-text">3.2.2 多个组件的过渡</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-3-列表过渡"><span class="toc-number">3.2.3.</span> <span class="toc-text">3.2.3 列表过渡</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-4-可复用的过渡"><span class="toc-number">3.2.4.</span> <span class="toc-text">3.2.4 可复用的过渡</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-5-动态过渡"><span class="toc-number">3.2.5.</span> <span class="toc-text">3.2.5 动态过渡</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#vue-config-js"><span class="toc-number">4.</span> <span class="toc-text">vue.config.js</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-Proxy-反向代理配置"><span class="toc-number">4.1.</span> <span class="toc-text">1.1 Proxy 反向代理配置</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Vue-组件生命周期钩子"><span class="toc-number">1.</span> <span class="toc-text">Vue 组件生命周期钩子</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-beforeCreate-初始化实例"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 beforeCreate 初始化实例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-create-挂载数据-data、computed"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 create 挂载数据(data、computed)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-beforeMount-编译模板-template-数据未挂载到页面"><span class="toc-number">1.3.</span> <span class="toc-text">1.3 beforeMount 编译模板 template(数据未挂载到页面)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-4-mount-编译模板完成-template-数据挂载到页面"><span class="toc-number">1.4.</span> <span class="toc-text">1.4 mount 编译模板完成 template(数据挂载到页面)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-5-beforeUpdate-数据更新之前"><span class="toc-number">1.5.</span> <span class="toc-text">1.5 beforeUpdate 数据更新之前</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-6-update-数据更新之后"><span class="toc-number">1.6.</span> <span class="toc-text">1.6 update 数据更新之后</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-7-beforeDestroy-组件销毁之前"><span class="toc-number">1.7.</span> <span class="toc-text">1.7 beforeDestroy 组件销毁之前</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-8-destroy-组件销毁完成"><span class="toc-number">1.8.</span> <span class="toc-text">1.8 destroy 组件销毁完成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Vue-中的事件处理"><span class="toc-number">1.9.</span> <span class="toc-text">Vue 中的事件处理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#事件修饰符"><span class="toc-number">1.9.1.</span> <span class="toc-text">事件修饰符</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#深入了解组件的学习"><span class="toc-number">2.</span> <span class="toc-text">深入了解组件的学习</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-组件间数据的上下传递"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 组件间数据的上下传递</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-1-事件监听触发-实现数据的向上传递"><span class="toc-number">2.1.1.</span> <span class="toc-text">2.1.1 事件监听触发(实现数据的向上传递)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-2-Props-实现数据向下传递"><span class="toc-number">2.1.2.</span> <span class="toc-text">2.1.2 Props (实现数据向下传递)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-3-中央总线-兄弟之间传参"><span class="toc-number">2.1.3.</span> <span class="toc-text">2.1.3 中央总线 (兄弟之间传参)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-组件之插槽"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 组件之插槽</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-1-通过插槽访问子组件中的数据-插槽Props"><span class="toc-number">2.2.1.</span> <span class="toc-text">2.2.1 通过插槽访问子组件中的数据(插槽Props)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-动态组件和异步组件"><span class="toc-number">2.3.</span> <span class="toc-text">2.3 动态组件和异步组件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-1-动态组件"><span class="toc-number">2.3.1.</span> <span class="toc-text">2.3.1 动态组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-2-异步组件"><span class="toc-number">2.3.2.</span> <span class="toc-text">2.3.2 异步组件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-4-组件数据边界问题"><span class="toc-number">2.4.</span> <span class="toc-text">2.4 组件数据边界问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-1-访问元素或组件数据"><span class="toc-number">2.4.1.</span> <span class="toc-text">2.4.1 访问元素或组件数据</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Vue-内置过渡动画组件"><span class="toc-number">3.</span> <span class="toc-text">Vue 内置过渡动画组件</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-单元素-组件的过渡"><span class="toc-number">3.1.</span> <span class="toc-text">3.1 单元素&#x2F;组件的过渡</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-1-自定义过渡类名"><span class="toc-number">3.1.1.</span> <span class="toc-text">3.1.1 自定义过渡类名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-2-过渡的时间"><span class="toc-number">3.1.2.</span> <span class="toc-text">3.1.2 过渡的时间</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-3-JavaScript-钩子"><span class="toc-number">3.1.3.</span> <span class="toc-text">3.1.3 JavaScript 钩子</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-4-初始渲染的过渡"><span class="toc-number">3.1.4.</span> <span class="toc-text">3.1.4 初始渲染的过渡</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-多元素-组件过渡"><span class="toc-number">3.2.</span> <span class="toc-text">3.2 多元素&#x2F;组件过渡</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-1-多个元素的过渡"><span class="toc-number">3.2.1.</span> <span class="toc-text">3.2.1 多个元素的过渡</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-2-多个组件的过渡"><span class="toc-number">3.2.2.</span> <span class="toc-text">3.2.2 多个组件的过渡</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-3-列表过渡"><span class="toc-number">3.2.3.</span> <span class="toc-text">3.2.3 列表过渡</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-4-可复用的过渡"><span class="toc-number">3.2.4.</span> <span class="toc-text">3.2.4 可复用的过渡</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-5-动态过渡"><span class="toc-number">3.2.5.</span> <span class="toc-text">3.2.5 动态过渡</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#vue-config-js"><span class="toc-number">4.</span> <span class="toc-text">vue.config.js</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-Proxy-反向代理配置"><span class="toc-number">4.1.</span> <span class="toc-text">1.1 Proxy 反向代理配置</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -835,7 +849,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ES6</a>
+                <a href="javascript:void(0)" class="js-tag color5">CSS3</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -843,19 +857,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
+                <a href="javascript:void(0)" class="js-tag color4">ES6</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -863,7 +873,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">npm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -871,7 +897,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -883,19 +909,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">jQuery</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">html component</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">小程序</a>
+                <a href="javascript:void(0)" class="js-tag color2">jQuery</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">vs-code</a>
+                <a href="javascript:void(0)" class="js-tag color4">小程序</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -904,10 +926,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">webpack</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -923,7 +941,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">CSS3</a>
+                <a href="javascript:void(0)" class="js-tag color3">vs-code</a>
               </li>
              
               <li class="article-tag-list-item">

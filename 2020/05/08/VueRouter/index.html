@@ -31,7 +31,7 @@
 <meta property="og:image" content="http://yoursite.com/images/vue-router/8.5.2.png">
 <meta property="og:image" content="http://yoursite.com/images/vue-router/8.5.3.png">
 <meta property="article:published_time" content="2020-05-08T09:55:49.000Z">
-<meta property="article:modified_time" content="2020-08-16T22:57:10.015Z">
+<meta property="article:modified_time" content="2020-08-17T15:30:07.016Z">
 <meta property="article:author" content="彼岸世界">
 <meta property="article:tag" content="Vue">
 <meta name="twitter:card" content="summary">
@@ -118,7 +118,7 @@
 			</ul>
 		</nav>
 		<nav style="font-size: 12px;color:#7f7f7f">
-				总文章数 40
+				总文章数 41
 		</nav>
 		<nav class="header-smart-menu">
     		
@@ -727,14 +727,40 @@ Vue 的导航守卫，实则就是一层拦截器，当路由执行之前，路�
 </p>
 
 
-<br>
+
 
 <h2 id="1-1-全局钩子函数"><a href="#1-1-全局钩子函数" class="headerlink" title="1.1 全局钩子函数"></a>1.1 全局钩子函数</h2><p style="font-size:14px">
-
+全局的钩子函数在整个路由中都会起到作用，任何路由都将会被拦截，需要通过 next 放行才能执行后面的操作.
 </p>
 
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> VueRouter(&#123;</span><br><span class="line">	routes: [</span><br><span class="line">		&#123; <span class="attr">path</span>:<span class="string">'/'</span>, <span class="attr">component</span>:Home &#125;,</span><br><span class="line">		&#123; <span class="attr">path</span>:<span class="string">'/product'</span>, <span class="attr">component</span>:Product &#125;,</span><br><span class="line">		&#123; <span class="attr">path</span>:<span class="string">'/about'</span>, <span class="attr">component</span>:About &#125;,</span><br><span class="line">		&#123; <span class="attr">path</span>:<span class="string">"/login"</span>, <span class="attr">component</span>:Login &#125;</span><br><span class="line">	]</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> VueRouter(&#123;</span><br><span class="line">	routes: [</span><br><span class="line">		&#123; <span class="attr">path</span>:<span class="string">'/'</span>, <span class="attr">component</span>:Home &#125;,</span><br><span class="line">		&#123; <span class="attr">path</span>:<span class="string">'/product'</span>, <span class="attr">component</span>:Product &#125;,</span><br><span class="line">		&#123; <span class="attr">path</span>:<span class="string">'/about'</span>, <span class="attr">component</span>:About &#125;,</span><br><span class="line">		&#123; <span class="attr">path</span>:<span class="string">"/login"</span>, <span class="attr">component</span>:Login &#125;</span><br><span class="line">	]</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">router.beforeEach(to, <span class="keyword">from</span>, next)&#123;</span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">	路由之前 =&gt;</span></span><br><span class="line"><span class="comment">		to: Route: 即将要进入的目标 路由对象</span></span><br><span class="line"><span class="comment">		from: Route: 当前导航正要离开的路由</span></span><br><span class="line"><span class="comment">		next: 它是一个方法，代表着路由放行，执行下一步的操作</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">	案例：当进入主页的时候，</span></span><br><span class="line"><span class="comment">	*/</span></span><br><span class="line">	<span class="keyword">if</span>(to.path === <span class="string">"/home"</span>)&#123;</span><br><span class="line">		next(&#123;</span><br><span class="line">			path: <span class="string">"/login"</span></span><br><span class="line">		&#125;)</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		next();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">router.afterEach(<span class="function">(<span class="params">to, form</span>)=&gt;</span>&#123;</span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">	路由之后 =&gt;</span></span><br><span class="line"><span class="comment">		to: 代表着将要跳转的路由对象</span></span><br><span class="line"><span class="comment">		from: 代表着之前的路由对象</span></span><br><span class="line"><span class="comment">	*/</span></span><br><span class="line">	......</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p style="font-size:14px">
+<span style="font-size:14px;font-weight:bold;color:green">
+next function 这个钩子一定要执行，不然没办法执行后面的操作，它的用法如下 : <br>
+</span>
+    <span style="font-size:14px;font-weight:bold;color:#6f93bf">
+    1. next(): 进行管道中的下一个钩子，如果全部钩子执行完了，则路由导航的状态就是 confirmed (确认的)。</span><br>
+    <span style="font-size:14px;font-weight:bold;color:#6f93bf">
+    2. next(false): 中断当前的导航，如果浏览器的 URL 改变了 (可能是用户手动或者浏览器后退按钮)，那么 URL 地址会重置到 from 路由对应的地址。</span><br>
+    <span style="font-size:14px;font-weight:bold;color:#6f93bf">
+    3. next('/') 或者 next({ path: '/' }): 跳转到一个不同的地址，当前的导航被中断，然后进行一个新的导航。你可以向 next 传递任意位置对象，且允许设置诸如 replace: true、     name: 'home' 之类的选项以及任何用在 router-link 的 to prop 或 router.push 中的选项。</span><br>
+    <span style="font-size:14px;font-weight:bold;color:#6f93bf">
+    4. next(error): (2.4.0+) 如果传入 next 的参数是一个 Error 实例，则导航会被终止且该错误会被传递给 router.onError() 注册过的回调。
+    </span>
+</p>
 
+
+
+
+
+
+<br>
+
+<h2 id="1-2-单独路由拦截器守卫"><a href="#1-2-单独路由拦截器守卫" class="headerlink" title="1.2 单独路由拦截器守卫"></a>1.2 单独路由拦截器守卫</h2><p style="font-size:14px">
+单独的拦截器只对指定一个路由有效，如果我们只需要对一个指定的路由进行拦截，这样将很方便，这里做了一个小案例，主要是登入主页首先在之前就检查本地是否有用户登录信息，有则放行，没有则放弃当前路由导航，跳转到 "/login" 登录页。
+</p>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> VueRouter(&#123;</span><br><span class="line">	routes: [</span><br><span class="line">		&#123; <span class="attr">path</span>:<span class="string">'/'</span>, <span class="attr">component</span>:Home &#125;,</span><br><span class="line">		&#123; <span class="attr">path</span>:<span class="string">'/home'</span>, <span class="attr">name</span>: <span class="string">"home"</span>, <span class="attr">component</span>:Product , </span><br><span class="line">				beforeEnter: (to, <span class="keyword">from</span>, next)&#123;</span><br><span class="line">					localStorage.get(<span class="string">"userinfo"</span>) ? next() : next(&#123;<span class="attr">path</span>: <span class="string">"/login"</span>&#125;);</span><br><span class="line">				&#125;</span><br><span class="line">		&#125;,</span><br><span class="line">		&#123; <span class="attr">path</span>:<span class="string">'/about'</span>, <span class="attr">component</span>:About &#125;,</span><br><span class="line">		&#123; <span class="attr">path</span>:<span class="string">"/login"</span>, <span class="attr">component</span>:Login &#125;</span><br><span class="line">	]</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
       
 
       
@@ -855,7 +881,7 @@ Vue 的导航守卫，实则就是一层拦截器，当路由执行之前，路�
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Router-路由起步"><span class="toc-number">1.</span> <span class="toc-text">Router 路由起步</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-HTML-amp-amp-JavaScript"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 HTML &amp;&amp; JavaScript</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Router-动态路由匹配"><span class="toc-number">2.</span> <span class="toc-text">Router 动态路由匹配</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-获取路径参数"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 获取路径参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-watch-监听参数变化"><span class="toc-number">2.2.</span> <span class="toc-text">2.1 watch 监听参数变化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-通配符路由"><span class="toc-number">2.3.</span> <span class="toc-text">2.2 通配符路由</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-高级匹配模式"><span class="toc-number">2.4.</span> <span class="toc-text">2.3 高级匹配模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-4-匹配优先级"><span class="toc-number">2.5.</span> <span class="toc-text">2.4 匹配优先级</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Router-相关知识"><span class="toc-number">3.</span> <span class="toc-text">Router 相关知识</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-嵌套路由"><span class="toc-number">3.1.</span> <span class="toc-text">3.1 嵌套路由</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-编程式的导航"><span class="toc-number">3.2.</span> <span class="toc-text">3.2 编程式的导航</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Router-路由和视图命名"><span class="toc-number">4.</span> <span class="toc-text">Router 路由和视图命名</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-路由的命名"><span class="toc-number">4.1.</span> <span class="toc-text">4.1 路由的命名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-视图的命名"><span class="toc-number">4.2.</span> <span class="toc-text">4.2 视图的命名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-3-嵌套命名视图"><span class="toc-number">4.3.</span> <span class="toc-text">4.3 嵌套命名视图</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Router-重定向和别名"><span class="toc-number">5.</span> <span class="toc-text">Router 重定向和别名</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#5-1-重定向"><span class="toc-number">5.1.</span> <span class="toc-text">5.1 重定向</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-2-别名"><span class="toc-number">5.2.</span> <span class="toc-text">5.2 别名</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Router-路由组件传参"><span class="toc-number">6.</span> <span class="toc-text">Router 路由组件传参</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#6-1-布尔模式"><span class="toc-number">6.1.</span> <span class="toc-text">6.1 布尔模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-2-对象模式"><span class="toc-number">6.2.</span> <span class="toc-text">6.2 对象模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-3-函数模式"><span class="toc-number">6.3.</span> <span class="toc-text">6.3 函数模式</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HTML5-History-模式"><span class="toc-number">7.</span> <span class="toc-text">HTML5 History 模式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#7-1-后端配置例子"><span class="toc-number">7.1.</span> <span class="toc-text">7.1 后端配置例子</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-2-警告"><span class="toc-number">7.2.</span> <span class="toc-text">7.2 警告</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Router-导航守卫"><span class="toc-number">8.</span> <span class="toc-text">Router 导航守卫</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#8-1-全局守卫"><span class="toc-number">8.1.</span> <span class="toc-text">8.1 全局守卫</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-2-路由独享守卫"><span class="toc-number">8.2.</span> <span class="toc-text">8.2 路由独享守卫</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-3-组件内的守卫"><span class="toc-number">8.3.</span> <span class="toc-text">8.3 组件内的守卫</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-4-完整的导航解析流程"><span class="toc-number">8.4.</span> <span class="toc-text">8.4 完整的导航解析流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-5-路由元信息"><span class="toc-number">8.5.</span> <span class="toc-text">8.5 路由元信息</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Router-过渡动效"><span class="toc-number">9.</span> <span class="toc-text">Router 过渡动效</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Router-数据的获取"><span class="toc-number">10.</span> <span class="toc-text">Router 数据的获取</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#10-1-导航完成后获取数据"><span class="toc-number">10.1.</span> <span class="toc-text">10.1 导航完成后获取数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-2-导航完成前获取数据"><span class="toc-number">10.2.</span> <span class="toc-text">10.2 导航完成前获取数据</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Router-滚动行为"><span class="toc-number">11.</span> <span class="toc-text">Router 滚动行为</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#11-1-自定义滚动"><span class="toc-number">11.1.</span> <span class="toc-text">11.1 自定义滚动</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-2-异步滚动"><span class="toc-number">11.2.</span> <span class="toc-text">11.2 异步滚动</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Router-路由懒加载"><span class="toc-number">12.</span> <span class="toc-text">Router 路由懒加载</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#12-1-懒加载实现"><span class="toc-number">12.1.</span> <span class="toc-text">12.1 懒加载实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-number">12.2.</span> <span class="toc-text"></span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-2-组件按组分块"><span class="toc-number">12.3.</span> <span class="toc-text">12.2 组件按组分块</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-Vue-Router-路由的跳转及参数获取"><span class="toc-number">13.</span> <span class="toc-text">1.Vue Router 路由的跳转及参数获取</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-this-router-编程式路由跳转"><span class="toc-number">13.1.</span> <span class="toc-text">1.1 this.$router 编程式路由跳转</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-监听路由传递参数的变化"><span class="toc-number">13.2.</span> <span class="toc-text">1.2 监听路由传递参数的变化</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-路由导航守卫-路由拦截器"><span class="toc-number">14.</span> <span class="toc-text">1.路由导航守卫(路由拦截器)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-全局钩子函数"><span class="toc-number">14.1.</span> <span class="toc-text">1.1 全局钩子函数</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Router-路由起步"><span class="toc-number">1.</span> <span class="toc-text">Router 路由起步</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-HTML-amp-amp-JavaScript"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 HTML &amp;&amp; JavaScript</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Router-动态路由匹配"><span class="toc-number">2.</span> <span class="toc-text">Router 动态路由匹配</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-获取路径参数"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 获取路径参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-watch-监听参数变化"><span class="toc-number">2.2.</span> <span class="toc-text">2.1 watch 监听参数变化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-通配符路由"><span class="toc-number">2.3.</span> <span class="toc-text">2.2 通配符路由</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-高级匹配模式"><span class="toc-number">2.4.</span> <span class="toc-text">2.3 高级匹配模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-4-匹配优先级"><span class="toc-number">2.5.</span> <span class="toc-text">2.4 匹配优先级</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Router-相关知识"><span class="toc-number">3.</span> <span class="toc-text">Router 相关知识</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-嵌套路由"><span class="toc-number">3.1.</span> <span class="toc-text">3.1 嵌套路由</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-编程式的导航"><span class="toc-number">3.2.</span> <span class="toc-text">3.2 编程式的导航</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Router-路由和视图命名"><span class="toc-number">4.</span> <span class="toc-text">Router 路由和视图命名</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-路由的命名"><span class="toc-number">4.1.</span> <span class="toc-text">4.1 路由的命名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-视图的命名"><span class="toc-number">4.2.</span> <span class="toc-text">4.2 视图的命名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-3-嵌套命名视图"><span class="toc-number">4.3.</span> <span class="toc-text">4.3 嵌套命名视图</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Router-重定向和别名"><span class="toc-number">5.</span> <span class="toc-text">Router 重定向和别名</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#5-1-重定向"><span class="toc-number">5.1.</span> <span class="toc-text">5.1 重定向</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-2-别名"><span class="toc-number">5.2.</span> <span class="toc-text">5.2 别名</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Router-路由组件传参"><span class="toc-number">6.</span> <span class="toc-text">Router 路由组件传参</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#6-1-布尔模式"><span class="toc-number">6.1.</span> <span class="toc-text">6.1 布尔模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-2-对象模式"><span class="toc-number">6.2.</span> <span class="toc-text">6.2 对象模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-3-函数模式"><span class="toc-number">6.3.</span> <span class="toc-text">6.3 函数模式</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HTML5-History-模式"><span class="toc-number">7.</span> <span class="toc-text">HTML5 History 模式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#7-1-后端配置例子"><span class="toc-number">7.1.</span> <span class="toc-text">7.1 后端配置例子</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-2-警告"><span class="toc-number">7.2.</span> <span class="toc-text">7.2 警告</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Router-导航守卫"><span class="toc-number">8.</span> <span class="toc-text">Router 导航守卫</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#8-1-全局守卫"><span class="toc-number">8.1.</span> <span class="toc-text">8.1 全局守卫</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-2-路由独享守卫"><span class="toc-number">8.2.</span> <span class="toc-text">8.2 路由独享守卫</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-3-组件内的守卫"><span class="toc-number">8.3.</span> <span class="toc-text">8.3 组件内的守卫</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-4-完整的导航解析流程"><span class="toc-number">8.4.</span> <span class="toc-text">8.4 完整的导航解析流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-5-路由元信息"><span class="toc-number">8.5.</span> <span class="toc-text">8.5 路由元信息</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Router-过渡动效"><span class="toc-number">9.</span> <span class="toc-text">Router 过渡动效</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Router-数据的获取"><span class="toc-number">10.</span> <span class="toc-text">Router 数据的获取</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#10-1-导航完成后获取数据"><span class="toc-number">10.1.</span> <span class="toc-text">10.1 导航完成后获取数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-2-导航完成前获取数据"><span class="toc-number">10.2.</span> <span class="toc-text">10.2 导航完成前获取数据</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Router-滚动行为"><span class="toc-number">11.</span> <span class="toc-text">Router 滚动行为</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#11-1-自定义滚动"><span class="toc-number">11.1.</span> <span class="toc-text">11.1 自定义滚动</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-2-异步滚动"><span class="toc-number">11.2.</span> <span class="toc-text">11.2 异步滚动</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Router-路由懒加载"><span class="toc-number">12.</span> <span class="toc-text">Router 路由懒加载</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#12-1-懒加载实现"><span class="toc-number">12.1.</span> <span class="toc-text">12.1 懒加载实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-number">12.2.</span> <span class="toc-text"></span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-2-组件按组分块"><span class="toc-number">12.3.</span> <span class="toc-text">12.2 组件按组分块</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-Vue-Router-路由的跳转及参数获取"><span class="toc-number">13.</span> <span class="toc-text">1.Vue Router 路由的跳转及参数获取</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-this-router-编程式路由跳转"><span class="toc-number">13.1.</span> <span class="toc-text">1.1 this.$router 编程式路由跳转</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-监听路由传递参数的变化"><span class="toc-number">13.2.</span> <span class="toc-text">1.2 监听路由传递参数的变化</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-路由导航守卫-路由拦截器"><span class="toc-number">14.</span> <span class="toc-text">1.路由导航守卫(路由拦截器)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-全局钩子函数"><span class="toc-number">14.1.</span> <span class="toc-text">1.1 全局钩子函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-单独路由拦截器守卫"><span class="toc-number">14.2.</span> <span class="toc-text">1.2 单独路由拦截器守卫</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -975,7 +1001,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ES6</a>
+                <a href="javascript:void(0)" class="js-tag color5">CSS3</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -983,19 +1009,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
+                <a href="javascript:void(0)" class="js-tag color4">ES6</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1003,7 +1025,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">npm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1011,7 +1049,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1023,19 +1061,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">jQuery</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">html component</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">小程序</a>
+                <a href="javascript:void(0)" class="js-tag color2">jQuery</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">vs-code</a>
+                <a href="javascript:void(0)" class="js-tag color4">小程序</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1044,10 +1078,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">webpack</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1063,7 +1093,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">CSS3</a>
+                <a href="javascript:void(0)" class="js-tag color3">vs-code</a>
               </li>
              
               <li class="article-tag-list-item">
